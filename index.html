@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sumeeth's Portfolio - Sumeeth Ashok Melkera</title>
+  <meta name="description" content="Sumeeth's Portfolio — Sumeeth Ashok Melkera solves problems through digital solutions: websites, applications and designs, chosen to fit the problem.">
+  <meta name="author" content="Sumeeth Ashok Melkera">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="-07A1yLt83-8bggKHce8vHZ0spFykZGHMIyRP-woCw4" />
+  <meta name="google-site-verification" content="4qzg_fxhzvn3t-iJtRj1FPbb7EIC1CW8R_2qHtLkka0" />
+  <meta name="theme-color" content="#000000">
+  <!-- Canonical and absolute social-preview URLs will be set once the new deployment URL is known. -->
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sumeeth's Portfolio">
+  <meta property="og:title" content="Sumeeth's Portfolio - Sumeeth Ashok Melkera">
+  <meta property="og:description" content="Sumeeth's Portfolio — Sumeeth Ashok Melkera solves problems through digital solutions: websites, applications and designs, chosen to fit the problem.">
+  <meta property="og:image:alt" content="Sumeeth Ashok Melkera avatar">
+  <meta property="og:locale" content="en">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sumeeth's Portfolio - Sumeeth Ashok Melkera">
+  <meta name="twitter:description" content="Sumeeth's Portfolio — Sumeeth Ashok Melkera solves problems through digital solutions: websites, applications and designs, chosen to fit the problem.">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/avatar/sumeeth-avatar.jpg" as="image">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+  /* Intro: once per browsing session, never under reduced motion. The overlay is pure CSS and
+     removes itself; this script only decides whether to show it and adds a failsafe. */
+  (function () {
+    var d = document.documentElement, show = true;
+    d.classList.add('js');
+    try {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) show = false;
+      else if (sessionStorage.getItem('sumeeth-intro-v1')) show = false;
+      else sessionStorage.setItem('sumeeth-intro-v1', '1');
+    } catch (e) { if (window.name === 'sumeeth-intro-v1') show = false; else window.name = 'sumeeth-intro-v1'; }
+    if (show) { d.classList.add('intro-on'); setTimeout(function () { d.classList.remove('intro-on'); }, 3100); }
+    setTimeout(function () { d.classList.add('no-anim'); }, 5000); /* if main.js never ran, reveal everything */
+  })();
+  </script>
+
+  <script type="application/ld+json">  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "#website",
+        "name": "Sumeeth's Portfolio",
+        "alternateName": "Sumeeth's Portfolio - Sumeeth Ashok Melkera",
+        "description": "Sumeeth's Portfolio — Sumeeth Ashok Melkera solves problems through digital solutions: websites, applications and designs, chosen to fit the problem.",
+        "inLanguage": "en",
+        "creator": { "@id": "#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "#person",
+        "name": "Sumeeth Ashok Melkera",
+        "email": "mailto:sumeeth.work18@gmail.com",
+        "jobTitle": "Web Designer, Application Developer and Graphic Designer",
+        "knowsAbout": ["Web design", "Web development", "Application development", "Graphic design"]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Cinematic intro (CSS-only, ~3s, first visit of a session; never blocks input) -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro__half intro__half--t"></div>
+    <div class="intro__half intro__half--b"></div>
+    <div class="intro__grid"></div>
+    <div class="intro__beam"></div>
+    <div class="intro__dust">
+      <i style="--x:12%;--d:.5s"></i><i style="--x:21%;--d:.9s"></i><i style="--x:33%;--d:.3s"></i><i style="--x:44%;--d:1.1s"></i>
+      <i style="--x:52%;--d:.7s"></i><i style="--x:63%;--d:.2s"></i><i style="--x:71%;--d:1s"></i><i style="--x:82%;--d:.6s"></i><i style="--x:90%;--d:.4s"></i>
+    </div>
+    <p class="intro__text"><span class="w"><span style="--i:0">Let's</span></span> <span class="w"><span style="--i:1">bring</span></span> <span class="w"><span style="--i:2">your</span></span> <span class="w"><span style="--i:3">idea</span></span> <span class="w"><span style="--i:4">live!!</span></span></p>
+    <div class="intro__rule"></div>
+  </div>
+
+  <!-- Brand bar (blends with whichever section is beneath it) -->
+  <header class="bar">
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+    <a class="bar__brand" href="#home" aria-label="Sumeeth's Portfolio home"><img class="bar__avatar" src="assets/avatar/sumeeth-avatar.jpg" width="40" height="40" alt=""><span>Sumeeth's Portfolio</span></a>
+  </header>
+
+  <div class="menu-scrim" hidden></div>
+  <nav class="menu" id="menu" aria-label="Main">
+    <ul class="menu__list">
+      <li><a href="#home">Home / Identity</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Technical Skills</a></li>
+      <li><a href="#works">My Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="menu__contact">
+      <a class="mbtn" href="mailto:sumeeth.work18@gmail.com">Email</a>
+      <a class="mbtn" href="https://wa.me/919022533004" target="_blank" rel="noopener noreferrer">WhatsApp / Text</a>
+      <a class="mbtn" href="tel:+919022533004">Call</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- 2. AVATAR AND IDENTITY (the hero; the cinematic intro is section 1 above) -->
+    <section class="hero" id="home" aria-labelledby="name">
+      <div class="glow glow--a" aria-hidden="true"></div>
+      <div class="hero__grid wrap">
+        <div class="hero__id">
+          <figure class="avatar rv" data-d="0">
+            <div class="avatar__frame" data-parallax>
+              <img class="avatar__img" src="assets/avatar/sumeeth-avatar.jpg" width="1024" height="1024" fetchpriority="high" decoding="async" alt="Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him">
+              <img class="avatar__sway" src="assets/avatar/sumeeth-avatar.jpg" width="1024" height="1024" alt="" aria-hidden="true">
+              <span class="avatar__light" aria-hidden="true"></span>
+            </div>
+          </figure>
+          <h1 class="hero__name rv" id="name" data-d="1">Sumeeth Ashok Melkera</h1>
+          <p class="hero__lead rv" data-d="2">I match the problem to the right digital solution: <strong>Websites</strong>, <strong>Applications</strong>, or <strong>Designs</strong>, or a combination of them.</p>
+          <div class="hero__actions rv" data-d="3">
+            <a class="btn btn--solid" href="#works">View My Work</a>
+            <a class="btn btn--line" href="#contact">Get In Touch</a>
+          </div>
+        </div>
+        <div class="hero__diagram rv" data-d="2" aria-hidden="true">
+          <svg viewBox="0 0 520 400" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="70" cy="200" r="5" fill="currentColor"/>
+            <text x="70" y="236" class="t-s" fill="currentColor" stroke="none" text-anchor="middle">the problem</text>
+            <path class="draw" pathLength="1" d="M75 200C170 200 190 90 300 90H330"/>
+            <path class="draw" pathLength="1" d="M75 200H330"/>
+            <path class="draw" pathLength="1" d="M75 200C170 200 190 310 300 310H330"/>
+            <text x="345" y="97" class="t-l" fill="currentColor" stroke="none">Websites</text>
+            <text x="345" y="207" class="t-l" fill="currentColor" stroke="none">Applications</text>
+            <text x="345" y="317" class="t-l" fill="currentColor" stroke="none">Designs</text>
+            <text x="345" y="352" class="t-s" fill="currentColor" stroke="none">one, or a mix, as the problem asks</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ABOUT ME -->
+    <section class="sec sec--cream about" id="about" aria-labelledby="about-h">
+      <div class="wrap about__grid">
+        <div class="about__head">
+          <h2 id="about-h" class="h2 rv">About Me</h2>
+          <p class="about__big rv">I don't start with a tool. I start with the problem.</p>
+        </div>
+        <div class="about__body">
+          <p class="rv">Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way.</p>
+          <p class="rv">Only then do I decide what to make. Sometimes the answer is a website. Sometimes it is an application. Sometimes it is a visual design, such as a thumbnail, a poster or a logo. Often it is a combination, and the pieces have to look like they belong together.</p>
+          <ol class="about__steps">
+            <li class="rv"><b>Understand</b><span>What is the problem, who has it, and what does solving it look like?</span></li>
+            <li class="rv"><b>Choose</b><span>Pick the digital solution that fits, instead of the one I happen to prefer.</span></li>
+            <li class="rv"><b>Build</b><span>Design and develop it, check it on real screens, and put it online.</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TECHNICAL SKILLS -->
+    <section class="sec sec--charcoal skills" id="skills" aria-labelledby="skills-h">
+      <div class="glow glow--b" aria-hidden="true"></div>
+      <div class="wrap skills__grid">
+        <div class="skills__head">
+          <h2 id="skills-h" class="h2 rv">Technical Skills</h2>
+          <p class="skills__note rv">Only what my portfolio and its projects actually show.</p>
+        </div>
+        <dl class="ledger">
+          <div class="ledger__row rv">
+            <dt>Frontend</dt>
+            <dd><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive layouts</span></dd>
+          </div>
+          <div class="ledger__row rv">
+            <dt>Tools and Platforms</dt>
+            <dd><span>Cloudflare Pages</span><span>Lovable</span><span>Google Search Console</span></dd>
+          </div>
+          <div class="ledger__row rv">
+            <dt>Design and Creative</dt>
+            <dd><span>Thumbnails</span><span>Posters</span><span>Logos and branding</span><span>Promotional banners</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 5. MY WORKS -->
+    <section class="sec sec--cream works" id="works" aria-labelledby="works-h">
+      <div class="wrap">
+        <h2 id="works-h" class="h2 rv">My Works</h2>
+        <p class="works__intro rv">Three problems, three answers. Each preview below is the live project.</p>
+
+        <article class="project project--a rv">
+          <div class="project__shot">
+            <div class="preview" style="--ar:16/10" data-w="1440">
+              <iframe src="https://ashok-trading.pages.dev" title="Live preview of the Ashok Trading website" loading="lazy" tabindex="-1" aria-hidden="true" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe>
+              <a class="preview__link" href="https://ashok-trading.pages.dev" target="_blank" rel="noopener noreferrer" aria-label="Open the Ashok Trading website in a new tab"></a>
+            </div>
+          </div>
+          <div class="project__text">
+            <p class="project__kind">Website</p>
+            <h3 class="project__title">Ashok Trading</h3>
+            <dl class="story">
+              <dt>Problem</dt><dd>A Mumbai wholesale supplier of tissue and disposable products sells across several brands, and customers need to find the right item and reach the shop directly.</dd>
+              <dt>Approach</dt><dd>The range is organised by company (Rossari, Kressa, ACE Paper &amp; Tissue and others), then narrowed by product type. Call, message and map actions sit in a dedicated bulk-order block.</dd>
+              <dt>Features</dt><dd>Company-grouped product catalogue with type filters, an About page with dealership details, contact information and a Google Maps link.</dd>
+              <dt>Outcome</dt><dd>A live business website, designed and developed by me.</dd>
+            </dl>
+            <a class="btn btn--line" href="https://ashok-trading.pages.dev" target="_blank" rel="noopener noreferrer">View Website</a>
+          </div>
+        </article>
+
+        <article class="project project--b rv">
+          <div class="project__shot">
+            <div class="preview" style="--ar:16/10" data-w="1440">
+              <iframe src="https://feast-and-fable.pages.dev" title="Live preview of the Feast &amp; Fable website" loading="lazy" tabindex="-1" aria-hidden="true" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe>
+              <a class="preview__link" href="https://feast-and-fable.pages.dev" target="_blank" rel="noopener noreferrer" aria-label="Open the Feast &amp; Fable website in a new tab"></a>
+            </div>
+          </div>
+          <div class="project__text">
+            <p class="project__kind">Website</p>
+            <h3 class="project__title">Feast &amp; Fable</h3>
+            <dl class="story">
+              <dt>Problem</dt><dd>A restaurant needs a website that presents it online.</dd>
+              <dt>Approach</dt><dd>Designed and developed by me as a standalone restaurant website.</dd>
+              <dt>Features</dt><dd>Best judged live: scroll the preview or open the full site.</dd>
+              <dt>Outcome</dt><dd>A live restaurant website, designed and developed by me.</dd>
+            </dl>
+            <a class="btn btn--line" href="https://feast-and-fable.pages.dev" target="_blank" rel="noopener noreferrer">View Website</a>
+          </div>
+        </article>
+
+        <article class="project project--c rv">
+          <div class="project__shot project__shot--phone">
+            <div class="preview preview--phone" style="--ar:9/17" data-w="390">
+              <iframe src="https://nutri-fit-v1.lovable.app" title="Live preview of the NutriFit Application for a GYM" loading="lazy" tabindex="-1" aria-hidden="true" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe>
+              <a class="preview__link" href="https://nutri-fit-v1.lovable.app" target="_blank" rel="noopener noreferrer" aria-label="Open the NutriFit Application for a GYM in a new tab"></a>
+            </div>
+          </div>
+          <div class="project__text">
+            <p class="project__kind">Application</p>
+            <h3 class="project__title">NutriFit Application for a GYM</h3>
+            <dl class="story">
+              <dt>Problem</dt><dd>Gym-goers need one place to track what they eat, log their workouts and see whether they are improving.</dd>
+              <dt>Approach</dt><dd>A mobile-first application built on the Lovable platform, paired with a NutriFit logo I designed (shown in the Design Showcase below).</dd>
+              <dt>Features</dt><dd>Nutrition tracking, workout logging and progress insights, as described on the app itself.</dd>
+              <dt>Outcome</dt><dd>A working application you can open and try. It is shown here as a project, not as a production rollout.</dd>
+            </dl>
+            <a class="btn btn--line" href="https://nutri-fit-v1.lovable.app" target="_blank" rel="noopener noreferrer">NutriFit Application for a GYM</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. DESIGN SHOWCASE (not in the menu; reached by scrolling) -->
+    <section class="designs" id="designs" aria-labelledby="designs-h">
+      <div class="designs__head wrap">
+        <h2 id="designs-h" class="h2 rv">Design Showcase</h2>
+        <p class="designs__intro rv">Thumbnails, posters and logos, one at a time.</p>
+      </div>
+
+      <div class="exhibit" data-exhibit>
+        <div class="exhibit__stage">
+          <div class="exhibit__glow" aria-hidden="true"></div>
+          <div class="exhibit__grid" aria-hidden="true"></div>
+
+          <figure class="piece" style="--ar:1.7778" data-title="Top 3 secrets of AI tools" data-kind="Thumbnail">
+            <div class="piece__art"><img src="assets/designs/thumbnails/ai-tools-top-3-secrets.png" width="1280" height="720" loading="lazy" decoding="async" alt="Thumbnail: Top 3 secrets of AI tools, with a surprised man and AI tool logos"></div>
+            <figcaption>Top 3 secrets of AI tools <em>Thumbnail</em></figcaption>
+          </figure>
+          <figure class="piece" style="--ar:1.7778" data-title="AI tools: use like a pro" data-kind="Thumbnail">
+            <div class="piece__art"><img src="assets/designs/thumbnails/ai-tools-use-like-a-pro.png" width="1280" height="720" loading="lazy" decoding="async" alt="Thumbnail: Use Like a Pro, an anime-style businessman beside AI tool logos"></div>
+            <figcaption>AI tools: use like a pro <em>Thumbnail</em></figcaption>
+          </figure>
+          <figure class="piece" style="--ar:0.7069" data-title="Taste the real mango" data-kind="Poster">
+            <div class="piece__art"><img src="assets/designs/posters/taste-the-real-mango.png" width="1587" height="2245" loading="lazy" decoding="async" alt="Poster: Taste The Real Mango, a mango drink bottle at 49 rupees"></div>
+            <figcaption>Taste the real mango <em>Poster</em></figcaption>
+          </figure>
+          <figure class="piece" style="--ar:1" data-title="NutriFit logo" data-kind="Logo">
+            <div class="piece__art"><img src="assets/designs/branding-logos/nutrifit-logo.png" width="1254" height="1254" loading="lazy" decoding="async" alt="NutriFit logo: NF monogram with a flexing figure and a food bowl"></div>
+            <figcaption>NutriFit logo <em>Logo</em></figcaption>
+          </figure>
+          <figure class="piece" style="--ar:1.7778" data-title="Lean aesthetic body in 28 days" data-kind="Thumbnail">
+            <div class="piece__art"><img src="assets/designs/thumbnails/lean-aesthetic-body-28-days.png" width="1280" height="720" loading="lazy" decoding="async" alt="Thumbnail: Lean Aesthetic Body in 28 Days, 3 secrets: diet, workout, sleep"></div>
+            <figcaption>Lean aesthetic body in 28 days <em>Thumbnail</em></figcaption>
+          </figure>
+          <figure class="piece" style="--ar:1.7778" data-title="Top 3 phones under 15000" data-kind="Thumbnail">
+            <div class="piece__art"><img src="assets/designs/thumbnails/top-3-phones-under-15000.png" width="1280" height="720" loading="lazy" decoding="async" alt="Thumbnail: Top 3 phones under 15000, with three mystery phones"></div>
+            <figcaption>Top 3 phones under 15000 <em>Thumbnail</em></figcaption>
+          </figure>
+          <figure class="piece" style="--ar:1.5006" data-title="Ashok Trading promotional banner" data-kind="Banner">
+            <div class="piece__art"><img src="assets/designs/posters/ashok-trading-promotional-banner.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Promotional banner for Ashok Trading"></div>
+            <figcaption>Ashok Trading promotional banner <em>Banner</em></figcaption>
+          </figure>
+          <figure class="piece" style="--ar:1.036" data-title="Ashok Trading logo" data-kind="Logo">
+            <div class="piece__art"><img src="assets/designs/branding-logos/ashok-trading-logo.jpg" width="1266" height="1222" loading="lazy" decoding="async" alt="Ashok Trading logo: all tissue and disposable products"></div>
+            <figcaption>Ashok Trading logo <em>Logo</em></figcaption>
+          </figure>
+
+          <div class="hud" aria-hidden="true">
+            <span class="hud__idx">1 / 8</span>
+            <span class="hud__title"></span>
+            <span class="hud__bar"><i></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="designs__cta wrap">
+        <a class="btn btn--solid btn--lg" href="#contact">Start Making Yours</a>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section class="sec contact" id="contact" aria-labelledby="contact-h">
+      <div class="wrap contact__grid">
+        <div>
+          <h2 id="contact-h" class="h2 rv">Contact</h2>
+          <p class="contact__lead rv">Have a problem worth solving?</p>
+          <p class="contact__sub rv">Tell me what is in the way. We will work out whether it needs a website, an application, a design, or a mix.</p>
+        </div>
+        <div class="contact__actions rv">
+          <a class="cbtn" href="mailto:sumeeth.work18@gmail.com"><b>Email Me</b><span>sumeeth.work18@gmail.com</span></a>
+          <a class="cbtn" href="https://wa.me/919022533004" target="_blank" rel="noopener noreferrer"><b>WhatsApp / Text Me</b><span>9022533004</span></a>
+          <a class="cbtn" href="tel:+919022533004"><b>Call Me</b><span>9022533004</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="footer__name">Sumeeth's Portfolio</p>
+      <p class="footer__by">Sumeeth Ashok Melkera</p>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#home">Home</a><a href="#about">About Me</a><a href="#skills">Technical Skills</a><a href="#works">My Works</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
