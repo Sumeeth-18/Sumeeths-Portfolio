@@ -11,7 +11,7 @@
   function startHero() {
     $$('.rv', hero).forEach(function (el) { el.style.setProperty('--rd', el.getAttribute('data-d') || 0); reveal(el); });
   }
-  setTimeout(startHero, root.classList.contains('intro-on') ? 2350 : 60);
+  setTimeout(startHero, root.classList.contains('intro-on') ? 3250 : 60);
   var rest = $$('.rv').filter(function (el) { return !hero.contains(el); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
@@ -64,7 +64,13 @@
     hero.addEventListener('pointermove', function (e) {
       var r = hero.getBoundingClientRect();
       tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5;
-      if (!raf) raf = requestAnimationFrame(function () { raf = 0; frame.style.setProperty('--px', (-tx * 2).toFixed(3)); frame.style.setProperty('--py', (-ty * 2).toFixed(3)); });
+      if (!raf) raf = requestAnimationFrame(function () { raf = 0; frame.style.setProperty('--px', (tx * 2).toFixed(3)); frame.style.setProperty('--py', (ty * 2).toFixed(3)); });
+    });
+    hero.addEventListener('pointerleave', function () {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0; tx = 0; ty = 0;
+      frame.style.setProperty('--px', '0');
+      frame.style.setProperty('--py', '0');
     });
   }
 

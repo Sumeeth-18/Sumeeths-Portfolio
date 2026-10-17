@@ -47,7 +47,7 @@
       else if (sessionStorage.getItem('sumeeth-intro-v1')) show = false;
       else sessionStorage.setItem('sumeeth-intro-v1', '1');
     } catch (e) { if (window.name === 'sumeeth-intro-v1') show = false; else window.name = 'sumeeth-intro-v1'; }
-    if (show) { d.classList.add('intro-on'); setTimeout(function () { d.classList.remove('intro-on'); }, 3100); }
+    if (show) { d.classList.add('intro-on'); setTimeout(function () { d.classList.remove('intro-on'); }, 3550); }
     setTimeout(function () { d.classList.add('no-anim'); }, 5000); /* if main.js never ran, reveal everything */
   })();
   </script>
@@ -78,21 +78,22 @@
 </head>
 <body>
 
-  <!-- Cinematic intro (CSS-only, ~3s, first visit of a session; never blocks input) -->
+  <!-- Cinematic intro (CSS-only, first visit of a session; never blocks input) -->
   <div class="intro" aria-hidden="true">
     <div class="intro__half intro__half--t"></div>
     <div class="intro__half intro__half--b"></div>
     <div class="intro__grid"></div>
     <div class="intro__beam"></div>
-    <div class="intro__dust">
-      <i style="--x:12%;--d:.5s"></i><i style="--x:21%;--d:.9s"></i><i style="--x:33%;--d:.3s"></i><i style="--x:44%;--d:1.1s"></i>
-      <i style="--x:52%;--d:.7s"></i><i style="--x:63%;--d:.2s"></i><i style="--x:71%;--d:1s"></i><i style="--x:82%;--d:.6s"></i><i style="--x:90%;--d:.4s"></i>
+    <div class="intro__dust" aria-hidden="true">
+      <i style="--x:8%;--d:.15s"></i><i style="--x:17%;--d:.4s"></i><i style="--x:28%;--d:.25s"></i><i style="--x:39%;--d:.6s"></i>
+      <i style="--x:49%;--d:.2s"></i><i style="--x:58%;--d:.5s"></i><i style="--x:69%;--d:.35s"></i><i style="--x:79%;--d:.65s"></i><i style="--x:91%;--d:.3s"></i>
     </div>
+    <p class="intro__brand">Sumeeth's Portfolio</p>
     <p class="intro__text"><span class="w"><span style="--i:0">Let's</span></span> <span class="w"><span style="--i:1">bring</span></span> <span class="w"><span style="--i:2">your</span></span> <span class="w"><span style="--i:3">idea</span></span> <span class="w"><span style="--i:4">live!!</span></span></p>
     <div class="intro__rule"></div>
   </div>
 
-  <!-- Brand bar (blends with whichever section is beneath it) -->
+  <!-- Fixed brand bar -->
   <header class="bar">
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
       <span></span><span></span>
@@ -159,10 +160,18 @@
         <div class="about__head">
           <h2 id="about-h" class="h2 rv">About Me</h2>
           <p class="about__big rv">I don't start with a tool. I start with the problem.</p>
+          <figure class="about__portrait rv">
+            <img src="assets/avatar/sumeeth-avatar.jpg" width="1024" height="1024" loading="lazy" decoding="async" alt="Illustrated portrait of Sumeeth in sunglasses and a dark hoodie">
+            <figcaption>Sumeeth Ashok Melkera</figcaption>
+          </figure>
         </div>
         <div class="about__body">
           <p class="rv">Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way.</p>
           <p class="rv">Only then do I decide what to make. Sometimes the answer is a website. Sometimes it is an application. Sometimes it is a visual design, such as a thumbnail, a poster or a logo. Often it is a combination, and the pieces have to look like they belong together.</p>
+          <div class="about__solution rv">
+            <h3>Technical Solution</h3>
+            <p>I design and build responsive websites and applications, create the visual assets they need, and bring each piece together into a clear, practical experience.</p>
+          </div>
           <ol class="about__steps">
             <li class="rv"><b>Understand</b><span>What is the problem, who has it, and what does solving it look like?</span></li>
             <li class="rv"><b>Choose</b><span>Pick the digital solution that fits, instead of the one I happen to prefer.</span></li>
@@ -184,10 +193,6 @@
           <div class="ledger__row rv">
             <dt>Frontend</dt>
             <dd><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive layouts</span></dd>
-          </div>
-          <div class="ledger__row rv">
-            <dt>Tools and Platforms</dt>
-            <dd><span>Cloudflare Pages</span><span>Lovable</span><span>Google Search Console</span></dd>
           </div>
           <div class="ledger__row rv">
             <dt>Design and Creative</dt>
@@ -332,9 +337,9 @@
           <p class="contact__sub rv">Tell me what is in the way. We will work out whether it needs a website, an application, a design, or a mix.</p>
         </div>
         <div class="contact__actions rv">
-          <a class="cbtn" href="mailto:sumeeth.work18@gmail.com"><b>Email Me</b><span>sumeeth.work18@gmail.com</span></a>
-          <a class="cbtn" href="https://wa.me/919022533004" target="_blank" rel="noopener noreferrer"><b>WhatsApp / Text Me</b><span>9022533004</span></a>
-          <a class="cbtn" href="tel:+919022533004"><b>Call Me</b><span>9022533004</span></a>
+          <a class="cbtn" href="mailto:sumeeth.work18@gmail.com"><b>Email Me</b><span>Start an email conversation</span></a>
+          <a class="cbtn" href="https://wa.me/919022533004" target="_blank" rel="noopener noreferrer"><b>WhatsApp / Text Me</b><span>Send a direct message</span></a>
+          <a class="cbtn" href="tel:+919022533004"><b>Call Me</b><span>Call directly</span></a>
         </div>
       </div>
     </section>
