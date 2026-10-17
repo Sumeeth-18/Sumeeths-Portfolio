@@ -18,7 +18,14 @@
       es.forEach(function (e) { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
     rest.forEach(function (el) { io.observe(el); });
-  } else rest.forEach(reveal);
+    var fieldObserver = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.target.classList.toggle('field-active', e.isIntersecting); });
+    }, { rootMargin: '120px 0px' });
+    $$('.hero, .exhibit__stage').forEach(function (el) { fieldObserver.observe(el); });
+  } else {
+    rest.forEach(reveal);
+    $$('.hero, .exhibit__stage').forEach(function (el) { el.classList.add('field-active'); });
+  }
 
   /* ---------- Menu ---------- */
   var toggle = $('.menu-toggle'), menu = $('#menu'), scrim = $('.menu-scrim');
@@ -50,22 +57,32 @@
   });
 
   /* ---------- Scroll variable + avatar pointer parallax ---------- */
-  var ticking = false;
+  var ticking = false, resizePending = false, lastScrollY = -1;
   function onScroll() {
     if (ticking) return; ticking = true;
-    requestAnimationFrame(function () { ticking = false; root.style.setProperty('--scroll', String(Math.round(window.pageYOffset))); updateExhibit(); });
+    requestAnimationFrame(function () {
+      ticking = false;
+      if (resizePending) { resizePending = false; size(); }
+      var scrollY = Math.round(window.pageYOffset);
+      if (scrollY !== lastScrollY) {
+        lastScrollY = scrollY;
+        root.style.setProperty('--scroll', String(scrollY));
+      }
+      updateExhibit();
+    });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  window.addEventListener('resize', function () { resizePending = true; onScroll(); });
 
   var frame = $('[data-parallax]');
   if (frame && !reduced && window.matchMedia('(pointer:fine)').matches) {
-    var raf = 0, tx = 0, ty = 0;
+    var raf = 0, tx = 0, ty = 0, pointerX = 0, pointerY = 0;
     hero.addEventListener('pointermove', function (e) {
-      var r = hero.getBoundingClientRect();
-      tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5;
+      pointerX = e.clientX; pointerY = e.clientY;
       if (!raf) raf = requestAnimationFrame(function () {
         raf = 0;
+        var r = hero.getBoundingClientRect();
+        tx = (pointerX - r.left) / r.width - 0.5; ty = (pointerY - r.top) / r.height - 0.5;
         frame.style.setProperty('--px', (tx * 2).toFixed(3));
         frame.style.setProperty('--py', (ty * 2).toFixed(3));
         hero.style.setProperty('--field-px', (tx * 10).toFixed(2) + 'px');
@@ -99,26 +116,42 @@
 
   /* ---------- Design Showcase: one artwork at a time, driven by scroll ---------- */
   var ex = $('[data-exhibit]'), pieces = $$('.piece'), hud = $('.hud'), stage = $('.exhibit__stage');
-  var N = pieces.length, per = 0, on = false;
+  var N = pieces.length, per = 0, stageHeight = 0, on = false, lastPos = null, preparedIndex = -1;
   var idxEl = $('.hud__idx'), titleEl = $('.hud__title'), lastIdx = -1;
   function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function clamp(v) { return Math.max(0, Math.min(1, v)); }
   function size() {
     if (!on) return;
-    var vh = stage.getBoundingClientRect().height, step = vh * (window.innerWidth <= 860 ? .75 : .85);
-    ex.style.height = (vh + step * (N - 1)) + 'px';
-    per = step;
+    stageHeight = stage.getBoundingClientRect().height;
+    per = stageHeight * (window.innerWidth <= 860 ? .75 : .85);
+    ex.style.height = (stageHeight + per * (N - 1)) + 'px';
+    lastPos = null;
+  }
+  function prepareImages(index) {
+    for (var i = index; i < Math.min(index + 2, N); i++) {
+      var image = $('img', pieces[i]);
+      if (image.loading === 'lazy') image.loading = 'eager';
+    }
   }
   function updateExhibit() {
-    if (!on) return;
-    var top = ex.getBoundingClientRect().top, pos = -top, vh = stage.getBoundingClientRect().height;
-    var total = ex.getBoundingClientRect().height - vh;
+    if (!on || !per) return;
+    var top = ex.getBoundingClientRect().top, pos = -top;
+    if (pos === lastPos) return;
+    lastPos = pos;
+    var total = per * (N - 1);
     var cur = Math.max(0, Math.min(N - 1, Math.floor(pos / per + 0.3)));
     pieces.forEach(function (p, i) {
-      var u = pos / per - i, art = p.firstElementChild, img = art.firstElementChild;
+      var u = pos / per - i;
+      if (u <= -0.3 || (i !== N - 1 && u >= 1)) {
+        if (p.style.visibility !== 'hidden') p.style.visibility = 'hidden';
+        if (p.classList.contains('is-active')) p.classList.remove('is-active');
+        return;
+      }
+      var art = p.firstElementChild, img = art.firstElementChild;
+      if (p.style.visibility !== 'visible') p.style.visibility = 'visible';
+      if (!p.classList.contains('is-active')) p.classList.add('is-active');
+      if (p.style.zIndex !== String(i + 1)) p.style.zIndex = String(i + 1);
       var e = clamp((u + 0.3) / 0.3), x = i === N - 1 ? 0 : clamp((u - 0.7) / 0.3);
-      if (e <= 0 || x >= 1) { p.style.visibility = 'hidden'; return; }
-      p.style.visibility = 'visible'; p.style.zIndex = String(i + 1);
       var ee = ease(e), xx = ease(x);
       art.style.clipPath = 'inset(' + ((1 - ee) * 100).toFixed(2) + '% 0 ' + (xx * 100).toFixed(2) + '% 0 round 6px)';
       art.style.opacity = String(1 - xx * .85);
@@ -128,6 +161,10 @@
     if (cur !== lastIdx) {
       lastIdx = cur; idxEl.textContent = (cur + 1) + ' / ' + N;
       titleEl.textContent = pieces[cur].getAttribute('data-title') + ' · ' + pieces[cur].getAttribute('data-kind');
+    }
+    if (top < window.innerHeight * 1.5 && pos < total + per && cur !== preparedIndex) {
+      preparedIndex = cur;
+      prepareImages(cur);
     }
     var prog = clamp(pos / total);
     stage.style.setProperty('--prog', prog.toFixed(4));
@@ -139,10 +176,8 @@
     if (on || reduced || !ex) return;
     on = true; ex.classList.add('is-pinned'); root.classList.add('exhibit-on');
     ex.parentNode.classList.add('is-pinned'); size(); updateExhibit();
-    $$('.piece img').forEach(function (im) { im.loading = 'eager'; }); // pinned pieces must be ready the moment they appear
   }
   // CSS hooks both on the section and the exhibit, so either selector works
-  window.addEventListener('resize', function () { size(); updateExhibit(); });
   enableExhibit();
   window.addEventListener('load', function () { size(); updateExhibit(); });
 })();
