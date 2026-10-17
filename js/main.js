@@ -64,13 +64,25 @@
     hero.addEventListener('pointermove', function (e) {
       var r = hero.getBoundingClientRect();
       tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5;
-      if (!raf) raf = requestAnimationFrame(function () { raf = 0; frame.style.setProperty('--px', (tx * 2).toFixed(3)); frame.style.setProperty('--py', (ty * 2).toFixed(3)); });
+      if (!raf) raf = requestAnimationFrame(function () {
+        raf = 0;
+        frame.style.setProperty('--px', (tx * 2).toFixed(3));
+        frame.style.setProperty('--py', (ty * 2).toFixed(3));
+        hero.style.setProperty('--field-px', (tx * 10).toFixed(2) + 'px');
+        hero.style.setProperty('--field-py', (ty * 10).toFixed(2) + 'px');
+        hero.style.setProperty('--field-back-x', (tx * -6).toFixed(2) + 'px');
+        hero.style.setProperty('--field-back-y', (ty * -6).toFixed(2) + 'px');
+      });
     });
     hero.addEventListener('pointerleave', function () {
       if (raf) cancelAnimationFrame(raf);
       raf = 0; tx = 0; ty = 0;
       frame.style.setProperty('--px', '0');
       frame.style.setProperty('--py', '0');
+      hero.style.setProperty('--field-px', '0');
+      hero.style.setProperty('--field-py', '0');
+      hero.style.setProperty('--field-back-x', '0');
+      hero.style.setProperty('--field-back-y', '0');
     });
   }
 
@@ -93,14 +105,14 @@
   function clamp(v) { return Math.max(0, Math.min(1, v)); }
   function size() {
     if (!on) return;
-    var vh = window.innerHeight, step = vh * (window.innerWidth < 860 ? .75 : .85);
-    ex.style.height = (vh + step * (N - 0.28)) + 'px';
+    var vh = stage.getBoundingClientRect().height, step = vh * (window.innerWidth <= 860 ? .75 : .85);
+    ex.style.height = (vh + step * (N - 1)) + 'px';
     per = step;
   }
   function updateExhibit() {
     if (!on) return;
-    var top = ex.getBoundingClientRect().top, pos = -top, vh = window.innerHeight;
-    var total = ex.offsetHeight - vh;
+    var top = ex.getBoundingClientRect().top, pos = -top, vh = stage.getBoundingClientRect().height;
+    var total = ex.getBoundingClientRect().height - vh;
     var cur = Math.max(0, Math.min(N - 1, Math.floor(pos / per + 0.3)));
     pieces.forEach(function (p, i) {
       var u = pos / per - i, art = p.firstElementChild, img = art.firstElementChild;
