@@ -19,3 +19,5 @@ Upload this folder with Direct Upload, or push to your Git repo. Build command: 
 - Design Showcase: scroll-pinned exhibition; with reduced motion or no JavaScript it falls back to a normal stacked list.
 - To add a design: duplicate one `<figure class="piece">` in `index.html` (set `--ar` = width ÷ height, `data-title`, `data-kind`, and update the "N" count is automatic).
 - Canonical and absolute social-preview URLs are intentionally unset until the final deployment URL is known.
+
+yes!
