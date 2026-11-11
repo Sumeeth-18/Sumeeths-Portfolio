@@ -104,28 +104,32 @@
     <button class="veil__skip" id="veilSkip" type="button">skip&nbsp;→</button>
   </div>
 
-  <!-- ===== Fixed top navigation (all viewports, no hamburger) ===== -->
+  <!-- ===== Centered glassmorphism navigation (all viewports, no hamburger) ===== -->
   <header class="nav">
     <div class="wrap nav__inner">
+      <a class="nav__cta nav__cta--left" href="#works" data-spy="works">My Works</a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="#home" data-spy="home"><i>01</i>Home</a>
-        <a href="#about" data-spy="about"><i>02</i>About</a>
-        <a href="#skills" data-spy="skills"><i>03</i>Skills</a>
-        <a href="#contact" data-spy="contact"><i>04</i>Contact</a>
+        <a href="#home" data-spy="home">Home</a>
+        <a href="#about" data-spy="about">About</a>
+        <a href="#skills" data-spy="skills">Skills</a>
+        <a href="#works" data-spy="works">My Works</a>
+        <a href="#contact" data-spy="contact">Contact</a>
       </nav>
-      <a class="nav__works" href="#works" data-spy="works"><i>05</i><span>My Works</span></a>
+      <a class="nav__cta nav__cta--right" href="#contact" data-spy="contact">Get Started</a>
     </div>
   </header>
 
   <main>
 
-    <!-- ===== HERO: particle avatar · identity · two oversized CTAs · diary ===== -->
+    <!-- ===== HERO: particle avatar · horizontal diary · identity ===== -->
     <section class="hero" id="home" aria-labelledby="hero-name">
       <p class="vh">Creative areas: Website, Application, Designs, Digital Solution.</p>
       <div class="hero__ring" aria-hidden="true"></div>
       <div class="hero__grid" aria-hidden="true"></div>
+      <canvas class="hero__ambient" id="ambientCanvas" aria-hidden="true"></canvas>
 
       <div class="wrap hero__cols">
+        <!-- Identity: avatar + name + role + single CTA -->
         <div class="identity">
           <div class="avatarwrap" data-avatar>
             <canvas class="avatar__canvas" aria-hidden="true"></canvas>
@@ -133,19 +137,16 @@
                  fetchpriority="high" decoding="async" alt="Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him">
           </div>
           <h1 class="identity__name" id="hero-name">Sumeeth Melkera</h1>
-          <p class="identity__role">Creative&nbsp;Developer</p>
-          <p class="identity__tagline">I help Businesses make their online Presence&nbsp;Stronger&nbsp;by
+          <p class="identity__role"><span class="identity__role-c">Creative</span>&nbsp;Developer</p>
+          <a class="cta cta--single" href="#contact"><span>Get in Touch</span><em>let's talk</em></a>
+        </div>
+
+        <!-- Journal: horizontal flip — flips bottom to top, carries the tagline -->
+        <aside class="diary" data-diary aria-hidden="true">
+          <p class="diary__tagline">I help Businesses make their online Presence&nbsp;Stronger&nbsp;by
             <span class="ticker" data-ticker aria-hidden="true"><span class="ticker__word">Digital&nbsp;Solution</span></span>
             <span class="vh">websites, applications, designs and digital solutions.</span>
           </p>
-          <div class="identity__ctas">
-            <a class="cta cta--primary" href="#works"><span>My Works</span><em>projects · designs</em></a>
-            <a class="cta cta--ghost" href="#contact"><span>Get Started</span><em>let's talk</em></a>
-          </div>
-        </div>
-
-        <!-- Journal: flips through the creative areas and settles on Digital Solutions -->
-        <aside class="diary" data-diary aria-hidden="true">
           <div class="diary__book">
             <div class="diary__base">
               <span class="diary__base-line">field notes — kept one problem at a time</span>
@@ -155,7 +156,7 @@
                 <span class="diary__kicker">field notes</span>
                 <span class="diary__title">For every problem, a fitting answer</span>
                 <span class="diary__index">01&nbsp;Websites<br>02&nbsp;Applications<br>03&nbsp;Designs<br>04&nbsp;Digital&nbsp;Solutions</span>
-                <span class="diary__turn">turn the page&nbsp;→</span>
+                <span class="diary__turn">turn the page&nbsp;↺</span>
               </span>
               <span class="face face--back">
                 <span class="diary__kicker">what I make</span>
@@ -219,20 +220,26 @@
 
     <!-- ===== ABOUT ===== -->
     <section class="sec about" id="about" aria-labelledby="about-h">
-      <div class="wrap about__grid">
-        <div class="about__head">
-          <p class="about__greeting rv"><span>Heyy...!!</span>, I am Sumeeth</p>
-          <p class="about__quote rv">I don't start with a tool. I start with the problem.</p>
-          <p class="about__note rv">The one who keeps the diary above — web designer, application developer and graphic designer, depending on what the problem asks for.</p>
+      <div class="wrap">
+        <div class="about__avatar rv">
+          <img src="assets/avatar/sumeeth-avatar.jpg" width="480" height="480" loading="lazy" decoding="async"
+               alt="Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie">
         </div>
-        <div class="about__body">
-          <p class="rv">Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way.</p>
-          <p class="rv">Only then do I decide what to make. Sometimes the answer is a website. Sometimes it is an application. Sometimes it is a visual design, such as a thumbnail, a poster or a logo. Often it is a combination, and the pieces have to look like they belong together.</p>
-          <ol class="about__steps">
-            <li class="rv"><b>Understand</b><span>What is the problem, who has it, and what does solving it look like?</span></li>
-            <li class="rv"><b>Choose</b><span>Pick the digital solution that fits, instead of the one I happen to prefer.</span></li>
-            <li class="rv"><b>Build</b><span>Design and develop it, check it on real screens, and put it online.</span></li>
-          </ol>
+        <p class="about__greeting rv"><span>Heyy...!!</span> I am Sumeeth</p>
+        <div class="about__grid">
+          <div class="about__head">
+            <p class="about__quote rv">I don't start with a tool. I start with the problem.</p>
+            <p class="about__note rv">The one who keeps the diary above — web designer, application developer and graphic designer, depending on what the problem asks for.</p>
+          </div>
+          <div class="about__body">
+            <p class="rv">Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way.</p>
+            <p class="rv">Only then do I decide what to make. Sometimes the answer is a website. Sometimes it is an application. Sometimes it is a visual design, such as a thumbnail, a poster or a logo. Often it is a combination, and the pieces have to look like they belong together.</p>
+            <ol class="about__steps">
+              <li class="rv"><b>Understand</b><span>What is the problem, who has it, and what does solving it look like?</span></li>
+              <li class="rv"><b>Choose</b><span>Pick the digital solution that fits, instead of the one I happen to prefer.</span></li>
+              <li class="rv"><b>Build</b><span>Design and develop it, check it on real screens, and put it online.</span></li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -244,32 +251,55 @@
           <h2 id="skills-h" class="h2 rv">Technical Skills</h2>
           <p class="skills__note rv">Only what my portfolio and its projects actually show — no invented bars, no invented percentages.</p>
         </div>
-        <ul class="tiles rv">
-          <li class="tile" tabindex="0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M4 4h16L18.7 19 12 21l-6.7-2L4 4Z"/><path d="M9 8.5v6.2M9 8.5l5 .2v6h-3.4"/></svg>
-            <b>HTML</b><span>structure</span>
-          </li>
-          <li class="tile" tabindex="0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M4 4h16L18.7 19 12 21l-6.7-2L4 4Z"/><path d="M8.4 8.2h7.2M9 11h5.4M9.8 13.7h4"/></svg>
-            <b>CSS</b><span>style &amp; layout</span>
-          </li>
-          <li class="tile" tabindex="0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M10 8.2v6c0 1.5-.8 2.3-2.1 2.3S6 15.7 6 14.8M13.6 8.4c.4-.6 1.2-1 2.1-.9 1.1.1 1.9.8 1.9 1.9 0 1.6-2.2 1.8-2.2 3.2 0 .9.7 1.5 1.7 1.5.7 0 1.3-.3 1.6-.8"/></svg>
-            <b>JavaScript</b><span>interaction</span>
-          </li>
-          <li class="tile" tabindex="0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="12" cy="12" r="1.7"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg>
-            <b>React.js</b><span>NutriFit app</span>
-          </li>
-          <li class="tile" tabindex="0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M9.3 6.6C8 9 .8 9.9 2.4 13.2c.9 1.9 3.4 2 5.4 1.2 2.9-1.2 4.9-2.7 8.5-2.9 2.1-.1 4.2.4 4.7 1.9.8 2.3-2.4 3.5-4.7 3.4 2.2.8 5.5 1.5 6.8-1.1.7-1.5 0-3.2-1.8-4-1.5-.6-3.4-.5-5.4.1-2.5.8-4.6 2-7 2.3-1.5.2-2.9-.1-3.3-1.2-.5-1.5 1.3-2.4 3.7-3.4 2.3-1 4.4-1.7 6.3-1.6-1.2-1.3-4.5-1.8-6.3-.3Z"/></svg>
-            <b>Tailwind CSS</b><span>NutriFit app</span>
-          </li>
-        </ul>
-        <div class="skills__creative rv">
-          <h3>Design &amp; Creative</h3>
-          <p><span>Thumbnails</span><span>Posters</span><span>Logos &amp; branding</span><span>Promotional banners</span></p>
-          <small>Responsive layouts are standard on everything I ship.</small>
+
+        <div class="skills__group rv">
+          <h3 class="skills__group-title">Languages</h3>
+          <ul class="tiles">
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M4 4h16L18.7 19 12 21l-6.7-2L4 4Z"/><path d="M9 8.5v6.2M9 8.5l5 .2v6h-3.4"/></svg>
+              <b>HTML</b><span>structure</span>
+            </li>
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M4 4h16L18.7 19 12 21l-6.7-2L4 4Z"/><path d="M8.4 8.2h7.2M9 11h5.4M9.8 13.7h4"/></svg>
+              <b>CSS</b><span>style &amp; layout</span>
+            </li>
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M10 8.2v6c0 1.5-.8 2.3-2.1 2.3S6 15.7 6 14.8M13.6 8.4c.4-.6 1.2-1 2.1-.9 1.1.1 1.9.8 1.9 1.9 0 1.6-2.2 1.8-2.2 3.2 0 .9.7 1.5 1.7 1.5.7 0 1.3-.3 1.6-.8"/></svg>
+              <b>JavaScript</b><span>interaction</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skills__group rv">
+          <h3 class="skills__group-title">Frameworks &amp; Libraries</h3>
+          <ul class="tiles">
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="12" cy="12" r="1.7"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg>
+              <b>React.js</b><span>NutriFit app</span>
+            </li>
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M9.3 6.6C8 9 .8 9.9 2.4 13.2c.9 1.9 3.4 2 5.4 1.2 2.9-1.2 4.9-2.7 8.5-2.9 2.1-.1 4.2.4 4.7 1.9.8 2.3-2.4 3.5-4.7 3.4 2.2.8 5.5 1.5 6.8-1.1.7-1.5 0-3.2-1.8-4-1.5-.6-3.4-.5-5.4.1-2.5.8-4.6 2-7 2.3-1.5.2-2.9-.1-3.3-1.2-.5-1.5 1.3-2.4 3.7-3.4 2.3-1 4.4-1.7 6.3-1.6-1.2-1.3-4.5-1.8-6.3-.3Z"/></svg>
+              <b>Tailwind CSS</b><span>NutriFit app</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skills__group rv">
+          <h3 class="skills__group-title">Design &amp; Creative</h3>
+          <ul class="tiles">
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="10" r="1.5"/><path d="M3 17l5-3.5L13 17l4-2.5L21 17"/></svg>
+              <b>Graphics</b><span>thumbnails · posters</span>
+            </li>
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 3l3.5 2.5L19 7.5v5L15.5 15.5 12 18l-3.5-2.5L5 12.5v-5L8.5 5.5Z"/><path d="M12 8v4M10 10h4"/></svg>
+              <b>Logos &amp; Branding</b><span>NutriFit · Ashok</span>
+            </li>
+            <li class="tile" tabindex="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 9h18M7 13h5M7 16h8"/></svg>
+              <b>Banners</b><span>promotional design</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -396,7 +426,7 @@
       </div>
 
       <div class="designs__cta wrap">
-        <a class="btn btn--lg" href="#contact">Start Making Yours</a>
+        <a class="btn btn--lg btn--light" href="#contact">Start Making Yours</a>
       </div>
     </section>
 

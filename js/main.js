@@ -1,7 +1,8 @@
 /* Sumeeth's Portfolio — interactions
    1. Cinematic boot (typed mono → "/" trigger → particle avatar → staged identity)
-   2. Word ticker · 3. Diary page flips · 4. Scroll reveals · 5. Scroll-spy nav
+   2. Word ticker · 3. Diary page flips (bottom-to-top) · 4. Scroll reveals · 5. Scroll-spy nav
    6. Live preview scaling · 7. Design showcase (scroll-pinned) · 8. Hero pointer parallax
+   9. Technical ambient background (drifting nodes + connection lines)
    All vanilla, reduced-motion aware, no continuous heavy loops. */
 (function () {
   'use strict';
@@ -209,7 +210,7 @@
     }, tickFast ? 1000 : 2400);
   }
 
-  /* ================= 3. DIARY PAGE FLIPS ================= */
+  /* ================= 3. DIARY PAGE FLIPS (bottom-to-top) ================= */
   var book = $('.diary__book'), pages = $$('.diary__page');
   var NB = pages.length, flips = 0, diaryTimer = 0, heroVisible = true;
   function zf(page, k) { page.style.zIndex = k; }
@@ -370,7 +371,7 @@
   enableExhibit();
   window.addEventListener('load', function () { size(); updateExhibit(); });
 
-  /* scroll variable (single rAF-throttled listener for exhibit) */
+  /* single rAF-throttled listener for exhibit scroll updates */
   var ticking = false;
   function onScroll() {
     if (ticking) return; ticking = true;
@@ -395,5 +396,93 @@
       wrap.style.setProperty('--px', '0');
       wrap.style.setProperty('--py', '0');
     });
+  }
+
+  /* ================= 9. TECHNICAL AMBIENT BACKGROUND ================= */
+  /* Drifting nodes with subtle connection lines — elegant, low-CPU, reduced-motion aware. */
+  var ambient = $('#ambientCanvas');
+  if (ambient && !reduced && ambient.getContext) {
+    var actx = ambient.getContext('2d');
+    var anodes = [], aW = 0, aH = 0, aRunning = false, aRaf = 0, aLast = 0;
+
+    function ambientResize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var rect = ambient.parentElement.getBoundingClientRect();
+      aW = Math.round(rect.width * dpr);
+      aH = Math.round(rect.height * dpr);
+      ambient.width = aW;
+      ambient.height = aH;
+      var target = window.innerWidth < 760 ? 22 : 36;
+      if (anodes.length !== target) {
+        anodes = [];
+        for (var i = 0; i < target; i++) {
+          anodes.push({
+            x: Math.random() * aW, y: Math.random() * aH,
+            vx: (Math.random() - .5) * .12 * dpr, vy: (Math.random() - .5) * .12 * dpr,
+            r: (1 + Math.random() * 1.6) * dpr,
+            a: .12 + Math.random() * .28
+          });
+        }
+      }
+    }
+
+    function ambientFrame(now) {
+      if (!aRunning) return;
+      var dt = Math.min(32, now - (aLast || now)); aLast = now;
+      actx.clearRect(0, 0, aW, aH);
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var LINK = 130 * dpr;
+      for (var i = 0; i < anodes.length; i++) {
+        var n = anodes[i];
+        n.x += n.vx * dt * .06; n.y += n.vy * dt * .06;
+        if (n.x < -10) n.x = aW + 10; else if (n.x > aW + 10) n.x = -10;
+        if (n.y < -10) n.y = aH + 10; else if (n.y > aH + 10) n.y = -10;
+      }
+      /* connection lines (bronze, faint) */
+      for (var a = 0; a < anodes.length; a++) {
+        for (var b = a + 1; b < anodes.length; b++) {
+          var dx = anodes[a].x - anodes[b].x, dy = anodes[a].y - anodes[b].y;
+          var d2 = dx * dx + dy * dy;
+          if (d2 < LINK * LINK) {
+            var al = (1 - Math.sqrt(d2) / LINK) * .22;
+            actx.strokeStyle = 'rgba(168,130,66,' + al.toFixed(3) + ')';
+            actx.lineWidth = 1;
+            actx.beginPath();
+            actx.moveTo(anodes[a].x, anodes[a].y);
+            actx.lineTo(anodes[b].x, anodes[b].y);
+            actx.stroke();
+          }
+        }
+      }
+      /* nodes (sand dots) */
+      for (var k = 0; k < anodes.length; k++) {
+        var nd = anodes[k];
+        actx.globalAlpha = nd.a;
+        actx.fillStyle = '#D5C4AE';
+        actx.beginPath();
+        actx.arc(nd.x, nd.y, nd.r, 0, Math.PI * 2);
+        actx.fill();
+      }
+      actx.globalAlpha = 1;
+      aRaf = requestAnimationFrame(ambientFrame);
+    }
+    function ambientStart() {
+      if (aRunning) return;
+      aRunning = true; aLast = 0;
+      aRaf = requestAnimationFrame(ambientFrame);
+    }
+    function ambientStop() {
+      aRunning = false;
+      if (aRaf) cancelAnimationFrame(aRaf);
+      aRaf = 0;
+    }
+    ambientResize();
+    window.addEventListener('resize', function () { ambientResize(); }, { passive: true });
+    /* run only while hero is on screen */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.isIntersecting ? ambientStart() : ambientStop(); });
+      }, { threshold: 0 }).observe(ambient.parentElement || ambient);
+    } else ambientStart();
   }
 })();
