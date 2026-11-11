@@ -67,6 +67,54 @@ ul,ol{list-style:none;padding:0}
 .js .rv.is-in{opacity:1;transform:none}
 .js.rv-force .rv{opacity:1;transform:none}
 
+/* ======================= animated background ======================= */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 2.5rem) 0 4.5rem;overflow:hidden;background:var(--ink);background-image:
+  radial-gradient(circle at 15% 20%, rgba(168,130,66,.12) 0%, transparent 35%),
+  radial-gradient(circle at 85% 80%, rgba(58,36,24,.2) 0%, transparent 40%),
+  linear-gradient(135deg, rgba(213,196,174,.02) 0%, transparent 60%);
+  animation: subtleFloat 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: none;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(168,130,66,.08) 0%, transparent 35%),
+      radial-gradient(circle at 85% 80%, rgba(58,36,24,.12) 0%, transparent 40%),
+      linear-gradient(135deg, rgba(213,196,174,.01) 0%, transparent 60%);
+  }
+}
+
+/* ======================= animated background ======================= */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 2.5rem) 0 4.5rem;overflow:hidden;background:var(--ink);background-image:
+  radial-gradient(circle at 15% 20%, rgba(168,130,66,.12) 0%, transparent 35%),
+  radial-gradient(circle at 85% 80%, rgba(58,36,24,.2) 0%, transparent 40%),
+  linear-gradient(135deg, rgba(213,196,174,.02) 0%, transparent 60%);
+  animation: subtleFloat 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: none;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(168,130,66,.08) 0%, transparent 35%),
+      radial-gradient(circle at 85% 80%, rgba(58,36,24,.12) 0%, transparent 40%),
+      linear-gradient(135deg, rgba(213,196,174,.01) 0%, transparent 60%);
+  }
+}
+
 /* ======================= buttons ======================= */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:.85rem 1.7rem;border:1px solid var(--line-strong);border-radius:4px;font:500 .95rem/1.2 var(--f-head);letter-spacing:.05em;text-decoration:none;color:var(--text);transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s;text-align:center}
 .btn:hover,.btn:focus-visible{background:var(--sand);border-color:var(--sand);color:var(--ink);transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
@@ -75,10 +123,6 @@ ul,ol{list-style:none;padding:0}
 /* ======================= fixed top navigation ======================= */
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--nav-h);background:rgba(26,18,14,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:opacity .6s .2s,transform .6s .2s}
 .nav__inner{height:100%;display:flex;align-items:center;gap:1rem}
-.brand{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto}
-.brand__img{width:34px;height:34px;object-fit:cover;border-radius:50%;border:1px solid rgba(168,130,66,.55)}
-.brand__txt{font:500 1rem/1 var(--f-head);letter-spacing:.02em;color:var(--text);white-space:nowrap}
-.brand__txt b{font:400 .68rem/1 var(--f-mono);color:var(--bronze);font-weight:400}
 .nav__links{display:flex;align-items:center;gap:clamp(.9rem,2.4vw,2rem)}
 .nav__links a{display:inline-flex;align-items:baseline;gap:.35rem;font:400 .92rem/1 var(--f-body);letter-spacing:.02em;text-decoration:none;color:var(--text-dim);padding:.5rem 0;position:relative;transition:color .25s}
 .nav__links a i{font:400 .6rem/1 var(--f-mono);color:var(--bronze);font-style:normal;letter-spacing:.05em}
@@ -100,15 +144,29 @@ html.booting.s-slash .veil{opacity:0;pointer-events:none}
 .veil__skip{position:fixed;right:max(1.2rem,env(safe-area-inset-right));bottom:max(1.2rem,env(safe-area-inset-bottom));font:400 .8rem/1 var(--f-mono);color:var(--text-faint);letter-spacing:.08em;padding:.6rem .8rem;border:1px solid transparent;border-radius:4px;transition:color .25s,border-color .25s}
 .veil__skip:hover,.veil__skip:focus-visible{color:var(--text);border-color:var(--line)}
 
-/* ======================= hero ======================= */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 2.5rem) 0 4.5rem;overflow:hidden;background:var(--ink)}
-.hero__ring{position:absolute;left:-14vmax;top:-8vmax;width:64vmax;height:64vmax;pointer-events:none;background:radial-gradient(circle,var(--glow),transparent 62%)}
-.hero__grid{position:absolute;inset:0;pointer-events:none;opacity:.5;background:
-  linear-gradient(rgba(213,196,174,.035) 1px,transparent 1px) 0 0/72px 72px,
-  linear-gradient(90deg,rgba(213,196,174,.035) 1px,transparent 1px) 0 0/72px 72px;
-  -webkit-mask-image:radial-gradient(ellipse at 30% 42%,#000 20%,transparent 72%);
-          mask-image:radial-gradient(ellipse at 30% 42%,#000 20%,transparent 72%)}
-.hero__cols{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,6vw,5rem);align-items:center}
+/* ======================= animated background ======================= */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 2.5rem) 0 4.5rem;overflow:hidden;background:var(--ink);background-image:
+  radial-gradient(circle at 15% 20%, rgba(168,130,66,.12) 0%, transparent 35%),
+  radial-gradient(circle at 85% 80%, rgba(58,36,24,.2) 0%, transparent 40%),
+  linear-gradient(135deg, rgba(213,196,174,.02) 0%, transparent 60%);
+  animation: subtleFloat 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: none;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(168,130,66,.08) 0%, transparent 35%),
+      radial-gradient(circle at 85% 80%, rgba(58,36,24,.12) 0%, transparent 40%),
+      linear-gradient(135deg, rgba(213,196,174,.01) 0%, transparent 60%);
+  }
+}
 
 /* identity (left) */
 .identity{max-width:560px}
