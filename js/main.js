@@ -1,8 +1,11 @@
 /* Sumeeth's Portfolio — interactions
-   1. Cinematic boot (typed mono → "/" trigger → particle avatar → staged identity)
-   2. Word ticker · 3. Diary page flips (bottom-to-top) · 4. Scroll reveals · 5. Scroll-spy nav
-   6. Live preview scaling · 7. Design showcase (scroll-pinned) · 8. Hero pointer parallax
-   9. Technical ambient background (drifting nodes + connection lines)
+   1. Cinematic boot: typed mono → "/" pendulum → title → idea line → veil out
+   2. Six-stage hero sequence (per sketches): PORTFOLIO → particle avatar →
+      greeting → name+role → tagline → bottom strip (letter-by-letter)
+   3. Word ticker · 4. Diary page flips (bottom-to-top) · 5. Scroll reveals
+   6. Scroll-spy nav · 7. Live preview scaling · 8. Design showcase (pinned)
+   9. Hero pointer parallax · 10. Folio scroll parallax
+   11. Technical ambient background (drifting nodes + connection lines)
    All vanilla, reduced-motion aware, no continuous heavy loops. */
 (function () {
   'use strict';
@@ -12,12 +15,101 @@
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
-  /* ================= 1. CINEMATIC BOOT ================= */
+  /* ================= intro timing registry ================= */
   var booting = html.classList.contains('booting');
-  var wrap = $('[data-avatar]'), canvas = $('.avatar__canvas'), img = $('.avatar__img', wrap) || $('.avatar__img');
-  var tickerEl = $('[data-ticker]'), tickerWord = $('.ticker__word');
+  var TIMELINE = [];
+  function T(fn, ms) { var id = setTimeout(fn, ms); TIMELINE.push(id); return id; }
+  function clearTimers() { TIMELINE.forEach(clearTimeout); TIMELINE.length = 0; }
 
-  /* ---- particle avatar formation ---- */
+  /* ================= typing engine ================= */
+  /* Letter-by-letter reveal. A hidden sizer span keeps the layout stable
+     while the typed copy overlays it exactly. */
+  function typer(el) {
+    if (!el) return null;
+    var full = (el.getAttribute('data-text') || el.textContent).replace(/\s+/g, ' ').trim();
+    var aria = el.getAttribute('data-aria') || full;
+    var o = { el: el, full: full, out: null, done: false };
+    o.build = function () {
+      if (this.out) return;
+      el.textContent = '';
+      el.setAttribute('aria-label', aria);
+      var s = document.createElement('span'); s.className = 't-sizer'; s.setAttribute('aria-hidden', 'true'); s.textContent = full;
+      var t = document.createElement('span'); t.className = 't-out'; t.setAttribute('aria-hidden', 'true');
+      el.appendChild(s); el.appendChild(t);
+      this.out = t;
+    };
+    o.fill = function () {
+      this.build();
+      this.out.textContent = full;
+      el.classList.add('is-typed');
+      this.done = true;
+    };
+    o.type = function (speed, done) {
+      this.build();
+      if (this.done) { if (done) done(); return; }
+      var self = this, i = 0;
+      if (!full.length) { this.done = true; el.classList.add('is-typed'); if (done) done(); return; }
+      (function step() {
+        if (self.done) return;
+        i++;
+        self.out.textContent = full.slice(0, i);
+        if (i < full.length) T(step, speed + Math.floor(Math.random() * 8));
+        else { self.done = true; self.el.classList.add('is-typed'); if (done) done(); }
+      })();
+    };
+    return o;
+  }
+  /* word-segment typer: "←" separators are typed into crimson spans */
+  function segTyper(el) {
+    if (!el) return null;
+    var full = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    var tokens = full.split(' ');
+    var obj = { el: el, full: full, out: null, spans: [], tokens: tokens, done: false };
+    obj.build = function () {
+      if (this.out) return;
+      el.textContent = '';
+      el.setAttribute('aria-label', full);
+      var s = document.createElement('span'); s.className = 't-sizer'; s.setAttribute('aria-hidden', 'true'); s.textContent = full;
+      var t = document.createElement('span'); t.className = 't-out'; t.setAttribute('aria-hidden', 'true');
+      var self = this;
+      tokens.forEach(function (tok, i) {
+        var sp = document.createElement('span');
+        if (tok === '\u2190') sp.className = 'strip-arrow';
+        t.appendChild(sp);
+        if (i < tokens.length - 1) t.appendChild(document.createTextNode(' '));
+        self.spans.push(sp);
+      });
+      el.appendChild(s); el.appendChild(t);
+      this.out = t;
+    };
+    obj.fill = function () {
+      var self = this;
+      this.build();
+      this.tokens.forEach(function (tok, i) { self.spans[i].textContent = tok; });
+      el.classList.add('is-typed');
+      this.done = true;
+    };
+    obj.type = function (speed, done) {
+      this.build();
+      if (this.done) { if (done) done(); return; }
+      var self = this, si = 0, ci = 0, finished = false;
+      if (!full.length) { this.done = true; if (done) done(); return; }
+      (function step() {
+        if (finished || self.done) return;
+        var tok = self.tokens[si];
+        ci++;
+        self.spans[si].textContent = tok.slice(0, ci);
+        if (ci < tok.length) { T(step, speed); return; }
+        si++; ci = 0;
+        if (si >= self.spans.length) { finished = true; self.done = true; self.el.classList.add('is-typed'); if (done) done(); return; }
+        T(step, speed);
+      })();
+    };
+    return obj;
+  }
+
+  /* ================= 1. PARTICLE AVATAR FORMATION ================= */
+  var wrap = $('[data-avatar]'), canvas = $('.avatar__canvas'), img = $('.avatar__img', wrap) || $('.avatar__img');
   var particleState = { running: false, raf: 0 };
   function sampleAvatar() {
     if (!img || !img.naturalWidth || !canvas || !canvas.getContext) return null;
@@ -50,17 +142,17 @@
     canvas.height = Math.round(rect.height * dpr);
     var ctx = canvas.getContext('2d');
     var cw = canvas.width, chh = canvas.height, cx = cw / 2, cy = chh / 2;
-    var parts = pts.map(function (p, idx) {
+    var parts = pts.map(function (p) {
       var ang = Math.random() * Math.PI * 2, rad = (0.4 + Math.random() * 0.9) * cw * 0.75;
       var tx = p.x * cw, ty = p.y * chh;
       return {
         sx: cx + Math.cos(ang) * rad, sy: cy + Math.sin(ang) * rad,
         tx: tx, ty: ty, c: p.c,
-        d: Math.random() * 0.25 + ((ty / chh) * 0.45), // top-down + jitter
+        d: Math.random() * 0.25 + ((ty / chh) * 0.45),
         s: (dpr > 1.4 ? 2.1 : 1.6)
       };
     });
-    var T0 = performance.now(), D = 1250, HOLD = 260;
+    var T0 = performance.now(), D = 1250;
     particleState.running = true;
     function ease(t) { return 1 - Math.pow(1 - t, 3); }
     function frame(now) {
@@ -74,7 +166,7 @@
         if (t < 1) all = false;
         var e = ease(t);
         var x = p.sx + (p.tx - p.sx) * e, y = p.sy + (p.ty - p.sy) * e;
-        var a = e * (1 - Math.max(0, t - 0.94) / 0.06); // fade at very end
+        var a = e * (1 - Math.max(0, t - 0.94) / 0.06);
         ctx.globalAlpha = a;
         ctx.fillStyle = p.c;
         ctx.fillRect(x - p.s / 2, y - p.s / 2, p.s, p.s);
@@ -90,21 +182,111 @@
     particleState.raf = 0;
   }
 
-  /* ---- boot sequence ---- */
-  var tickerSequencing = false;
+  /* ================= 2. BOOT + SIX-STAGE HERO SEQUENCE ================= */
+  var tickerEl = $('[data-ticker]'), tickerWord = $('.ticker__word');
+  var navEl = $('.nav'), heroTagline = $('.hero__tagline');
+  var introDone = false;
+
+  var tyGreet = typer($('.identity__hi'));
+  var tyName = typer($('.identity__name'));
+  var tyRoleC = typer($('.identity__role-c'));
+  var tyRoleD = typer($('.identity__role-d'));
+  var tyTag = typer($('.tag-in'));
+  var tyStrip = segTyper($('.hero__strip'));
+  var typers = [tyGreet, tyName, tyRoleC, tyRoleD, tyTag].filter(Boolean);
+
+  function revealAll() {
+    var f = $('.hero__folio'); if (f) f.classList.add('in');
+    $$('.st').forEach(function (el) { el.classList.add('in'); });
+    if (navEl) navEl.classList.add('in');
+    typers.forEach(function (t) { t.fill(); });
+    if (tyStrip) tyStrip.fill();
+    if (heroTagline) heroTagline.classList.add('is-done');
+  }
+
   function finishBoot(instant) {
-    if (!booting) return;
-    booting = false;
+    clearTimers();
     stopParticles();
+    booting = false;
     if (wrap) wrap.classList.add('is-solid');
-    html.classList.remove('booting');
-    setTick(true);            // ticker: normal cadence
-    startDiaryAutos(instant); // diary: settled path if instant
+    html.classList.remove('booting', 's-slash', 's-site', 's-idea', 's-out');
+    revealAll();
+    setTick(true);
+    startDiaryAutos(true);
+    if (!tickerSequencing) startTickCycle();
+    introDone = true;
+    html.classList.add('intro-done');
+  }
+
+  /* Stage 3–6, strictly in order; stage 6 only after stage 5 completes */
+  function stage3() {
+    if (!tyGreet) { stage4(); return; }
+    tyGreet.type(52, stage4);            /* "Hii..!! I am" */
+  }
+  function stage4() {
+    if (!tyName) { stage4done(); return; }
+    tyName.type(92, function () {        /* SUMEETH — Bodoni, metallic glow */
+      var next = tyRoleD ? function () { tyRoleD.type(58, stage4done); } : stage4done;
+      if (tyRoleC) tyRoleC.type(66, next); else next(); /* Creative + Developer */
+    });
+  }
+  function stage4done() {
+    if (navEl) navEl.classList.add('in');
+    var cta = $('.cta--single'); if (cta) cta.classList.add('in');
+    T(stage5, 260);
+  }
+  function stage5() {
+    if (!tyTag) { stage6(); return; }
+    tyTag.type(17, function () {         /* tagline, bottom-right */
+      if (heroTagline) heroTagline.classList.add('is-done');
+      startTickerSequence();
+      T(stage6, 320);
+    });
+  }
+  function stage6() {
+    var strip = $('.hero__strip');
+    if (strip) strip.classList.add('in');
+    if (!tyStrip) { settle(); return; }
+    tyStrip.type(19, function () { T(settle, 420); });  /* bottom strip, last */
+  }
+  function settle() {
+    if (introDone) return;
+    introDone = true;
+    html.classList.add('intro-done');
+    startDiaryAutos(false);
     if (!tickerSequencing) startTickCycle();
   }
 
+  function startAvatar() {
+    var started = false;
+    var begin = function () {
+      if (started || introDone) return;
+      started = true;
+      if (!wrap) { stage3(); return; }
+      runParticles(function () {
+        if (introDone) return;
+        wrap.classList.add('is-solid');   /* artwork takes over from particles */
+        T(stage3, 280);
+      });
+    };
+    if (img && (!img.complete || !img.naturalWidth)) img.addEventListener('load', begin, { once: true });
+    T(begin, img && (!img.complete || !img.naturalWidth) ? 2600 : 0);
+  }
+
+  function runHeroSequence() {
+    var folio = $('.hero__folio');
+    /* Stage 1 — giant PORTFOLIO reveal */
+    T(function () { if (folio) folio.classList.add('in'); }, 320);
+    /* Stage 2 — particle avatar formation */
+    T(startAvatar, 900);
+  }
+
   function playIntro() {
-    var veilCode = $('#veilCode');
+    /* pre-build every typer so un-typed copy is hidden from the first frame
+       (sizer holds the layout, nothing raw is ever visible behind the veil) */
+    typers.forEach(function (t) { t.build(); });
+    if (tyStrip) tyStrip.build();
+    var veilCode = $('#veilCode'), veilSite = $('#veilSite'), veilIdea = $('#veilIdea');
     var LINES = [
       '> boot      : sumeeth.dev — portfolio',
       '> profile   : creative developer',
@@ -112,11 +294,25 @@
       '> render    : </>'
     ];
     var full = LINES.join('\n');
-    var SLASH_AT = full.indexOf('/'); // the "/" in "</>" is the trigger
-    var TIMELINE = [];
+    var SLASH_AT = full.indexOf('/'); /* the "/" in "</>" is the trigger */
     var stop = false;
 
-    /* stop typing exactly when the "/" lands, then continue the reveal */
+    function skip() {
+      if (stop) return;
+      stop = true;
+      finishBoot(true);
+    }
+    function typeLine(el, text, speed, done) {
+      if (!el) { done(); return; }
+      var i = 0;
+      (function t() {
+        if (stop) return;
+        i++;
+        el.textContent = text.slice(0, i);
+        if (i < text.length) T(t, speed);
+        else done();
+      })();
+    }
     function beginTyping() {
       if (!veilCode) { onSlash(); return; }
       var i = 0, out = '';
@@ -126,36 +322,36 @@
         var ch = full[i]; out += ch; veilCode.textContent = out;
         if (i === SLASH_AT) { onSlash(); return; } /* slash typed → reveal */
         i++;
-        TIMELINE.push(setTimeout(tick, 13 + (ch === '\n' ? 110 : 0) + Math.random() * 9));
+        T(tick, 10 + (ch === '\n' ? 90 : 0) + Math.random() * 8);
       })();
     }
-
     function onSlash() {
       if (stop) return;
-      html.classList.add('s-slash');
-      html.classList.add('s-avatar');
-      /* particles form the avatar while the veil fades */
-      if (wrap) {
-        runParticles(function () { /* formation complete → real artwork takes over */
-          if (!booting) return;
-          wrap.classList.add('is-solid');
-          html.classList.add('s-name');
-          TIMELINE.push(setTimeout(function () { html.classList.add('s-role'); }, 320));
-          TIMELINE.push(setTimeout(function () {
-            html.classList.add('s-tag');
-            startTickerSequence();
-          }, 680));
-          TIMELINE.push(setTimeout(function () {
-            html.classList.add('s-ctas'); html.classList.add('s-diary');
-          }, 1050));
-          TIMELINE.push(setTimeout(function () {
-            finishBoot(false); startDiaryAutos(false); html.classList.add('s-nav');
-          }, 1500));
+      html.classList.add('s-slash'); /* the "/" pendulum loading beat */
+      T(function () {
+        if (stop) return;
+        html.classList.add('s-site'); /* "</ Sumeeth's Portfolio />" */
+        typeLine(veilSite, '</ Sumeeth\u2019s Portfolio />', 22, function () {
+          T(function () {
+            if (stop) return;
+            html.classList.add('s-idea'); /* "Let's bring your IDEA live!!" */
+            typeLine(veilIdea, 'Let\u2019s bring your IDEA live!!', 22, function () {
+              T(veilOut, 560);
+            });
+          }, 340);
         });
-      } else finishBoot(true);
+      }, 850);
+    }
+    function veilOut() {
+      if (stop) return;
+      html.classList.add('s-out'); /* veil fades while Stage 1 begins */
+      T(function () {
+        html.classList.remove('booting', 's-slash', 's-site', 's-idea');
+        booting = false;
+        runHeroSequence();
+      }, 850);
     }
 
-    function skip() { stop = true; TIMELINE.forEach(clearTimeout); finishBoot(true); }
     var skipBtn = $('#veilSkip');
     if (skipBtn) {
       skipBtn.addEventListener('click', skip);
@@ -164,24 +360,29 @@
       });
     }
     document.addEventListener('keydown', function esc(e) {
-      if (booting && (e.key === 'Escape' || e.key === 'Enter')) { skip(); document.removeEventListener('keydown', esc); }
+      if (e.key === 'Escape' || e.key === 'Enter') { skip(); document.removeEventListener('keydown', esc); }
     });
 
-    if (reduced) { finishBoot(true); return; }
-    TIMELINE.push(setTimeout(beginTyping, 320));
-    /* failsafe: if anything stalls, finish gracefully */
-    TIMELINE.push(setTimeout(function () { if (html.classList.contains('booting')) finishBoot(true); }, 9000));
+    T(beginTyping, 350);
+    /* failsafes: never leave the visitor on an empty screen.
+       The first covers a stalled veil; the second is a last-resort
+       completion if the whole sequence somehow never settles. */
+    T(function () { if (html.classList.contains('booting')) skip(); }, 13500);
+    T(function () { if (!introDone) skip(); }, 26000);
   }
 
-  var introWasWanted = !!window.__SUMEETH_INTRO && html.classList.contains('booting') && !reduced;
-  if (introWasWanted) playIntro();
-  else finishBoot(true);
+  var introWasWanted = !!window.__SUMEETH_INTRO && booting && !reduced;
+  window.__SUMEETH_INTRO_RUNNING = true; /* inline failsafe stands down */
+  try {
+    if (introWasWanted) playIntro();
+    else finishBoot(true);
+  } catch (e) { finishBoot(true); }
 
-  /* ================= 2. WORD TICKER ================= */
+  /* ================= 3. WORD TICKER ================= */
   var WORDS = ['Website', 'Application', 'Designs', 'Digital Solution'];
   var wIdx = WORDS.indexOf(tickerWord ? tickerWord.textContent.replace('\u00a0', ' ') : '');
   if (wIdx < 0) wIdx = WORDS.length - 1;
-  var tickTimer = 0, tickFast = true;
+  var tickTimer = 0, tickFast = true, tickerSequencing = false;
   function setTick(normal) { tickFast = !normal; }
   function swapWord(text) {
     if (!tickerWord) return;
@@ -210,39 +411,36 @@
     }, tickFast ? 1000 : 2400);
   }
 
-  /* ================= 3. DIARY PAGE FLIPS (bottom-to-top) ================= */
+  /* ================= 4. DIARY PAGE FLIPS (bottom-to-top) ================= */
   var book = $('.diary__book'), pages = $$('.diary__page');
-  var NB = pages.length, flips = 0, diaryTimer = 0, heroVisible = true;
+  var NB = pages.length, flips = 0, diaryTimer = 0;
+  var heroVisible = true, notesVisible = false;
   function zf(page, k) { page.style.zIndex = k; }
   function applyZ() {
     pages.forEach(function (p, i) {
-      if (i < flips) zf(p, 10 + i); /* flipped stack: later pages on top */
-      else zf(p, 100 - i);          /* right-side stack: earliest on top */
+      if (i < flips) zf(p, 10 + i);
+      else zf(p, 100 - i);
     });
   }
   function flipNext(instant) {
-    if (flips >= NB - 1) return false; /* final page stays open */
+    if (flips >= NB - 1) return false;
     var p = pages[flips];
     flips++;
     if (instant) p.classList.add('instant');
-    zf(p, 200); /* above everything while turning */
+    zf(p, 200);
     requestAnimationFrame(function () { p.classList.add('flipped'); });
     setTimeout(function () { p.classList.remove('instant'); applyZ(); }, instant ? 30 : 950);
     return true;
   }
   function startDiaryAutos(instant) {
     if (!book || diaryTimer) return;
-    if (reduced) { /* jump straight to the settled state */
-      while (flipNext(true)) {}
-      return;
-    }
-    if (instant) { /* skipped intro: settle immediately */
+    if (reduced || instant) { /* jump straight to the settled state */
       while (flipNext(true)) {}
       return;
     }
     var n = 0;
     diaryTimer = setInterval(function () {
-      if (document.hidden || !heroVisible) return;
+      if (document.hidden || !notesVisible) return;
       if (!flipNext(false) || ++n > NB) { clearInterval(diaryTimer); diaryTimer = 0; }
     }, 1900);
   }
@@ -253,14 +451,20 @@
     });
   });
 
-  /* hero visibility gates the ticker + flips */
+  /* visibility gates: hero drives ticker + ambient; notes drives the diary */
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
       es.forEach(function (e) { heroVisible = e.isIntersecting; });
     }, { threshold: 0.12 }).observe($('#home') || body);
-  }
+    var notesEl = $('#notes');
+    if (notesEl) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { notesVisible = e.isIntersecting; });
+      }, { threshold: 0.1 }).observe(notesEl);
+    } else notesVisible = true;
+  } else notesVisible = true;
 
-  /* ================= 4. SCROLL REVEALS ================= */
+  /* ================= 5. SCROLL REVEALS ================= */
   var rest = $$('.rv').filter(function (el) { return !el.closest('#home'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
@@ -269,7 +473,7 @@
     rest.forEach(function (el) { io.observe(el); });
   } else rest.forEach(function (el) { el.classList.add('is-in'); });
 
-  /* ================= 5. SCROLL-SPY NAV ================= */
+  /* ================= 6. SCROLL-SPY NAV ================= */
   var spyLinks = $$('[data-spy]');
   if (spyLinks.length && 'IntersectionObserver' in window) {
     var map = { works: 'works', designs: 'works' };
@@ -291,7 +495,7 @@
     });
   }
 
-  /* ================= 6. LIVE PREVIEW SCALING ================= */
+  /* ================= 7. LIVE PREVIEW SCALING ================= */
   var previews = $$('.preview');
   function fit(p) {
     var f = $('iframe', p), w = parseFloat(p.getAttribute('data-w')) || 1440;
@@ -309,7 +513,7 @@
     window.addEventListener('resize', function () { previews.forEach(fit); });
   }
 
-  /* ================= 7. DESIGN SHOWCASE (scroll-pinned, motion allowed) ================= */
+  /* ================= 8. DESIGN SHOWCASE (scroll-pinned, motion allowed) ================= */
   var ex = $('[data-exhibit]'), pieces = $$('.piece'), stage = $('.exhibit__stage');
   var N = pieces.length, per = 0, stageH = 0, pinned = false, lastPos = null, prepared = -1;
   var idxEl = $('.hud__idx'), titleEl = $('.hud__title'), lastIdx = -1;
@@ -354,7 +558,7 @@
       if (idxEl) idxEl.textContent = (cur + 1) + ' / ' + N;
       if (titleEl) {
         var pc = pieces[cur];
-        titleEl.textContent = (pc.getAttribute('data-title') || '') + ' · ' + (pc.getAttribute('data-kind') || '');
+        titleEl.textContent = (pc.getAttribute('data-title') || '') + ' \u00b7 ' + (pc.getAttribute('data-kind') || '');
       }
     }
     if (top < window.innerHeight * 1.5 && pos < total + per && cur !== prepared) {
@@ -380,7 +584,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', function () { size(); updateExhibit(); });
 
-  /* ================= 8. HERO POINTER PARALLAX (fine pointers only) ================= */
+  /* ================= 9. HERO POINTER PARALLAX (fine pointers only) ================= */
   if (wrap && !reduced && window.matchMedia('(pointer:fine)').matches) {
     var heroEl = $('#home'), raf = 0;
     heroEl.addEventListener('pointermove', function (e) {
@@ -398,8 +602,23 @@
     });
   }
 
-  /* ================= 9. TECHNICAL AMBIENT BACKGROUND ================= */
-  /* Drifting nodes with subtle connection lines — elegant, low-CPU, reduced-motion aware. */
+  /* ================= 10. FOLIO SCROLL PARALLAX ================= */
+  var folioWord = $('#folioWord');
+  if (folioWord && !reduced) {
+    var fTicking = false;
+    window.addEventListener('scroll', function () {
+      if (fTicking || !heroVisible) return; fTicking = true;
+      requestAnimationFrame(function () {
+        fTicking = false;
+        var y = window.scrollY || window.pageYOffset || 0;
+        if (y > window.innerHeight * 1.2) return;
+        folioWord.style.transform = 'translate3d(0,' + (y * 0.16).toFixed(1) + 'px,0)';
+      });
+    }, { passive: true });
+  }
+
+  /* ================= 11. TECHNICAL AMBIENT BACKGROUND ================= */
+  /* Drifting nodes with subtle connection lines — low-CPU, reduced-motion aware. */
   var ambient = $('#ambientCanvas');
   if (ambient && !reduced && ambient.getContext) {
     var actx = ambient.getContext('2d');
@@ -438,14 +657,14 @@
         if (n.x < -10) n.x = aW + 10; else if (n.x > aW + 10) n.x = -10;
         if (n.y < -10) n.y = aH + 10; else if (n.y > aH + 10) n.y = -10;
       }
-      /* connection lines (bronze, faint) */
+      /* connection lines (crimson, faint) */
       for (var a = 0; a < anodes.length; a++) {
         for (var b = a + 1; b < anodes.length; b++) {
           var dx = anodes[a].x - anodes[b].x, dy = anodes[a].y - anodes[b].y;
           var d2 = dx * dx + dy * dy;
           if (d2 < LINK * LINK) {
-            var al = (1 - Math.sqrt(d2) / LINK) * .22;
-            actx.strokeStyle = 'rgba(168,130,66,' + al.toFixed(3) + ')';
+            var al = (1 - Math.sqrt(d2) / LINK) * .2;
+            actx.strokeStyle = 'rgba(143,36,56,' + al.toFixed(3) + ')';
             actx.lineWidth = 1;
             actx.beginPath();
             actx.moveTo(anodes[a].x, anodes[a].y);
@@ -454,11 +673,11 @@
           }
         }
       }
-      /* nodes (sand dots) */
+      /* nodes (warm beige dots) */
       for (var k = 0; k < anodes.length; k++) {
         var nd = anodes[k];
         actx.globalAlpha = nd.a;
-        actx.fillStyle = '#D5C4AE';
+        actx.fillStyle = '#E8D9C3';
         actx.beginPath();
         actx.arc(nd.x, nd.y, nd.r, 0, Math.PI * 2);
         actx.fill();
@@ -478,7 +697,7 @@
     }
     ambientResize();
     window.addEventListener('resize', function () { ambientResize(); }, { passive: true });
-    /* run only while hero is on screen */
+    /* run only while the hero is on screen */
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         es.forEach(function (e) { e.isIntersecting ? ambientStart() : ambientStop(); });

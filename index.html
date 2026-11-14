@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="-07A1yLt83-8bggKHce8vHZ0spFykZGHMIyRP-woCw4" />
   <meta name="google-site-verification" content="4qzg_fxhzvn3t-iJtRj1FPbb7EIC1CW8R_2qHtLkka0" />
-  <meta name="theme-color" content="#1A120E">
+  <meta name="theme-color" content="#171412">
   <link rel="canonical" href="https://sumeeths-portfolio.pages.dev/">
 
   <!-- Open Graph -->
@@ -40,7 +40,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/avatar/sumeeth-avatar.jpg" as="image">
   <link rel="stylesheet" href="css/style.css">
 
@@ -53,18 +53,28 @@
     var want = false;
     try {
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var seen = sessionStorage.getItem('sumeeth-intro-v3') === '1';
+      var seen = sessionStorage.getItem('sumeeth-intro-v4') === '1';
       var deep = !!location.hash;
       want = !reduced && !seen && !deep;
-      if (want) sessionStorage.setItem('sumeeth-intro-v3', '1');
-    } catch (e) { want = window.name !== 'sumeeth-intro-v3'; if (want) window.name = 'sumeeth-intro-v3'; }
+      if (want) sessionStorage.setItem('sumeeth-intro-v4', '1');
+    } catch (e) { want = window.name !== 'sumeeth-intro-v4'; if (want) window.name = 'sumeeth-intro-v4'; }
     window.__SUMEETH_INTRO = want;
     if (want) d.classList.add('booting');
-    /* failsafe: if main.js never runs, force-reveal everything */
+    /* failsafe: if main.js never runs at all, force-reveal everything and restore
+       any text the typing engine had already cleared. When main.js IS running it
+       takes ownership (see __SUMEETH_INTRO_RUNNING) and runs its own failsafes. */
     setTimeout(function () {
+      if (window.__SUMEETH_INTRO_RUNNING) return;
       d.classList.remove('booting');
       d.classList.add('rv-force');
-    }, 9500);
+      try {
+        var typed = document.querySelectorAll('[data-type],[data-type-seg]');
+        for (var i = 0; i < typed.length; i++) {
+          var s = typed[i].querySelector('.t-sizer'), o = typed[i].querySelector('.t-out');
+          if (s && o && !o.textContent) o.textContent = s.textContent;
+        }
+      } catch (e) {}
+    }, 13500);
   })();
   </script>
 
@@ -97,9 +107,12 @@
 
   <a class="skip" href="#about">Skip to content</a>
 
-  <!-- ===== Cinematic boot veil (typed code → slash trigger → particle avatar) ===== -->
+  <!-- ===== Cinematic boot veil (typed code → "/" pendulum → title → idea line → particle avatar) ===== -->
   <div class="veil" id="veil" hidden>
     <pre class="veil__code" id="veilCode" aria-hidden="true"></pre>
+    <div class="veil__pend" aria-hidden="true"><span class="veil__pend-label">loading</span><span class="veil__pend-slash"></span></div>
+    <p class="veil__line veil__line--site" aria-hidden="true"><span id="veilSite"></span></p>
+    <p class="veil__line veil__line--idea" aria-hidden="true"><span id="veilIdea"></span></p>
     <p class="veil__vh">Sumeeth Melkera, creative developer. Portfolio loading.</p>
     <button class="veil__skip" id="veilSkip" type="button">skip&nbsp;→</button>
   </div>
@@ -107,12 +120,12 @@
   <!-- ===== Centered glassmorphism navigation (all viewports, no hamburger) ===== -->
   <header class="nav">
     <div class="wrap nav__inner">
-      <a class="nav__cta nav__cta--left" href="#works" data-spy="works">My Works</a>
+      <a class="nav__cta nav__cta--left" href="#works" data-spy="works" aria-label="My Works">My Works</a>
       <nav class="nav__links" aria-label="Primary">
         <a href="#home" data-spy="home">Home</a>
         <a href="#about" data-spy="about">About</a>
         <a href="#skills" data-spy="skills">Skills</a>
-        <a href="#works" data-spy="works">My Works</a>
+        <a href="#works" data-spy="works" aria-label="My Works"><span class="nl-full">My&nbsp;Works</span><span class="nl-short" aria-hidden="true">Works</span></a>
         <a href="#contact" data-spy="contact">Contact</a>
       </nav>
       <a class="nav__cta nav__cta--right" href="#contact" data-spy="contact">Get Started</a>
@@ -121,32 +134,50 @@
 
   <main>
 
-    <!-- ===== HERO: particle avatar · horizontal diary · identity ===== -->
+    <!-- ===== HERO: giant PORTFOLIO · particle avatar · staged identity (per Home Page sketch) ===== -->
     <section class="hero" id="home" aria-labelledby="hero-name">
       <p class="vh">Creative areas: Website, Application, Designs, Digital Solution.</p>
-      <div class="hero__ring" aria-hidden="true"></div>
+      <div class="hero__folio" aria-hidden="true"><span class="hero__folio-word" id="folioWord">PORTFOLIO</span></div>
       <div class="hero__grid" aria-hidden="true"></div>
       <canvas class="hero__ambient" id="ambientCanvas" aria-hidden="true"></canvas>
 
-      <div class="wrap hero__cols">
-        <!-- Identity: avatar + name + role + single CTA -->
+      <!-- Stage 2: avatar — particle formation hands over to the real artwork -->
+      <div class="avatarwrap" data-avatar>
+        <canvas class="avatar__canvas" aria-hidden="true"></canvas>
+        <img class="avatar__img" src="assets/avatar/sumeeth-avatar.jpg" width="1024" height="1024"
+             fetchpriority="high" decoding="async" alt="Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him">
+      </div>
+
+      <div class="wrap hero__bottom">
+        <!-- Stages 3–4: greeting, name, role -->
         <div class="identity">
-          <div class="avatarwrap" data-avatar>
-            <canvas class="avatar__canvas" aria-hidden="true"></canvas>
-            <img class="avatar__img" src="assets/avatar/sumeeth-avatar.jpg" width="1024" height="1024"
-                 fetchpriority="high" decoding="async" alt="Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him">
-          </div>
-          <h1 class="identity__name" id="hero-name">Sumeeth Melkera</h1>
-          <p class="identity__role"><span class="identity__role-c">Creative</span>&nbsp;Developer</p>
-          <a class="cta cta--single" href="#contact"><span>Get in Touch</span><em>let's talk</em></a>
+          <p class="identity__hi" data-type>Hii..!! I am</p>
+          <h1 class="identity__name" id="hero-name" data-type data-text="SUMEETH" data-aria="Sumeeth Melkera">Sumeeth Melkera</h1>
+          <p class="identity__role">
+            <span class="identity__role-c" data-type>Creative</span>
+            <span class="identity__role-d" data-type>Developer</span>
+          </p>
+          <a class="cta cta--single st" href="#contact"><span>Get in Touch</span><em>let's talk</em></a>
         </div>
 
-        <!-- Journal: horizontal flip — flips bottom to top, carries the tagline -->
-        <aside class="diary" data-diary aria-hidden="true">
-          <p class="diary__tagline">I help Businesses make their online Presence&nbsp;Stronger&nbsp;by
-            <span class="ticker" data-ticker aria-hidden="true"><span class="ticker__word">Digital&nbsp;Solution</span></span>
-            <span class="vh">websites, applications, designs and digital solutions.</span>
-          </p>
+        <!-- Stage 5: tagline, bottom-right -->
+        <p class="hero__tagline">
+          <span class="tag-in" data-type>I help businesses make their online presence stronger by</span>
+          <span class="ticker" data-ticker aria-hidden="true"><span class="ticker__word">Digital&nbsp;Solution</span></span>
+          <span class="vh">websites, applications, designs and digital solutions.</span>
+        </p>
+      </div>
+
+      <!-- Stage 6: bottom strip, only after Stage 5 completes -->
+      <div class="wrap hero__stripwrap">
+        <p class="hero__strip st" data-type-seg>Digital Solutions ← Designs ← Applications ← Websites</p>
+      </div>
+    </section>
+
+    <!-- ===== FIELD NOTES: the horizontal diary, flipping bottom to top ===== -->
+    <section class="notes" id="notes" aria-label="Field notes">
+      <div class="wrap notes__inner">
+        <aside class="diary" data-diary>
           <div class="diary__book">
             <div class="diary__base">
               <span class="diary__base-line">field notes — kept one problem at a time</span>
@@ -448,11 +479,12 @@
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <p class="footer__name">Sumeeth Ashok Melkera</p>
+      <p class="footer__mark" aria-hidden="true">Sumeeth<span>.</span></p>
       <p class="footer__by">designed &amp; built by me — websites, applications and designs</p>
       <nav class="footer__nav" aria-label="Footer">
         <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#works">My Works</a><a href="mailto:sumeeth.work18@gmail.com">Email</a><a href="https://wa.me/919022533004" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </nav>
+      <p class="footer__legal">© 2026 Sumeeth Ashok Melkera</p>
     </div>
   </footer>
 
