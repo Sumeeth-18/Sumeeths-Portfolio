@@ -150,25 +150,26 @@ html.booting.s-idea .veil__line--idea{opacity:1}
     radial-gradient(circle at 88% 85%, rgba(43,35,32,.55) 0%, transparent 45%),
     linear-gradient(160deg, rgba(232,217,195,.02) 0%, transparent 55%);
 }
-/* Stage 1 — the giant PORTFOLIO typography */
+/* Stage 1 — the giant PORTFOLIO typography (Canva reference) */
 .hero__folio{position:absolute;top:calc(var(--nav-h) + 3vh);left:0;right:0;text-align:center;z-index:1;pointer-events:none;line-height:0}
-.hero__folio-word{display:inline-block;font:600 min(13vw,15rem)/0.9 var(--f-head);letter-spacing:.01em;color:rgba(232,217,195,.075);-webkit-text-stroke:1px rgba(232,217,195,.16);white-space:nowrap}
+.hero__folio-word{display:inline-block;font:600 min(16vw,20rem)/0.9 var(--f-head);letter-spacing:.01em;color:rgba(232,217,195,.075);-webkit-text-stroke:2px rgba(232,217,195,.16);white-space:nowrap;margin-bottom:2rem}
 /* animated fine grid — slow transform drift, composited */
 .hero__grid{position:absolute;inset:0;pointer-events:none;opacity:.55;z-index:0;
   -webkit-mask-image:radial-gradient(ellipse at 50% 32%,#000 18%,transparent 72%);
           mask-image:radial-gradient(ellipse at 50% 32%,#000 18%,transparent 72%)}
-.hero__grid::before{content:"";position:absolute;top:-72px;left:-72px;width:calc(100% + 144px);height:calc(100% + 144px);
+.hero__grid::before{content:"";position:absolute;top:-100px;left:-100px;width:calc(100% + 200px);height:calc(100% + 200px);
   background:
-    linear-gradient(rgba(232,217,195,.05) 1px,transparent 1px) 0 0/72px 72px,
-    linear-gradient(90deg,rgba(232,217,195,.05) 1px,transparent 1px) 0 0/72px 72px;
-  animation:gridDrift 30s linear infinite}
-@keyframes gridDrift{to{transform:translate(72px,72px)}}
+    linear-gradient(rgba(232,217,195,.06) 1px,transparent 1px) 0 0/80px 80px,
+    linear-gradient(90deg,rgba(232,217,195,.06) 1px,transparent 1px) 0 0/80px 80px;
+  animation:gridDrift 40s linear infinite}
+@keyframes gridDrift{to{transform:translate(80px,80px)}}
 /* technical ambient canvas (drifting nodes + connection lines) */
-.hero__ambient{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.5}
+.hero__ambient{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.4}
 
-/* Stage 2 — avatar, centered, overlapping the PORTFOLIO type */
-.avatarwrap{position:relative;z-index:2;width:clamp(210px,36vmin,400px);aspect-ratio:1;margin:clamp(2.5rem,8vh,6rem) auto 0;transform:translate3d(calc(var(--px,0)*6px),calc(var(--py,0)*6px),0);transition:transform .35s var(--ease)}
-.avatarwrap::before{content:"";position:absolute;inset:-7%;border:1px solid rgba(232,217,195,.18);border-radius:50%;pointer-events:none}
+/* Stage 2 — avatar, centered, overlapping the PORTFOLIO type (Canva reference) */
+.avatarwrap{position:relative;z-index:3;width:clamp(280px,45vmin,420px);aspect-ratio:1;margin:clamp(3rem,10vh,7rem) auto 0;transform:translate3d(calc(var(--px,0)*6px),calc(var(--py,0)*6px),0);transition:transform .35s var(--ease),box-shadow .3s ease,filter .3s ease}
+.avatarwrap:hover{transform:translate3d(calc(var(--px,0)*6px),calc(var(--py,0)*6px),0) scale(1.02);box-shadow:0 30px 80px -30px rgba(143,36,56,0.4);filter:brightness(1.1)}
+.avatarwrap::before{content:"";position:absolute;inset:-10%;border:2px solid rgba(232,217,195,.2);border-radius:50%;pointer-events:none;background:radial-gradient(circle at 30% 30%,rgba(143,36,56,.15),transparent 60%)}
 .avatar__canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;transition:opacity .6s}
 .avatar__img{width:100%;height:100%;object-fit:cover;border-radius:50%;
   -webkit-mask-image:radial-gradient(circle,#000 58%,transparent 74%);
@@ -179,6 +180,111 @@ html.booting.s-idea .veil__line--idea{opacity:1}
 .js .hero .avatarwrap:not(.is-solid) .avatar__img{opacity:0;transition:opacity .7s var(--ease)}
 .js .hero .avatarwrap.is-solid .avatar__img{opacity:1}
 html.rv-force .avatar__img{opacity:1!important}
+
+/* Hero pointer parallax (fine pointers only) */
+@media (pointer:fine) and (prefers-reduced-motion: no-preference) {
+  .hero { position: relative; }
+  .avatarwrap {
+    transition: transform 0.35s var(--ease), box-shadow 0.3s ease;
+  }
+  .hero:hover .avatarwrap {
+    transform: scale(1.02);
+    box-shadow: 0 30px 80px -30px rgba(143,36,56,0.4);
+  }
+}
+
+/* Enhanced avatar for Canva-style composition */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--nav-h) + 1.25rem) 0 0;
+  overflow: hidden;
+  background: var(--background);
+  background-image:
+    radial-gradient(circle at 12% 12%, rgba(143,36,56,.09) 0%, transparent 38%),
+    radial-gradient(circle at 88% 85%, rgba(43,35,32,.55) 0%, transparent 45%),
+    linear-gradient(160deg, rgba(232,217,195,.02) 0%, transparent 55%);
+}
+
+.hero__folio-word {
+  font-size: min(16vw, 18rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  color: rgba(232,217,195,.075);
+  -webkit-text-stroke: 2px rgba(232,217,195,.16);
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: calc(var(--nav-h) + 3vh);
+  margin-bottom: 2rem;
+}
+
+.avatarwrap {
+  position: relative;
+  z-index: 3;
+  width: clamp(280px, 45vmin, 420px);
+  aspect-ratio: 1;
+  margin: clamp(3rem, 10vh, 7rem) auto 0;
+  transform: translate3d(calc(var(--px,0)*6px), calc(var(--py,0)*6px), 0);
+  transition: transform .35s var(--ease), box-shadow .3s ease, filter .3s ease;
+}
+
+.avatarwrap:hover {
+  transform: translate3d(calc(var(--px,0)*6px), calc(var(--py,0)*6px), 0) scale(1.02);
+  box-shadow: 0 30px 80px -30px rgba(143,36,56,0.4);
+  filter: brightness(1.1);
+}
+
+.avatarwrap::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  border: 2px solid rgba(232,217,195,.2);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, rgba(143,36,56,.15), transparent 60%);
+}
+
+.hero__ambient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 35%, #000 15%, transparent 75%);
+          mask-image: radial-gradient(ellipse at 50% 35%, #000 15%, transparent 75%);
+}
+
+.hero__grid::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: calc(100% + 200px);
+  height: calc(100% + 200px);
+  background:
+    linear-gradient(rgba(232,217,195,.06) 1px, transparent 1px) 0 0/80px 80px,
+    linear-gradient(90deg, rgba(232,217,195,.06) 1px, transparent 1px) 0 0/80px 80px;
+  animation: gridDrift 40s linear infinite;
+}
+
+@keyframes gridDrift {
+  to { transform: translate(80px, 80px); }
+}
 
 .hero__bottom{position:relative;z-index:2;margin-top:auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,5vw,4rem);align-items:end;padding-top:clamp(1rem,3vh,2.5rem)}
 
@@ -372,6 +478,25 @@ html.rv-force .avatar__img{opacity:1!important}
   .skills__note{justify-self:start}
   .project--a,.project--b,.project--c{grid-template-columns:1fr}
   .project--b .project__shot{order:0}
+}
+
+/* Avatar-driven immersive scroll styles */
+@media (min-width:1021px) {
+  .avatarwrap {
+    position: sticky !important;
+    top: calc(var(--nav-h) + 4vh);
+    align-self: start;
+    margin-top: 0;
+    margin-bottom: auto;
+    transform: translate3d(calc(var(--px,0)*6px), calc(var(--py,0)*6px), 0);
+    transition: transform 0.35s var(--ease), box-shadow 0.3s ease;
+    z-index: 10;
+  }
+  
+  .avatarwrap:hover {
+    transform: translate3d(calc(var(--px,0)*6px), calc(var(--py,0)*6px), 0) scale(1.02);
+    box-shadow: 0 30px 80px -30px rgba(143,36,56,0.4);
+  }
 }
 @media (max-width:760px){
   :root{--nav-h:58px}

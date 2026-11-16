@@ -1,11 +1,10 @@
 /* Sumeeth's Portfolio — interactions
-   1. Cinematic boot: typed mono → "/" pendulum → title → idea line → veil out
-   2. Six-stage hero sequence (per sketches): PORTFOLIO → particle avatar →
+   1. Six-stage hero sequence (per sketches): PORTFOLIO → particle avatar →
       greeting → name+role → tagline → bottom strip (letter-by-letter)
-   3. Word ticker · 4. Diary page flips (bottom-to-top) · 5. Scroll reveals
-   6. Scroll-spy nav · 7. Live preview scaling · 8. Design showcase (pinned)
-   9. Hero pointer parallax · 10. Folio scroll parallax
-   11. Technical ambient background (drifting nodes + connection lines)
+   2. Word ticker · 3. Diary page flips (bottom-to-top) · 4. Scroll reveals
+   5. Scroll-spy nav · 6. Live preview scaling · 7. Design showcase (pinned)
+   8. Hero pointer parallax · 9. Folio scroll parallax
+   10. Technical ambient background (drifting nodes + connection lines)
    All vanilla, reduced-motion aware, no continuous heavy loops. */
 (function () {
   'use strict';
@@ -16,10 +15,16 @@
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
   /* ================= intro timing registry ================= */
-  var booting = html.classList.contains('booting');
   var TIMELINE = [];
   function T(fn, ms) { var id = setTimeout(fn, ms); TIMELINE.push(id); return id; }
   function clearTimers() { TIMELINE.forEach(clearTimeout); TIMELINE.length = 0; }
+
+  /* ================= immediate reveal ================= */
+  html.classList.remove('booting');
+  html.classList.add('rv-force');
+  html.classList.add('intro-done');
+  var veilSkip = $('#veilSkip');
+  if (veilSkip) veilSkip.style.display = 'none';
 
   /* ================= typing engine ================= */
   /* Letter-by-letter reveal. A hidden sizer span keeps the layout stable
@@ -411,9 +416,9 @@
     }, tickFast ? 1000 : 2400);
   }
 
-  /* ================= 4. DIARY PAGE FLIPS (bottom-to-top) ================= */
+  /* ================= 4. DIARY PAGE FLIPS (bottom-to-top, notebook-style) ================= */
   var book = $('.diary__book'), pages = $$('.diary__page');
-  var NB = pages.length, flips = 0, diaryTimer = 0;
+  var NB = pages.length, flips = 0, diaryTimer = 0, diaryPlaying = false;
   var heroVisible = true, notesVisible = false;
   function zf(page, k) { page.style.zIndex = k; }
   function applyZ() {
@@ -422,9 +427,10 @@
       else zf(p, 100 - i);
     });
   }
-  function flipNext(instant) {
-    if (flips >= NB - 1) return false;
+  function flipNext(instant, force) {
+    if (!force && (flips >= NB - 1 || diaryPlaying)) return false;
     var p = pages[flips];
+    if (!p) return false;
     flips++;
     if (instant) p.classList.add('instant');
     zf(p, 200);
@@ -432,22 +438,41 @@
     setTimeout(function () { p.classList.remove('instant'); applyZ(); }, instant ? 30 : 950);
     return true;
   }
-  function startDiaryAutos(instant) {
-    if (!book || diaryTimer) return;
-    if (reduced || instant) { /* jump straight to the settled state */
-      while (flipNext(true)) {}
+  function startDiaryAutos(instant, force) {
+    if (!book) return;
+    diaryPlaying = false;
+    if (reduced || instant) {
+      while (flipNext(true, true)) {}
+      diaryPlaying = true;
+      setTimeout(function() { diaryPlaying = false; }, 100);
       return;
     }
     var n = 0;
-    diaryTimer = setInterval(function () {
+    diaryTimer = setInterval(function() {
       if (document.hidden || !notesVisible) return;
-      if (!flipNext(false) || ++n > NB) { clearInterval(diaryTimer); diaryTimer = 0; }
+      if (!flipNext(false, diaryPlaying)) {
+        if (++n >= NB) {
+          clearInterval(diaryTimer);
+          diaryTimer = 0;
+          diaryPlaying = true;
+        }
+      }
     }, 1900);
+  }
+  function resetDiary() {
+    flips = 0;
+    diaryPlaying = false;
+    pages.forEach(function(p) { p.classList.remove('flipped', 'instant'); });
+    applyZ();
   }
   pages.forEach(function (p) {
     p.addEventListener('click', function () {
       if (reduced) return;
-      flipNext(false);
+      if (diaryPlaying) return;
+      if (!flipNext(false)) {
+        diaryPlaying = true;
+        setTimeout(function() { diaryPlaying = false; }, 1200);
+      }
     });
   });
 
@@ -459,10 +484,16 @@
     var notesEl = $('#notes');
     if (notesEl) {
       new IntersectionObserver(function (es) {
-        es.forEach(function (e) { notesVisible = e.isIntersecting; });
+        es.forEach(function (e) { notesVisible = e.isIntersecting; if (notesVisible) startDiaryAutos(false); });
       }, { threshold: 0.1 }).observe(notesEl);
-    } else notesVisible = true;
-  } else notesVisible = true;
+    } else {
+      notesVisible = true;
+      startDiaryAutos(false);
+    }
+  } else {
+    notesVisible = true;
+    startDiaryAutos(false);
+  }
 
   /* ================= 5. SCROLL REVEALS ================= */
   var rest = $$('.rv').filter(function (el) { return !el.closest('#home'); });
@@ -599,6 +630,81 @@
     heroEl.addEventListener('pointerleave', function () {
       wrap.style.setProperty('--px', '0');
       wrap.style.setProperty('--py', '0');
+    });
+  }
+
+  /* ================= 9.5 AVATAR-DRIVEN IMMERSIVE SCROLL ================= */
+  if (!reduced && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var scrollProgress = 0;
+    var scrollRAF = 0;
+    var avatarScale = 1;
+    var avatarY = 0;
+    var vignetteOpacity = 0;
+    var vignetteR = 0;
+    var vignetteG = 0;
+    var vignetteB = 0;
+    
+    function updateScrollProgress() {
+      var scrollTop = window.scrollY || window.pageYOffset;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress = docHeight > 0 ? scrollTop / docHeight : 0;
+      scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+      
+      // Avatar scale and position based on scroll
+      if (scrollProgress < 0.4) {
+        avatarScale = 1 + (scrollProgress * 0.3);
+        avatarY = scrollProgress * -20;
+      } else if (scrollProgress < 0.8) {
+        avatarScale = 1.3 - ((scrollProgress - 0.4) * 0.5);
+        avatarY = -20 - ((scrollProgress - 0.4) * 60);
+      } else {
+        avatarScale = 0.8;
+        avatarY = -80;
+      }
+      
+      // Vignette effect
+      vignetteOpacity = Math.min(1, (scrollProgress - 0.6) * 3);
+      if (vignetteOpacity > 0) {
+        vignetteR = Math.floor(143 * vignetteOpacity);
+        vignetteG = Math.floor(36 * vignetteOpacity);
+        vignetteB = Math.floor(56 * vignetteOpacity);
+      } else {
+        vignetteR = vignetteG = vignetteB = 0;
+      }
+      
+      // Apply styles
+      if (wrap) {
+        wrap.style.transform = 'translate3d(' + (parseFloat(wrap.style.getPropertyValue('--px') || 0) * 6) + 'px, ' + avatarY + 'px, 0) scale(' + avatarScale + ')';
+        wrap.style.filter = vignetteOpacity > 0 ? 'brightness(' + (1 - vignetteOpacity * 0.4) + ') drop-shadow(0 0 ' + (vignetteOpacity * 20) + 'px rgba(' + vignetteR + ', ' + vignetteG + ', ' + vignetteB + ', ' + vignetteOpacity + '))' : 'none';
+      }
+    }
+    
+    function scrollTick() {
+      if (scrollRAF) return;
+      scrollRAF = requestAnimationFrame(function() {
+        scrollRAF = 0;
+        updateScrollProgress();
+      });
+    }
+    
+    // Start scroll tracking after intro completes
+    function enableScrollTracking() {
+      if (scrollRAF) cancelAnimationFrame(scrollRAF);
+      scrollRAF = 0;
+      window.removeEventListener('scroll', scrollTick);
+      window.addEventListener('scroll', scrollTick, { passive: true });
+      updateScrollProgress();
+    }
+    
+    // Enable after intro or if no intro
+    setTimeout(function() {
+      enableScrollTracking();
+    }, 1000);
+    
+    // Clean up on page hide
+    window.addEventListener('pagehide', function() {
+      if (scrollRAF) cancelAnimationFrame(scrollRAF);
+      window.removeEventListener('scroll', scrollTick);
     });
   }
 
