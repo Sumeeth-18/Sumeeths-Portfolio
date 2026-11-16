@@ -1,0 +1,473 @@
+- generic [active] [ref=f72e1]:
+  - link "Skip to content" [ref=f72e2] [cursor=pointer]:
+    - /url: "#about"
+  - text: ▌ /
+  - banner:
+    - generic:
+      - link "My Works" [ref=f72e3] [cursor=pointer]:
+        - /url: "#works"
+      - navigation "Primary" [ref=f72e4]:
+        - link "Home" [ref=f72e5] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=f72e6] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=f72e7] [cursor=pointer]:
+          - /url: "#skills"
+        - link "My Works" [ref=f72e8] [cursor=pointer]:
+          - /url: "#works"
+        - link "Contact" [ref=f72e10] [cursor=pointer]:
+          - /url: "#contact"
+      - link "Get Started" [ref=f72e11] [cursor=pointer]:
+        - /url: "#contact"
+  - main [ref=f72e12]:
+    - region "Sumeeth Melkera" [ref=f72e13]:
+      - paragraph [ref=f72e14]: "Creative areas: Website, Application, Designs, Digital Solution."
+      - generic [aria-hidden]:
+        - generic: PORTFOLIO
+      - 'img "Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him" [ref=f72e16]'
+      - generic [ref=f72e17]:
+        - generic [ref=f72e18]:
+          - paragraph [ref=f72e19]:
+            - generic [aria-hidden] [ref=f72e20]: Hii..!! I am
+          - heading "Sumeeth Melkera" [level=1] [ref=f72e21]:
+            - generic [aria-hidden] [ref=f72e22]: SUMEETH
+          - paragraph [ref=f72e23]:
+            - generic "Creative" [ref=f72e24]:
+              - generic [aria-hidden] [ref=f72e25]: Creative
+            - generic "Developer" [ref=f72e26]:
+              - generic [aria-hidden] [ref=f72e27]: Developer
+          - link "Get in Touch → let's talk" [ref=f72e28] [cursor=pointer]:
+            - /url: "#contact"
+            - generic [ref=f72e29]: Get in Touch →
+            - emphasis [ref=f72e30]: let's talk
+        - paragraph [ref=f72e31]:
+          - generic "I help businesses make their online presence stronger by" [ref=f72e32]:
+            - generic [aria-hidden] [ref=f72e33]: I help businesses make their online presence stronger by
+          - generic [ref=f72e35]: Digital Solution
+          - generic [ref=f72e36]: websites, applications, designs and digital solutions.
+      - paragraph [ref=f72e38]:
+        - generic [aria-hidden] [ref=f72e39]: Digital Solutions ← Designs ← Applications ← Websites
+    - region "Field notes" [ref=f72e40]:
+      - complementary [ref=f72e42]:
+        - generic [ref=f72e43]:
+          - generic [ref=f72e44]: field notes — kept one problem at a time
+          - button "field notes For every problem, a fitting answer 01 Websites 02 Applications 03 Designs 04 Digital Solutions turn the page ↺ what I make the tool comes after the problem — never before S." [ref=f72e46] [cursor=pointer]:
+            - generic [ref=f72e47]:
+              - generic [ref=f72e48]: field notes
+              - generic [ref=f72e49]: For every problem, a fitting answer
+              - generic [ref=f72e50]: 01 Websites02 Applications03 Designs04 Digital Solutions
+              - generic [ref=f72e51]: turn the page ↺
+            - generic [ref=f72e52]:
+              - generic [ref=f72e53]: what I make
+              - generic [ref=f72e54]: the tool comes after the problem — never before
+              - generic [ref=f72e55]: S.
+          - button "01 Websites Business presence, built to be seen — and found. kept websites that reach customers S." [ref=f72e56] [cursor=pointer]:
+            - generic [ref=f72e57]:
+              - generic [ref=f72e58]: "01"
+              - generic [ref=f72e59]: Websites
+              - generic [ref=f72e60]: Business presence, built to be seen — and found.
+            - generic [ref=f72e61]:
+              - generic [ref=f72e62]: kept
+              - generic [ref=f72e63]: websites that reach customers
+              - generic [ref=f72e64]: S.
+          - button "02 Applications Tools people actually use — tracking, logging, improving. kept software that works in hand S." [ref=f72e65] [cursor=pointer]:
+            - generic [ref=f72e66]:
+              - generic [ref=f72e67]: "02"
+              - generic [ref=f72e68]: Applications
+              - generic [ref=f72e69]: Tools people actually use — tracking, logging, improving.
+            - generic [ref=f72e70]:
+              - generic [ref=f72e71]: kept
+              - generic [ref=f72e72]: software that works in hand
+              - generic [ref=f72e73]: S.
+          - button "03 Designs Thumbnails · posters · logos · promotional banners. kept visuals with the brand's voice S." [ref=f72e74] [cursor=pointer]:
+            - generic [ref=f72e75]:
+              - generic [ref=f72e76]: "03"
+              - generic [ref=f72e77]: Designs
+              - generic [ref=f72e78]: Thumbnails · posters · logos · promotional banners.
+            - generic [ref=f72e79]:
+              - generic [ref=f72e80]: kept
+              - generic [ref=f72e81]: visuals with the brand's voice
+              - generic [ref=f72e82]: S.
+          - button "04 Digital Solutions One of these — or a mix of them, as the problem asks. from my works ↓ kept the diary always ends here S." [ref=f72e83] [cursor=pointer]:
+            - generic [ref=f72e84]:
+              - generic [ref=f72e85]: "04"
+              - generic [ref=f72e86]: Digital Solutions
+              - generic [ref=f72e87]: One of these — or a mix of them, as the problem asks.
+              - generic [ref=f72e88]: from my works ↓
+            - generic [ref=f72e89]:
+              - generic [ref=f72e90]: kept
+              - generic [ref=f72e91]: the diary always ends here
+              - generic [ref=f72e92]: S.
+    - region [ref=f72e93]:
+      - generic [ref=f72e94]:
+        - 'img "Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie" [ref=f72e96]'
+        - paragraph [ref=f72e97]: Heyy...!! I am Sumeeth
+        - generic [ref=f72e98]:
+          - generic [ref=f72e99]:
+            - paragraph [ref=f72e100]: I don't start with a tool. I start with the problem.
+            - paragraph [ref=f72e101]: The one who keeps the diary above — web designer, application developer and graphic designer, depending on what the problem asks for.
+          - generic [ref=f72e102]:
+            - paragraph [ref=f72e103]: "Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way."
+            - paragraph [ref=f72e104]: Only then do I decide what to make. Sometimes the answer is a website. Sometimes it is an application. Sometimes it is a visual design, such as a thumbnail, a poster or a logo. Often it is a combination, and the pieces have to look like they belong together.
+            - list [ref=f72e105]:
+              - listitem [ref=f72e106]:
+                - generic [ref=f72e107]: Understand
+                - generic [ref=f72e108]: What is the problem, who has it, and what does solving it look like?
+              - listitem [ref=f72e109]:
+                - generic [ref=f72e110]: Choose
+                - generic [ref=f72e111]: Pick the digital solution that fits, instead of the one I happen to prefer.
+              - listitem [ref=f72e112]:
+                - generic [ref=f72e113]: Build
+                - generic [ref=f72e114]: Design and develop it, check it on real screens, and put it online.
+    - region "Technical Skills" [ref=f72e115]:
+      - generic [ref=f72e116]:
+        - generic [ref=f72e117]:
+          - heading "Technical Skills" [level=2] [ref=f72e118]
+          - paragraph [ref=f72e119]: Only what my portfolio and its projects actually show — no invented bars, no invented percentages.
+        - generic [ref=f72e120]:
+          - heading "Languages" [level=3] [ref=f72e121]
+          - list [ref=f72e122]:
+            - listitem [ref=f72e123]:
+              - generic [ref=f72e127]: HTML
+              - generic [ref=f72e128]: structure
+            - listitem [ref=f72e129]:
+              - generic [ref=f72e133]: CSS
+              - generic [ref=f72e134]: style & layout
+            - listitem [ref=f72e135]:
+              - generic [ref=f72e139]: JavaScript
+              - generic [ref=f72e140]: interaction
+        - generic [ref=f72e141]:
+          - heading "Frameworks & Libraries" [level=3] [ref=f72e142]
+          - list [ref=f72e143]:
+            - listitem [ref=f72e144]:
+              - generic [ref=f72e150]: React.js
+              - generic [ref=f72e151]: NutriFit app
+            - listitem [ref=f72e152]:
+              - generic [ref=f72e155]: Tailwind CSS
+              - generic [ref=f72e156]: NutriFit app
+        - generic [ref=f72e157]:
+          - heading "Design & Creative" [level=3] [ref=f72e158]
+          - list [ref=f72e159]:
+            - listitem [ref=f72e160]:
+              - generic [ref=f72e165]: Graphics
+              - generic [ref=f72e166]: thumbnails · posters
+            - listitem [ref=f72e167]:
+              - generic [ref=f72e171]: Logos & Branding
+              - generic [ref=f72e172]: NutriFit · Ashok
+            - listitem [ref=f72e173]:
+              - generic [ref=f72e177]: Banners
+              - generic [ref=f72e178]: promotional design
+    - region "My Works" [ref=f72e179]:
+      - generic [ref=f72e180]:
+        - heading "My Works" [level=2] [ref=f72e181]
+        - paragraph [ref=f72e182]: Three problems, three answers. Each preview below is the live project.
+        - article [ref=f72e183]:
+          - generic [ref=f72e185]:
+            - iframe [aria-hidden] [ref=f72e186]:
+              - generic [ref=f73e1]:
+                - banner [ref=f73e2]:
+                  - link "Ashok Trading home" [ref=f73e3] [cursor=pointer]:
+                    - /url: "#home"
+                    - img "Ashok Trading logo" [ref=f73e4]
+                    - generic [ref=f73e5]: ASHOK TRADING
+                  - button "Open navigation" [ref=f73e6] [cursor=pointer]
+                - complementary "Navigation" [ref=f73e8]:
+                  - generic [ref=f73e9]:
+                    - generic [ref=f73e10]: ASHOK TRADING
+                    - button "Close navigation" [ref=f73e11] [cursor=pointer]: ×
+                  - navigation [ref=f73e12]:
+                    - link "Home" [ref=f73e13] [cursor=pointer]:
+                      - /url: "#home"
+                    - link "Products" [ref=f73e14] [cursor=pointer]:
+                      - /url: "#products"
+                    - link "About Us" [ref=f73e15] [cursor=pointer]:
+                      - /url: "#about"
+                    - link "Contact" [ref=f73e16] [cursor=pointer]:
+                      - /url: "#contact"
+                - main [ref=f73e17]:
+                  - generic [ref=f73e19]:
+                    - img "Ashok Trading" [ref=f73e21]
+                    - generic [ref=f73e22]:
+                      - heading "Ashok Trading" [level=1] [ref=f73e23]
+                      - generic [ref=f73e24]: All Tissue and Disposable Products
+                      - generic [ref=f73e25]: Wholesale Supplier
+                      - paragraph [ref=f73e26]: A dependable range of tissue paper and disposable products for wholesale, professional and everyday requirements in Mumbai.
+                      - generic [ref=f73e27]:
+                        - link "View Products" [ref=f73e28] [cursor=pointer]:
+                          - /url: "#products"
+                        - link "Order Now" [ref=f73e29] [cursor=pointer]:
+                          - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                  - generic [ref=f73e30]:
+                    - generic [ref=f73e31]:
+                      - generic [ref=f73e32]: Our Products
+                      - heading "Product Range" [level=2] [ref=f73e33]
+                      - paragraph [ref=f73e34]: Browse the range by company, then narrow it down by product type.
+                    - generic [ref=f73e35]:
+                      - tablist "Product companies" [ref=f73e36]:
+                        - button "ROSSARI" [ref=f73e37] [cursor=pointer]
+                        - button "KRESSA" [ref=f73e38] [cursor=pointer]
+                        - button "ACE PAPER & TISSUE" [ref=f73e39] [cursor=pointer]
+                        - button "OTHERS" [ref=f73e40] [cursor=pointer]
+                      - generic [ref=f73e41]:
+                        - generic [ref=f73e42]:
+                          - heading "Rossari" [level=3] [ref=f73e43]
+                          - link "Company website ↗" [ref=f73e44] [cursor=pointer]:
+                            - /url: https://rossariprofessional.com/
+                        - generic [ref=f73e45]:
+                          - button "All" [ref=f73e46] [cursor=pointer]
+                          - button "Tissue Papers" [ref=f73e47] [cursor=pointer]
+                          - button "Rolls/Towels" [ref=f73e48] [cursor=pointer]
+                          - button "Toilet Rolls" [ref=f73e49] [cursor=pointer]
+                          - button "Napkins" [ref=f73e50] [cursor=pointer]
+                        - generic [ref=f73e51]:
+                          - article [ref=f73e52]:
+                            - img "Concord Toilet Rolls – 10 in 1" [ref=f73e54]
+                            - heading "Concord Toilet Rolls – 10 in 1" [level=4] [ref=f73e55]
+                            - paragraph [ref=f73e56]: Available in 4 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e57] [cursor=pointer]
+                          - article [ref=f73e58]:
+                            - img "Concord Kitchen Rolls – 2-in-1" [ref=f73e60]
+                            - heading "Concord Kitchen Rolls – 2-in-1" [level=4] [ref=f73e61]
+                            - paragraph [ref=f73e62]: Available in 4 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e63] [cursor=pointer]
+                          - article [ref=f73e64]:
+                            - img "Concord Boutique Premium Napkins" [ref=f73e66]
+                            - heading "Concord Boutique Premium Napkins" [level=4] [ref=f73e67]
+                            - paragraph [ref=f73e68]: Pink, Available in different pull quantities and ply. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e69] [cursor=pointer]
+                          - article [ref=f73e70]:
+                            - img "Concord Toilet Roll – Single" [ref=f73e72]
+                            - heading "Concord Toilet Roll – Single" [level=4] [ref=f73e73]
+                            - paragraph [ref=f73e74]: Available in different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e75] [cursor=pointer]
+                          - article [ref=f73e76]:
+                            - img "Concord Soft Face Tissue" [ref=f73e78]
+                            - heading "Concord Soft Face Tissue" [level=4] [ref=f73e79]
+                            - paragraph [ref=f73e80]: 100 Pulls, Available in Different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e81] [cursor=pointer]
+                          - article [ref=f73e82]:
+                            - img "Concord Kitchen Rolls – 4-in-1" [ref=f73e84]
+                            - heading "Concord Kitchen Rolls – 4-in-1" [level=4] [ref=f73e85]
+                            - paragraph [ref=f73e86]: Available in 2 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e87] [cursor=pointer]
+                          - article [ref=f73e88]:
+                            - img "Concord Kitchen Roll – Single" [ref=f73e90]
+                            - heading "Concord Kitchen Roll – Single" [level=4] [ref=f73e91]
+                            - paragraph [ref=f73e92]: Available in 4 in 1 & 2 in 1 packs. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e93] [cursor=pointer]
+                          - article [ref=f73e94]:
+                            - img "Concord Soft Face Tissue" [ref=f73e96]
+                            - heading "Concord Soft Face Tissue" [level=4] [ref=f73e97]
+                            - paragraph [ref=f73e98]: 200 Pulls, Available in different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e99] [cursor=pointer]
+                          - article [ref=f73e100]:
+                            - img "Concord Pop Up Face Tissues" [ref=f73e102]
+                            - heading "Concord Pop Up Face Tissues" [level=4] [ref=f73e103]
+                            - paragraph [ref=f73e104]: Available in Different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e105] [cursor=pointer]
+                          - article [ref=f73e106]:
+                            - img "Concord Boutique Premium Napkins" [ref=f73e108]
+                            - heading "Concord Boutique Premium Napkins" [level=4] [ref=f73e109]
+                            - paragraph [ref=f73e110]: White, Available in Different Varients. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e111] [cursor=pointer]
+                          - article [ref=f73e112]:
+                            - img "Concord Toilet Rolls – 4 in 1" [ref=f73e114]
+                            - heading "Concord Toilet Rolls – 4 in 1" [level=4] [ref=f73e115]
+                            - paragraph [ref=f73e116]: Available in 2 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e117] [cursor=pointer]
+                          - article [ref=f73e118]:
+                            - img "Concord Toilet Rolls – 10 in 1" [ref=f73e120]
+                            - heading "Concord Toilet Rolls – 10 in 1" [level=4] [ref=f73e121]
+                            - paragraph [ref=f73e122]: Available in Different color & Quality. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f73e123] [cursor=pointer]
+                      - generic [ref=f73e124]:
+                        - generic [ref=f73e125]:
+                          - heading "For Bulk Orders" [level=3] [ref=f73e126]
+                          - paragraph [ref=f73e127]: Contact Ashok Trading directly for wholesale requirements.
+                        - generic [ref=f73e128]:
+                          - link "☎ Call 9967258331" [ref=f73e129] [cursor=pointer]:
+                            - /url: tel:+919967258331
+                          - link "◌ Message 9967258331" [ref=f73e130] [cursor=pointer]:
+                            - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                          - link "⌖ Google Maps" [ref=f73e131] [cursor=pointer]:
+                            - /url: https://www.google.com/maps/search/?api=1&query=Shop+No.+2,+Opp.+Unique+BLDG,+Ramesh+Nagar,+Last+Bus+Stop,+near+Geetanjali+Bus+Stop,+Amboli,+Andheri+West,+Mumbai+400058
+                  - generic [ref=f73e132]:
+                    - generic [ref=f73e133]:
+                      - generic [ref=f73e134]: About Us
+                      - heading "Ashok Trading" [level=2] [ref=f73e135]
+                      - paragraph [ref=f73e136]: A professional wholesale supplier in Mumbai, offering tissue and disposable products for business and everyday requirements.
+                      - generic [ref=f73e137]:
+                        - text: "Proprietor:"
+                        - strong [ref=f73e138]: Ashok. G. Melkera
+                    - generic [ref=f73e139]:
+                      - generic [ref=f73e140]:
+                        - heading "Our Range" [level=3] [ref=f73e141]
+                        - paragraph [ref=f73e142]: Tissue paper and disposable products organised by company and product type for easier selection.
+                      - generic [ref=f73e143]:
+                        - heading "Direct Enquiries" [level=3] [ref=f73e144]
+                        - paragraph [ref=f73e145]: Customers can contact Ashok Trading directly for product availability and wholesale orders.
+                    - generic [ref=f73e146]:
+                      - generic [ref=f73e147]: "Dealership with:"
+                      - generic [ref=f73e148]:
+                        - article [ref=f73e149]:
+                          - img "Rossari Professional logo" [ref=f73e150]
+                          - heading "Rossari Professional" [level=4] [ref=f73e151]
+                          - paragraph [ref=f73e152]: Official Website of Rossari
+                          - link "Visit official website ↗" [ref=f73e153] [cursor=pointer]:
+                            - /url: https://rossariprofessional.com/
+                        - article [ref=f73e154]:
+                          - img "Kressa logo" [ref=f73e155]
+                          - heading "Kressa" [level=4] [ref=f73e156]
+                          - paragraph [ref=f73e157]: Official Website of Kressa
+                          - link "Visit official website ↗" [ref=f73e158] [cursor=pointer]:
+                            - /url: https://kressa.co.in/
+                    - generic [ref=f73e159]:
+                      - generic [ref=f73e160]: Why Ashok Trading?
+                      - generic [ref=f73e161]:
+                        - generic [ref=f73e162]:
+                          - heading "Quality Products" [level=4] [ref=f73e167]
+                          - paragraph [ref=f73e168]: Quality products for dependable everyday use.
+                        - generic [ref=f73e169]:
+                          - heading "Super Soft Napkins" [level=4] [ref=f73e174]
+                          - paragraph [ref=f73e175]: Soft and comfortable napkin options.
+                        - generic [ref=f73e176]:
+                          - heading "All Sizes" [level=4] [ref=f73e181]
+                          - paragraph [ref=f73e182]: Different sizes and formats for different needs.
+                        - generic [ref=f73e183]:
+                          - heading "Flexible Options" [level=4] [ref=f73e188]
+                          - paragraph [ref=f73e189]: Options to suit different requirements and budgets.
+                  - generic [ref=f73e190]:
+                    - generic [ref=f73e191]:
+                      - generic [ref=f73e192]: Contact
+                      - heading "Let's talk" [level=2] [ref=f73e193]
+                      - paragraph [ref=f73e194]: For product enquiries, wholesale orders or directions, contact Ashok Trading directly.
+                    - generic [ref=f73e195]:
+                      - generic [ref=f73e196]:
+                        - heading "Contact Ashok Trading" [level=3] [ref=f73e197]
+                        - generic [ref=f73e198]:
+                          - generic [ref=f73e199]: Phone
+                          - link "9967258331" [ref=f73e201] [cursor=pointer]:
+                            - /url: tel:+919967258331
+                        - generic [ref=f73e202]:
+                          - generic [ref=f73e203]: Email
+                          - link "ashoktrading65@gmail.com" [ref=f73e205] [cursor=pointer]:
+                            - /url: mailto:ashoktrading65@gmail.com
+                        - generic [ref=f73e206]:
+                          - generic [ref=f73e207]: WhatsApp
+                          - link "9967258331" [ref=f73e209] [cursor=pointer]:
+                            - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                        - link "Open location in Google Maps ↗" [ref=f73e210] [cursor=pointer]:
+                          - /url: https://www.google.com/maps/search/?api=1&query=Shop+No.+2,+Opp.+Unique+BLDG,+Ramesh+Nagar,+Last+Bus+Stop,+near+Geetanjali+Bus+Stop,+Amboli,+Andheri+West,+Mumbai+400058
+                      - generic [ref=f73e211]:
+                        - heading "Business information" [level=3] [ref=f73e212]
+                        - generic [ref=f73e213]:
+                          - generic [ref=f73e214]: Products
+                          - generic [ref=f73e215]: Tissue & Disposable Products
+                        - generic [ref=f73e216]:
+                          - generic [ref=f73e217]: Brands
+                          - generic [ref=f73e218]: Rossari · Kressa · ACE Paper & Tissue · Others
+                        - generic [ref=f73e219]:
+                          - generic [ref=f73e220]: Address
+                          - generic [ref=f73e221]: Shop no. 2, Opp. Unique BLDG, Ramesh Nagar, Last Bus Stop, near Geetanjali Bus Stop, Amboli, Andheri (w), Mumbai - 400058
+                - link "Contact Ashok Trading on WhatsApp" [ref=f73e222] [cursor=pointer]:
+                  - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                - contentinfo [ref=f73e225]:
+                  - strong [ref=f73e226]: ASHOK TRADING
+                  - paragraph [ref=f73e227]: Tissue & Disposable Products
+                  - paragraph [ref=f73e228]: "© 2026 Ashok Trading: All Rights Reserved."
+            - link "Open the Ashok Trading website in a new tab" [ref=f72e187] [cursor=pointer]:
+              - /url: https://ashok-trading.pages.dev
+          - generic [ref=f72e188]:
+            - paragraph [ref=f72e189]: Website
+            - heading "Ashok Trading" [level=3] [ref=f72e190]
+            - generic [ref=f72e191]:
+              - term [ref=f72e192]: Problem
+              - definition [ref=f72e193]: A Mumbai wholesale supplier of tissue and disposable products sells across several brands, and customers need to find the right item and reach the shop directly.
+              - term [ref=f72e194]: Approach
+              - definition [ref=f72e195]: The range is organised by company (Rossari, Kressa, ACE Paper & Tissue and others), then narrowed by product type. Call, message and map actions sit in a dedicated bulk-order block.
+              - term [ref=f72e196]: Features
+              - definition [ref=f72e197]: Company-grouped product catalogue with type filters, an About page with dealership details, contact information and a Google Maps link.
+              - term [ref=f72e198]: Outcome
+              - definition [ref=f72e199]: A live business website, designed and developed by me.
+            - link "View Website" [ref=f72e200] [cursor=pointer]:
+              - /url: https://ashok-trading.pages.dev
+        - article [ref=f72e201]:
+          - generic [ref=f72e203]:
+            - iframe [aria-hidden] [ref=f72e204]
+            - link "Open the Feast & Fable website in a new tab" [ref=f72e205] [cursor=pointer]:
+              - /url: https://feast-and-fable.pages.dev
+          - generic [ref=f72e206]:
+            - paragraph [ref=f72e207]: Website
+            - heading "Feast & Fable" [level=3] [ref=f72e208]
+            - generic [ref=f72e209]:
+              - term [ref=f72e210]: Problem
+              - definition [ref=f72e211]: A restaurant needs a website that presents it online.
+              - term [ref=f72e212]: Approach
+              - definition [ref=f72e213]: Designed and developed by me as a standalone restaurant website.
+              - term [ref=f72e214]: Features
+              - definition [ref=f72e215]: "Best judged live: scroll the preview or open the full site."
+              - term [ref=f72e216]: Outcome
+              - definition [ref=f72e217]: A live restaurant website, designed and developed by me.
+            - link "View Website" [ref=f72e218] [cursor=pointer]:
+              - /url: https://feast-and-fable.pages.dev
+        - article [ref=f72e219]:
+          - generic [ref=f72e221]:
+            - iframe [aria-hidden] [ref=f72e222]
+            - link "Open the NutriFit Application for a GYM in a new tab" [ref=f72e223] [cursor=pointer]:
+              - /url: https://nutri-fit-v1.lovable.app
+          - generic [ref=f72e224]:
+            - paragraph [ref=f72e225]: Application
+            - heading "NutriFit Application for a GYM" [level=3] [ref=f72e226]
+            - generic [ref=f72e227]:
+              - term [ref=f72e228]: Problem
+              - definition [ref=f72e229]: Gym-goers need one place to track what they eat, log their workouts and see whether they are improving.
+              - term [ref=f72e230]: Approach
+              - definition [ref=f72e231]: A mobile-first application built with React and styled with Tailwind CSS on the Lovable platform, paired with a NutriFit logo I designed (shown in the Design Showcase below).
+              - term [ref=f72e232]: Features
+              - definition [ref=f72e233]: Nutrition tracking, workout logging and progress insights, as described on the app itself.
+              - term [ref=f72e234]: Outcome
+              - definition [ref=f72e235]: A working application you can open and try. It is shown here as a project, not as a production rollout.
+            - link "Open the App" [ref=f72e236] [cursor=pointer]:
+              - /url: https://nutri-fit-v1.lovable.app
+    - region "Design Showcase" [ref=f72e237]:
+      - generic [ref=f72e238]:
+        - heading "Design Showcase" [level=2] [ref=f72e239]
+        - paragraph [ref=f72e240]: Eight originals — thumbnails, posters, logos and a banner, one at a time.
+      - generic [aria-hidden] [ref=f72e243]:
+        - generic [ref=f72e244]: 1 / 8
+        - generic [ref=f72e245]: Top 3 secrets of AI tools · Thumbnail
+      - link "Start Making Yours" [ref=f72e248] [cursor=pointer]:
+        - /url: "#contact"
+    - region "Contact" [ref=f72e249]:
+      - generic [ref=f72e250]:
+        - generic [ref=f72e251]:
+          - heading "Contact" [level=2] [ref=f72e252]
+          - paragraph [ref=f72e253]: Have a problem worth solving?
+          - paragraph [ref=f72e254]: Tell me what is in the way. We will work out whether it needs a website, an application, a design, or a mix of them.
+        - generic [ref=f72e255]:
+          - link "Email Me sumeeth.work18@gmail.com" [ref=f72e256] [cursor=pointer]:
+            - /url: mailto:sumeeth.work18@gmail.com
+            - generic [ref=f72e257]: Email Me
+            - generic [ref=f72e258]: sumeeth.work18@gmail.com
+          - link "WhatsApp / Text Me send a direct message" [ref=f72e259] [cursor=pointer]:
+            - /url: https://wa.me/919022533004
+            - generic [ref=f72e260]: WhatsApp / Text Me
+            - generic [ref=f72e261]: send a direct message
+  - contentinfo [ref=f72e262]:
+    - generic [ref=f72e263]:
+      - paragraph [aria-hidden] [ref=f72e264]: Sumeeth.
+      - paragraph [ref=f72e265]: designed & built by me — websites, applications and designs
+      - navigation "Footer" [ref=f72e266]:
+        - link "Home" [ref=f72e267] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=f72e268] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=f72e269] [cursor=pointer]:
+          - /url: "#skills"
+        - link "My Works" [ref=f72e270] [cursor=pointer]:
+          - /url: "#works"
+        - link "Email" [ref=f72e271] [cursor=pointer]:
+          - /url: mailto:sumeeth.work18@gmail.com
+        - link "WhatsApp" [ref=f72e272] [cursor=pointer]:
+          - /url: https://wa.me/919022533004
+      - paragraph [ref=f72e273]: © 2026 Sumeeth Ashok Melkera

@@ -1,0 +1,689 @@
+- generic [active] [ref=f4e1]:
+  - link "Skip to content" [ref=f4e2] [cursor=pointer]:
+    - /url: "#about"
+  - text: ▌
+  - banner:
+    - generic:
+      - link "My Works" [ref=f4e3] [cursor=pointer]:
+        - /url: "#works"
+      - navigation "Primary" [ref=f4e4]:
+        - link "Home" [ref=f4e5] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=f4e6] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=f4e7] [cursor=pointer]:
+          - /url: "#skills"
+        - link "My Works" [ref=f4e8] [cursor=pointer]:
+          - /url: "#works"
+        - link "Contact" [ref=f4e9] [cursor=pointer]:
+          - /url: "#contact"
+      - link "Get Started" [ref=f4e10] [cursor=pointer]:
+        - /url: "#contact"
+  - main [ref=f4e11]:
+    - region "Sumeeth Melkera" [ref=f4e12]:
+      - paragraph [ref=f4e13]: "Creative areas: Website, Application, Designs, Digital Solution."
+      - generic [ref=f4e14]:
+        - generic [ref=f4e15]:
+          - generic [ref=f4e16]:
+            - 'img "Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him" [ref=f4e17]'
+            - text: </>
+          - heading "Sumeeth Melkera" [level=1] [ref=f4e18]
+          - paragraph [ref=f4e19]: Creative Developer
+          - link "Get in Touch → let's talk" [ref=f4e20] [cursor=pointer]:
+            - /url: "#contact"
+            - generic [ref=f4e21]: Get in Touch →
+            - emphasis [ref=f4e22]: let's talk
+        - complementary [aria-hidden] [ref=f4e23]:
+          - paragraph [ref=f4e24]:
+            - text: I help Businesses make their online Presence Stronger by
+            - generic [ref=f4e26]: Digital Solution
+            - generic [ref=f4e27]: websites, applications, designs and digital solutions.
+          - generic [ref=f4e28]:
+            - generic [ref=f4e29]: field notes — kept one problem at a time
+            - button [ref=f4e31] [cursor=pointer]:
+              - generic [ref=f4e32]:
+                - generic [ref=f4e33]: field notes
+                - generic [ref=f4e34]: For every problem, a fitting answer
+                - generic [ref=f4e35]: 01 Websites02 Applications03 Designs04 Digital Solutions
+                - generic [ref=f4e39]: turn the page ↺
+              - generic [ref=f4e40]:
+                - generic [ref=f4e41]: what I make
+                - generic [ref=f4e42]: the tool comes after the problem — never before
+                - generic [ref=f4e43]: S.
+            - button [ref=f4e44] [cursor=pointer]:
+              - generic [ref=f4e45]:
+                - generic [ref=f4e46]: "01"
+                - generic [ref=f4e47]: Websites
+                - generic [ref=f4e48]: Business presence, built to be seen — and found.
+              - generic [ref=f4e49]:
+                - generic [ref=f4e50]: kept
+                - generic [ref=f4e51]: websites that reach customers
+                - generic [ref=f4e52]: S.
+            - button [ref=f4e53] [cursor=pointer]:
+              - generic [ref=f4e54]:
+                - generic [ref=f4e55]: "02"
+                - generic [ref=f4e56]: Applications
+                - generic [ref=f4e57]: Tools people actually use — tracking, logging, improving.
+              - generic [ref=f4e58]:
+                - generic [ref=f4e59]: kept
+                - generic [ref=f4e60]: software that works in hand
+                - generic [ref=f4e61]: S.
+            - button [ref=f4e62] [cursor=pointer]:
+              - generic [ref=f4e63]:
+                - generic [ref=f4e64]: "03"
+                - generic [ref=f4e65]: Designs
+                - generic [ref=f4e66]: Thumbnails · posters · logos · promotional banners.
+              - generic [ref=f4e67]:
+                - generic [ref=f4e68]: kept
+                - generic [ref=f4e69]: visuals with the brand's voice
+                - generic [ref=f4e70]: S.
+            - button [ref=f4e71] [cursor=pointer]:
+              - generic [ref=f4e72]:
+                - generic [ref=f4e73]: "04"
+                - generic [ref=f4e74]: Digital Solutions
+                - generic [ref=f4e75]: One of these — or a mix of them, as the problem asks.
+                - generic [ref=f4e76]: from my works ↓
+              - generic [ref=f4e77]:
+                - generic [ref=f4e78]: kept
+                - generic [ref=f4e79]: the diary always ends here
+                - generic [ref=f4e80]: S.
+    - region [ref=f4e81]:
+      - generic [ref=f4e82]:
+        - 'img "Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie" [ref=f4e84]'
+        - paragraph [ref=f4e85]: Heyy...!! I am Sumeeth
+        - generic [ref=f4e86]:
+          - generic [ref=f4e87]:
+            - paragraph [ref=f4e88]: I don't start with a tool. I start with the problem.
+            - paragraph [ref=f4e89]: The one who keeps the diary above — web designer, application developer and graphic designer, depending on what the problem asks for.
+          - generic [ref=f4e90]:
+            - paragraph [ref=f4e91]: "Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way."
+            - paragraph [ref=f4e92]: Only then do I decide what to make. Sometimes the answer is a website. Sometimes it is an application. Sometimes it is a visual design, such as a thumbnail, a poster or a logo. Often it is a combination, and the pieces have to look like they belong together.
+            - list [ref=f4e93]:
+              - listitem [ref=f4e94]:
+                - generic [ref=f4e95]: Understand
+                - generic [ref=f4e96]: What is the problem, who has it, and what does solving it look like?
+              - listitem [ref=f4e97]:
+                - generic [ref=f4e98]: Choose
+                - generic [ref=f4e99]: Pick the digital solution that fits, instead of the one I happen to prefer.
+              - listitem [ref=f4e100]:
+                - generic [ref=f4e101]: Build
+                - generic [ref=f4e102]: Design and develop it, check it on real screens, and put it online.
+    - region "Technical Skills" [ref=f4e103]:
+      - generic [ref=f4e104]:
+        - generic [ref=f4e105]:
+          - heading "Technical Skills" [level=2] [ref=f4e106]
+          - paragraph [ref=f4e107]: Only what my portfolio and its projects actually show — no invented bars, no invented percentages.
+        - generic [ref=f4e108]:
+          - heading "Languages" [level=3] [ref=f4e109]
+          - list [ref=f4e110]:
+            - listitem [ref=f4e111]:
+              - generic [ref=f4e115]: HTML
+              - generic [ref=f4e116]: structure
+            - listitem [ref=f4e117]:
+              - generic [ref=f4e121]: CSS
+              - generic [ref=f4e122]: style & layout
+            - listitem [ref=f4e123]:
+              - generic [ref=f4e127]: JavaScript
+              - generic [ref=f4e128]: interaction
+        - generic [ref=f4e129]:
+          - heading "Frameworks & Libraries" [level=3] [ref=f4e130]
+          - list [ref=f4e131]:
+            - listitem [ref=f4e132]:
+              - generic [ref=f4e138]: React.js
+              - generic [ref=f4e139]: NutriFit app
+            - listitem [ref=f4e140]:
+              - generic [ref=f4e143]: Tailwind CSS
+              - generic [ref=f4e144]: NutriFit app
+        - generic [ref=f4e145]:
+          - heading "Design & Creative" [level=3] [ref=f4e146]
+          - list [ref=f4e147]:
+            - listitem [ref=f4e148]:
+              - generic [ref=f4e153]: Graphics
+              - generic [ref=f4e154]: thumbnails · posters
+            - listitem [ref=f4e155]:
+              - generic [ref=f4e159]: Logos & Branding
+              - generic [ref=f4e160]: NutriFit · Ashok
+            - listitem [ref=f4e161]:
+              - generic [ref=f4e165]: Banners
+              - generic [ref=f4e166]: promotional design
+    - region "My Works" [ref=f4e167]:
+      - generic [ref=f4e168]:
+        - heading "My Works" [level=2] [ref=f4e169]
+        - paragraph [ref=f4e170]: Three problems, three answers. Each preview below is the live project.
+        - article [ref=f4e171]:
+          - generic [ref=f4e173]:
+            - iframe [aria-hidden] [ref=f4e174]:
+              - generic [ref=f5e1]:
+                - banner [ref=f5e2]:
+                  - link "Ashok Trading home" [ref=f5e3] [cursor=pointer]:
+                    - /url: "#home"
+                    - img "Ashok Trading logo" [ref=f5e4]
+                    - generic [ref=f5e5]: ASHOK TRADING
+                  - button "Open navigation" [ref=f5e6] [cursor=pointer]
+                - complementary "Navigation" [ref=f5e8]:
+                  - generic [ref=f5e9]:
+                    - generic [ref=f5e10]: ASHOK TRADING
+                    - button "Close navigation" [ref=f5e11] [cursor=pointer]: ×
+                  - navigation [ref=f5e12]:
+                    - link "Home" [ref=f5e13] [cursor=pointer]:
+                      - /url: "#home"
+                    - link "Products" [ref=f5e14] [cursor=pointer]:
+                      - /url: "#products"
+                    - link "About Us" [ref=f5e15] [cursor=pointer]:
+                      - /url: "#about"
+                    - link "Contact" [ref=f5e16] [cursor=pointer]:
+                      - /url: "#contact"
+                - main [ref=f5e17]:
+                  - generic [ref=f5e19]:
+                    - img "Ashok Trading" [ref=f5e21]
+                    - generic [ref=f5e22]:
+                      - heading "Ashok Trading" [level=1] [ref=f5e23]
+                      - generic [ref=f5e24]: All Tissue and Disposable Products
+                      - generic [ref=f5e25]: Wholesale Supplier
+                      - paragraph [ref=f5e26]: A dependable range of tissue paper and disposable products for wholesale, professional and everyday requirements in Mumbai.
+                      - generic [ref=f5e27]:
+                        - link "View Products" [ref=f5e28] [cursor=pointer]:
+                          - /url: "#products"
+                        - link "Order Now" [ref=f5e29] [cursor=pointer]:
+                          - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                  - generic [ref=f5e30]:
+                    - generic [ref=f5e31]:
+                      - generic [ref=f5e32]: Our Products
+                      - heading "Product Range" [level=2] [ref=f5e33]
+                      - paragraph [ref=f5e34]: Browse the range by company, then narrow it down by product type.
+                    - generic [ref=f5e35]:
+                      - tablist "Product companies" [ref=f5e36]:
+                        - button "ROSSARI" [ref=f5e37] [cursor=pointer]
+                        - button "KRESSA" [ref=f5e38] [cursor=pointer]
+                        - button "ACE PAPER & TISSUE" [ref=f5e39] [cursor=pointer]
+                        - button "OTHERS" [ref=f5e40] [cursor=pointer]
+                      - generic [ref=f5e41]:
+                        - generic [ref=f5e42]:
+                          - heading "Rossari" [level=3] [ref=f5e43]
+                          - link "Company website ↗" [ref=f5e44] [cursor=pointer]:
+                            - /url: https://rossariprofessional.com/
+                        - generic [ref=f5e45]:
+                          - button "All" [ref=f5e46] [cursor=pointer]
+                          - button "Tissue Papers" [ref=f5e47] [cursor=pointer]
+                          - button "Rolls/Towels" [ref=f5e48] [cursor=pointer]
+                          - button "Toilet Rolls" [ref=f5e49] [cursor=pointer]
+                          - button "Napkins" [ref=f5e50] [cursor=pointer]
+                        - generic [ref=f5e51]:
+                          - article [ref=f5e52]:
+                            - img "Concord Toilet Rolls – 10 in 1" [ref=f5e217]
+                            - heading "Concord Toilet Rolls – 10 in 1" [level=4] [ref=f5e218]
+                            - paragraph [ref=f5e55]: Available in 4 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e56] [cursor=pointer]
+                          - article [ref=f5e57]:
+                            - img "Concord Kitchen Rolls – 2-in-1" [ref=f5e219]
+                            - heading "Concord Kitchen Rolls – 2-in-1" [level=4] [ref=f5e220]
+                            - paragraph [ref=f5e60]: Available in 4 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e61] [cursor=pointer]
+                          - article [ref=f5e62]:
+                            - img "Concord Boutique Premium Napkins" [ref=f5e221]
+                            - heading "Concord Boutique Premium Napkins" [level=4] [ref=f5e222]
+                            - paragraph [ref=f5e65]: Pink, Available in different pull quantities and ply. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e66] [cursor=pointer]
+                          - article [ref=f5e67]:
+                            - img "Concord Toilet Roll – Single" [ref=f5e223]
+                            - heading "Concord Toilet Roll – Single" [level=4] [ref=f5e224]
+                            - paragraph [ref=f5e70]: Available in different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e71] [cursor=pointer]
+                          - article [ref=f5e72]:
+                            - img "Concord Soft Face Tissue" [ref=f5e225]
+                            - heading "Concord Soft Face Tissue" [level=4] [ref=f5e226]
+                            - paragraph [ref=f5e75]: 100 Pulls, Available in Different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e76] [cursor=pointer]
+                          - article [ref=f5e77]:
+                            - img "Concord Kitchen Rolls – 4-in-1" [ref=f5e227]
+                            - heading "Concord Kitchen Rolls – 4-in-1" [level=4] [ref=f5e228]
+                            - paragraph [ref=f5e80]: Available in 2 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e81] [cursor=pointer]
+                          - article [ref=f5e82]:
+                            - img "Concord Kitchen Roll – Single" [ref=f5e229]
+                            - heading "Concord Kitchen Roll – Single" [level=4] [ref=f5e230]
+                            - paragraph [ref=f5e85]: Available in 4 in 1 & 2 in 1 packs. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e86] [cursor=pointer]
+                          - article [ref=f5e87]:
+                            - img "Concord Soft Face Tissue" [ref=f5e231]
+                            - heading "Concord Soft Face Tissue" [level=4] [ref=f5e232]
+                            - paragraph [ref=f5e90]: 200 Pulls, Available in different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e91] [cursor=pointer]
+                          - article [ref=f5e92]:
+                            - img "Concord Pop Up Face Tissues" [ref=f5e233]
+                            - heading "Concord Pop Up Face Tissues" [level=4] [ref=f5e234]
+                            - paragraph [ref=f5e95]: Available in Different Variants. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e96] [cursor=pointer]
+                          - article [ref=f5e97]:
+                            - img "Concord Boutique Premium Napkins" [ref=f5e235]
+                            - heading "Concord Boutique Premium Napkins" [level=4] [ref=f5e236]
+                            - paragraph [ref=f5e100]: White, Available in Different Varients. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e101] [cursor=pointer]
+                          - article [ref=f5e102]:
+                            - img "Concord Toilet Rolls – 4 in 1" [ref=f5e237]
+                            - heading "Concord Toilet Rolls – 4 in 1" [level=4] [ref=f5e238]
+                            - paragraph [ref=f5e105]: Available in 2 in 1 pack. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e106] [cursor=pointer]
+                          - article [ref=f5e107]:
+                            - img "Concord Toilet Rolls – 10 in 1" [ref=f5e239]
+                            - heading "Concord Toilet Rolls – 10 in 1" [level=4] [ref=f5e240]
+                            - paragraph [ref=f5e110]: Available in Different color & Quality. Concord, a product by Rossari Professional.
+                            - button "Order Now" [ref=f5e111] [cursor=pointer]
+                      - generic [ref=f5e112]:
+                        - generic [ref=f5e113]:
+                          - heading "For Bulk Orders" [level=3] [ref=f5e114]
+                          - paragraph [ref=f5e115]: Contact Ashok Trading directly for wholesale requirements.
+                        - generic [ref=f5e116]:
+                          - link "☎ Call 9967258331" [ref=f5e117] [cursor=pointer]:
+                            - /url: tel:+919967258331
+                          - link "◌ Message 9967258331" [ref=f5e118] [cursor=pointer]:
+                            - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                          - link "⌖ Google Maps" [ref=f5e119] [cursor=pointer]:
+                            - /url: https://www.google.com/maps/search/?api=1&query=Shop+No.+2,+Opp.+Unique+BLDG,+Ramesh+Nagar,+Last+Bus+Stop,+near+Geetanjali+Bus+Stop,+Amboli,+Andheri+West,+Mumbai+400058
+                  - generic [ref=f5e120]:
+                    - generic [ref=f5e121]:
+                      - generic [ref=f5e122]: About Us
+                      - heading "Ashok Trading" [level=2] [ref=f5e123]
+                      - paragraph [ref=f5e124]: A professional wholesale supplier in Mumbai, offering tissue and disposable products for business and everyday requirements.
+                      - generic [ref=f5e125]:
+                        - text: "Proprietor:"
+                        - strong [ref=f5e126]: Ashok. G. Melkera
+                    - generic [ref=f5e127]:
+                      - generic [ref=f5e128]:
+                        - heading "Our Range" [level=3] [ref=f5e129]
+                        - paragraph [ref=f5e130]: Tissue paper and disposable products organised by company and product type for easier selection.
+                      - generic [ref=f5e131]:
+                        - heading "Direct Enquiries" [level=3] [ref=f5e132]
+                        - paragraph [ref=f5e133]: Customers can contact Ashok Trading directly for product availability and wholesale orders.
+                    - generic [ref=f5e134]:
+                      - generic [ref=f5e135]: "Dealership with:"
+                      - generic [ref=f5e136]:
+                        - article [ref=f5e137]:
+                          - img "Rossari Professional logo" [ref=f5e138]
+                          - heading "Rossari Professional" [level=4] [ref=f5e139]
+                          - paragraph [ref=f5e140]: Official Website of Rossari
+                          - link "Visit official website ↗" [ref=f5e141] [cursor=pointer]:
+                            - /url: https://rossariprofessional.com/
+                        - article [ref=f5e142]:
+                          - img "Kressa logo" [ref=f5e143]
+                          - heading "Kressa" [level=4] [ref=f5e144]
+                          - paragraph [ref=f5e145]: Official Website of Kressa
+                          - link "Visit official website ↗" [ref=f5e146] [cursor=pointer]:
+                            - /url: https://kressa.co.in/
+                    - generic [ref=f5e147]:
+                      - generic [ref=f5e148]: Why Ashok Trading?
+                      - generic [ref=f5e149]:
+                        - generic [ref=f5e150]:
+                          - heading "Quality Products" [level=4] [ref=f5e155]
+                          - paragraph [ref=f5e156]: Quality products for dependable everyday use.
+                        - generic [ref=f5e157]:
+                          - heading "Super Soft Napkins" [level=4] [ref=f5e162]
+                          - paragraph [ref=f5e163]: Soft and comfortable napkin options.
+                        - generic [ref=f5e164]:
+                          - heading "All Sizes" [level=4] [ref=f5e169]
+                          - paragraph [ref=f5e170]: Different sizes and formats for different needs.
+                        - generic [ref=f5e171]:
+                          - heading "Flexible Options" [level=4] [ref=f5e176]
+                          - paragraph [ref=f5e177]: Options to suit different requirements and budgets.
+                  - generic [ref=f5e178]:
+                    - generic [ref=f5e179]:
+                      - generic [ref=f5e180]: Contact
+                      - heading "Let's talk" [level=2] [ref=f5e181]
+                      - paragraph [ref=f5e182]: For product enquiries, wholesale orders or directions, contact Ashok Trading directly.
+                    - generic [ref=f5e183]:
+                      - generic [ref=f5e184]:
+                        - heading "Contact Ashok Trading" [level=3] [ref=f5e185]
+                        - generic [ref=f5e186]:
+                          - generic [ref=f5e187]: Phone
+                          - link "9967258331" [ref=f5e189] [cursor=pointer]:
+                            - /url: tel:+919967258331
+                        - generic [ref=f5e190]:
+                          - generic [ref=f5e191]: Email
+                          - link "ashoktrading65@gmail.com" [ref=f5e193] [cursor=pointer]:
+                            - /url: mailto:ashoktrading65@gmail.com
+                        - generic [ref=f5e194]:
+                          - generic [ref=f5e195]: WhatsApp
+                          - link "9967258331" [ref=f5e197] [cursor=pointer]:
+                            - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                        - link "Open location in Google Maps ↗" [ref=f5e198] [cursor=pointer]:
+                          - /url: https://www.google.com/maps/search/?api=1&query=Shop+No.+2,+Opp.+Unique+BLDG,+Ramesh+Nagar,+Last+Bus+Stop,+near+Geetanjali+Bus+Stop,+Amboli,+Andheri+West,+Mumbai+400058
+                      - generic [ref=f5e199]:
+                        - heading "Business information" [level=3] [ref=f5e200]
+                        - generic [ref=f5e201]:
+                          - generic [ref=f5e202]: Products
+                          - generic [ref=f5e203]: Tissue & Disposable Products
+                        - generic [ref=f5e204]:
+                          - generic [ref=f5e205]: Brands
+                          - generic [ref=f5e206]: Rossari · Kressa · ACE Paper & Tissue · Others
+                        - generic [ref=f5e207]:
+                          - generic [ref=f5e208]: Address
+                          - generic [ref=f5e209]: Shop no. 2, Opp. Unique BLDG, Ramesh Nagar, Last Bus Stop, near Geetanjali Bus Stop, Amboli, Andheri (w), Mumbai - 400058
+                - link "Contact Ashok Trading on WhatsApp" [ref=f5e210] [cursor=pointer]:
+                  - /url: https://wa.me/919967258331?text=Hii%20Ashok%20sir!%0AI%20wanted...
+                - contentinfo [ref=f5e213]:
+                  - strong [ref=f5e214]: ASHOK TRADING
+                  - paragraph [ref=f5e215]: Tissue & Disposable Products
+                  - paragraph [ref=f5e216]: "© 2026 Ashok Trading: All Rights Reserved."
+            - link "Open the Ashok Trading website in a new tab" [ref=f4e175] [cursor=pointer]:
+              - /url: https://ashok-trading.pages.dev
+          - generic [ref=f4e176]:
+            - paragraph [ref=f4e177]: Website
+            - heading "Ashok Trading" [level=3] [ref=f4e178]
+            - generic [ref=f4e179]:
+              - term [ref=f4e180]: Problem
+              - definition [ref=f4e181]: A Mumbai wholesale supplier of tissue and disposable products sells across several brands, and customers need to find the right item and reach the shop directly.
+              - term [ref=f4e182]: Approach
+              - definition [ref=f4e183]: The range is organised by company (Rossari, Kressa, ACE Paper & Tissue and others), then narrowed by product type. Call, message and map actions sit in a dedicated bulk-order block.
+              - term [ref=f4e184]: Features
+              - definition [ref=f4e185]: Company-grouped product catalogue with type filters, an About page with dealership details, contact information and a Google Maps link.
+              - term [ref=f4e186]: Outcome
+              - definition [ref=f4e187]: A live business website, designed and developed by me.
+            - link "View Website" [ref=f4e188] [cursor=pointer]:
+              - /url: https://ashok-trading.pages.dev
+        - article [ref=f4e189]:
+          - generic [ref=f4e191]:
+            - iframe [aria-hidden] [ref=f4e192]:
+              - generic [ref=f6e1]:
+                - generic [ref=f6e3]:
+                  - img "Feast & Fable logo" [ref=f6e4]
+                  - generic [ref=f6e5]: Feast & Fable
+                  - paragraph [ref=f6e7]: Stained-glass arches, courtyard greenery and a full bar on New Link Road — built for long tables and slow conversation.
+                  - generic [ref=f6e8]:
+                    - button "View the Menu" [ref=f6e9] [cursor=pointer]
+                    - link "Call Us" [ref=f6e10] [cursor=pointer]:
+                      - /url: tel:+917055508040
+                - navigation [ref=f6e11]:
+                  - generic [ref=f6e13]:
+                    - button "Home" [ref=f6e14]
+                    - button "About Us" [ref=f6e15]
+                    - button "Menu" [ref=f6e16]
+                    - button "Contact Us" [ref=f6e17]
+                - generic [ref=f6e19]:
+                  - paragraph [ref=f6e20]: About Feast & Fable
+                  - heading "A garden café built for both afternoons and late nights." [level=2] [ref=f6e21]
+                  - paragraph [ref=f6e22]: Set behind stained-glass arches on New Link Road, Feast & Fable pairs an open courtyard with a warm indoor room, a full bar, and a kitchen running vegetarian and non-vegetarian menus side by side. Rated 4.7 by guests who keep coming back for the atmosphere as much as the drinks.
+                - generic [ref=f6e24]:
+                  - generic [ref=f6e25]:
+                    - paragraph [ref=f6e26]: Inside Feast & Fable
+                    - heading "Every room has a different mood." [level=2] [ref=f6e27]
+                  - generic [ref=f6e28]:
+                    - generic [ref=f6e29]:
+                      - img "Garden cafe courtyard seating" [ref=f6e30]
+                      - generic [ref=f6e31]:
+                        - generic [ref=f6e32]: "01"
+                        - generic [ref=f6e33]: Garden courtyard dining area
+                    - generic [ref=f6e34]:
+                      - img "Stained glass arched dining nook" [ref=f6e35]
+                      - generic [ref=f6e36]:
+                        - generic [ref=f6e37]: "02"
+                        - generic [ref=f6e38]: Stained glass arched nook
+                    - generic [ref=f6e39]:
+                      - img "Bar with backlit bottle display" [ref=f6e40]
+                      - generic [ref=f6e41]:
+                        - generic [ref=f6e42]: "03"
+                        - generic [ref=f6e43]: Backlit bar bottle wall
+                    - generic [ref=f6e44]:
+                      - img "Terrace seating at night" [ref=f6e45]
+                      - generic [ref=f6e46]:
+                        - generic [ref=f6e47]: "04"
+                        - generic [ref=f6e48]: Open-air terrace at night
+                    - generic [ref=f6e49]:
+                      - img "Lounge seating with screens" [ref=f6e50]
+                      - generic [ref=f6e51]:
+                        - generic [ref=f6e52]: "05"
+                        - generic [ref=f6e53]: Cozy lounge screen corner
+                    - generic [ref=f6e54]:
+                      - img "Entrance facade at night" [ref=f6e55]
+                      - generic [ref=f6e56]:
+                        - generic [ref=f6e57]: "06"
+                        - generic [ref=f6e58]: Glowing entrance after dark
+                - generic [ref=f6e60]:
+                  - generic [ref=f6e61]:
+                    - paragraph [ref=f6e62]: Happy Hours
+                    - heading "The bar menu." [level=2] [ref=f6e63]
+                    - paragraph [ref=f6e64]: Two happy-hour windows, two lists. Standard serving size 30ml. Taxes as applicable — a 10% service charge is levied. Offer prices don't apply on third-party platforms (Zomato, Swiggy, Dineout).
+                  - generic [ref=f6e65]:
+                    - button "Day · 12 PM – 7:30 PM" [ref=f6e66] [cursor=pointer]
+                    - button "Night · 7:30 PM – 1 AM" [ref=f6e67] [cursor=pointer]
+                  - generic [ref=f6e69]:
+                    - generic [ref=f6e70]:
+                      - generic [ref=f6e71]:
+                        - generic [ref=f6e72]:
+                          - heading "Vodka" [level=3] [ref=f6e73]
+                          - generic [ref=f6e74]: 1+1
+                        - generic [ref=f6e75]:
+                          - generic [ref=f6e76]: Smirnoff
+                          - generic [ref=f6e77]: ₹538₹269
+                        - generic [ref=f6e78]:
+                          - generic [ref=f6e79]: Smirnoff Flavour
+                          - generic [ref=f6e80]: ₹558₹279
+                      - generic [ref=f6e81]:
+                        - generic [ref=f6e82]:
+                          - heading "Rum" [level=3] [ref=f6e83]
+                          - generic [ref=f6e84]: 1+1
+                        - generic [ref=f6e85]:
+                          - generic [ref=f6e86]: Bacardi Carta Blanca
+                          - generic [ref=f6e87]: ₹538₹269
+                        - generic [ref=f6e88]:
+                          - generic [ref=f6e89]: Bacardi Limon
+                          - generic [ref=f6e90]: ₹558₹279
+                        - generic [ref=f6e91]:
+                          - generic [ref=f6e92]: Old Monk
+                          - generic [ref=f6e93]: ₹378₹189
+                      - generic [ref=f6e94]:
+                        - generic [ref=f6e95]:
+                          - heading "Gin" [level=3] [ref=f6e96]
+                          - generic [ref=f6e97]: 1+1
+                        - generic [ref=f6e98]:
+                          - generic [ref=f6e99]: Greater Than
+                          - generic [ref=f6e100]: ₹598₹299
+                        - generic [ref=f6e101]:
+                          - generic [ref=f6e102]: Tanqueray
+                          - generic [ref=f6e103]: ₹958₹479
+                      - generic [ref=f6e104]:
+                        - generic [ref=f6e105]:
+                          - heading "Tequila" [level=3] [ref=f6e106]
+                          - generic [ref=f6e107]: 1+1
+                        - generic [ref=f6e108]:
+                          - generic [ref=f6e109]: Jose Cuervo Silver
+                          - generic [ref=f6e110]: ₹858₹429
+                      - generic [ref=f6e111]:
+                        - generic [ref=f6e112]:
+                          - heading "Brandy" [level=3] [ref=f6e113]
+                          - generic [ref=f6e114]: 1+1
+                        - generic [ref=f6e115]:
+                          - generic [ref=f6e116]: Honeybee
+                          - generic [ref=f6e117]: ₹378₹189
+                    - generic [ref=f6e118]:
+                      - generic [ref=f6e119]:
+                        - generic [ref=f6e120]:
+                          - heading "Whisky" [level=3] [ref=f6e121]
+                          - generic [ref=f6e122]: 1+1
+                        - generic [ref=f6e123]:
+                          - generic [ref=f6e124]: Blenders Pride
+                          - generic [ref=f6e125]: ₹538₹269
+                        - generic [ref=f6e126]:
+                          - generic [ref=f6e127]: Antiquity Blue
+                          - generic [ref=f6e128]: ₹538₹269
+                        - generic [ref=f6e129]:
+                          - generic [ref=f6e130]: Black & White
+                          - generic [ref=f6e131]: ₹778₹389
+                        - generic [ref=f6e132]:
+                          - generic [ref=f6e133]: Teacher's HC
+                          - generic [ref=f6e134]: ₹778₹389
+                        - generic [ref=f6e135]:
+                          - generic [ref=f6e136]: VAT 69
+                          - generic [ref=f6e137]: ₹778₹389
+                        - generic [ref=f6e138]:
+                          - generic [ref=f6e139]: Black Dog Reserve
+                          - generic [ref=f6e140]: ₹838₹419
+                        - generic [ref=f6e141]:
+                          - generic [ref=f6e142]: Red Label
+                          - generic [ref=f6e143]: ₹898₹449
+                        - generic [ref=f6e144]:
+                          - generic [ref=f6e145]: Indri
+                          - generic [ref=f6e146]: ₹1098₹549
+                      - generic [ref=f6e147]:
+                        - generic [ref=f6e148]:
+                          - heading "Beer" [level=3] [ref=f6e149]
+                          - generic [ref=f6e150]: 2+1
+                        - generic [ref=f6e151]:
+                          - generic [ref=f6e152]: Kingfisher Premium
+                          - generic [ref=f6e153]: ₹957₹638
+                        - generic [ref=f6e154]:
+                          - generic [ref=f6e155]: Kingfisher Ultra
+                          - generic [ref=f6e156]: ₹1107₹738
+                        - generic [ref=f6e157]:
+                          - generic [ref=f6e158]: Heineken
+                          - generic [ref=f6e159]: ₹1167₹778
+                        - generic [ref=f6e160]:
+                          - generic [ref=f6e161]: Budweiser
+                          - generic [ref=f6e162]: ₹1167₹778
+                        - generic [ref=f6e163]:
+                          - generic [ref=f6e164]: Budweiser Magnum
+                          - generic [ref=f6e165]: ₹1257₹838
+                        - generic [ref=f6e166]:
+                          - generic [ref=f6e167]: Corona
+                          - generic [ref=f6e168]: ₹1647₹1098
+                        - generic [ref=f6e169]:
+                          - generic [ref=f6e170]: Hoegaarden
+                          - generic [ref=f6e171]: ₹1647₹1098
+                      - generic [ref=f6e172]:
+                        - generic [ref=f6e173]:
+                          - heading "Beer on Tap" [level=3] [ref=f6e174]
+                          - generic [ref=f6e175]: 1+1
+                        - generic [ref=f6e176]:
+                          - generic [ref=f6e177]: Kingfisher · 330ml
+                          - generic [ref=f6e178]: ₹458₹229
+                        - generic [ref=f6e179]:
+                          - generic [ref=f6e180]: Kingfisher · 500ml
+                          - generic [ref=f6e181]: ₹698₹349
+                        - generic [ref=f6e182]:
+                          - generic [ref=f6e183]: Kingfisher · 1500ml
+                          - generic [ref=f6e184]: ₹1898₹949
+                      - generic [ref=f6e185]:
+                        - generic [ref=f6e186]:
+                          - heading "Breezer" [level=3] [ref=f6e187]
+                          - generic [ref=f6e188]: 2+1
+                        - generic [ref=f6e189]:
+                          - generic [ref=f6e190]: Breezer (all flavours)
+                          - generic [ref=f6e191]: ₹1047₹698
+                      - generic [ref=f6e192]:
+                        - generic [ref=f6e193]:
+                          - heading "Cocktails" [level=3] [ref=f6e194]
+                          - generic [ref=f6e195]: 2+1
+                        - generic [ref=f6e196]: Full cocktail menu on request
+                  - generic [ref=f6e198]: Standard serving size 30ml · Taxes as applicable · 10% service charge levied · Offer prices not valid on payments made through third-party platforms such as Zomato, Swiggy, Dineout. Terms & conditions apply.
+                - generic [ref=f6e200]:
+                  - generic [ref=f6e201]:
+                    - paragraph [ref=f6e202]: Contact Us
+                    - heading "Find your way here." [level=2] [ref=f6e203]
+                  - generic [ref=f6e204]:
+                    - generic [ref=f6e205]:
+                      - generic [ref=f6e210]:
+                        - generic [ref=f6e211]: Address
+                        - generic [ref=f6e212]: ND Trishul Building, Oberoi Complex, New Link Road, Shastri Nagar, Andheri West, Mumbai 400053
+                      - generic [ref=f6e216]:
+                        - generic [ref=f6e217]: Phone
+                        - link "+91 70555 08040" [ref=f6e219] [cursor=pointer]:
+                          - /url: tel:+917055508040
+                      - generic [ref=f6e224]:
+                        - generic [ref=f6e225]: Hours
+                        - generic [ref=f6e226]: Open daily · 12:00 PM – 1:00 AM
+                    - generic [ref=f6e227]:
+                      - generic [ref=f6e231]:
+                        - heading "New Link Road, Andheri West" [level=3] [ref=f6e232]
+                        - paragraph [ref=f6e233]: ND Trishul Building, Oberoi Complex, Shastri Nagar, Andheri West, Mumbai 400053
+                      - link "Open in Google Maps" [ref=f6e235] [cursor=pointer]:
+                        - /url: https://www.google.com/maps/place/?q=place_id:ChIJT3FZZmu35zsRiI8Vhy5xRew
+                - contentinfo [ref=f6e236]: © 2026 Feast & Fable. All Rights Reserved.
+                - link "Chat on WhatsApp" [ref=f6e237] [cursor=pointer]:
+                  - /url: https://wa.me/917055508040?text=Hi%20Feast%20%26%20Fable%2C%20I%27d%20like%20to%20know%20more!
+            - link "Open the Feast & Fable website in a new tab" [ref=f4e193] [cursor=pointer]:
+              - /url: https://feast-and-fable.pages.dev
+          - generic [ref=f4e194]:
+            - paragraph [ref=f4e195]: Website
+            - heading "Feast & Fable" [level=3] [ref=f4e196]
+            - generic [ref=f4e197]:
+              - term [ref=f4e198]: Problem
+              - definition [ref=f4e199]: A restaurant needs a website that presents it online.
+              - term [ref=f4e200]: Approach
+              - definition [ref=f4e201]: Designed and developed by me as a standalone restaurant website.
+              - term [ref=f4e202]: Features
+              - definition [ref=f4e203]: "Best judged live: scroll the preview or open the full site."
+              - term [ref=f4e204]: Outcome
+              - definition [ref=f4e205]: A live restaurant website, designed and developed by me.
+            - link "View Website" [ref=f4e206] [cursor=pointer]:
+              - /url: https://feast-and-fable.pages.dev
+        - article [ref=f4e207]:
+          - generic [ref=f4e209]:
+            - iframe [aria-hidden] [ref=f4e210]:
+              - generic [ref=f7e1]:
+                - generic [ref=f7e8]:
+                  - generic [ref=f7e9]:
+                    - img "NutriFit logo" [ref=f7e10]
+                    - generic [ref=f7e11]:
+                      - heading "NUTRIFIT" [level=1] [ref=f7e12]
+                      - paragraph [ref=f7e13]: Train. Eat. Improve.
+                    - paragraph [ref=f7e14]: Your personal trainer, nutrition coach and progress tracker — in one place. No email, no password. Just a private Keypass.
+                  - generic [ref=f7e15]:
+                    - button "Create my profile" [ref=f7e16]
+                    - button "I have a Keypass" [ref=f7e17]
+                - region "Notifications alt+T"
+            - link "Open the NutriFit Application for a GYM in a new tab" [ref=f4e211] [cursor=pointer]:
+              - /url: https://nutri-fit-v1.lovable.app
+          - generic [ref=f4e212]:
+            - paragraph [ref=f4e213]: Application
+            - heading "NutriFit Application for a GYM" [level=3] [ref=f4e214]
+            - generic [ref=f4e215]:
+              - term [ref=f4e216]: Problem
+              - definition [ref=f4e217]: Gym-goers need one place to track what they eat, log their workouts and see whether they are improving.
+              - term [ref=f4e218]: Approach
+              - definition [ref=f4e219]: A mobile-first application built with React and styled with Tailwind CSS on the Lovable platform, paired with a NutriFit logo I designed (shown in the Design Showcase below).
+              - term [ref=f4e220]: Features
+              - definition [ref=f4e221]: Nutrition tracking, workout logging and progress insights, as described on the app itself.
+              - term [ref=f4e222]: Outcome
+              - definition [ref=f4e223]: A working application you can open and try. It is shown here as a project, not as a production rollout.
+            - link "Open the App" [ref=f4e224] [cursor=pointer]:
+              - /url: https://nutri-fit-v1.lovable.app
+    - region "Design Showcase" [ref=f4e225]:
+      - generic [ref=f4e226]:
+        - heading "Design Showcase" [level=2] [ref=f4e227]
+        - paragraph [ref=f4e228]: Eight originals — thumbnails, posters, logos and a banner, one at a time.
+      - generic [aria-hidden] [ref=f4e231]:
+        - generic [ref=f4e232]: 1 / 8
+        - generic [ref=f4e233]: Top 3 secrets of AI tools · Thumbnail
+      - link "Start Making Yours" [ref=f4e236] [cursor=pointer]:
+        - /url: "#contact"
+    - region "Contact" [ref=f4e237]:
+      - generic [ref=f4e238]:
+        - generic [ref=f4e239]:
+          - heading "Contact" [level=2] [ref=f4e240]
+          - paragraph [ref=f4e241]: Have a problem worth solving?
+          - paragraph [ref=f4e242]: Tell me what is in the way. We will work out whether it needs a website, an application, a design, or a mix of them.
+        - generic [ref=f4e243]:
+          - link "Email Me sumeeth.work18@gmail.com" [ref=f4e244] [cursor=pointer]:
+            - /url: mailto:sumeeth.work18@gmail.com
+            - generic [ref=f4e245]: Email Me
+            - generic [ref=f4e246]: sumeeth.work18@gmail.com
+          - link "WhatsApp / Text Me send a direct message" [ref=f4e247] [cursor=pointer]:
+            - /url: https://wa.me/919022533004
+            - generic [ref=f4e248]: WhatsApp / Text Me
+            - generic [ref=f4e249]: send a direct message
+  - contentinfo [ref=f4e250]:
+    - generic [ref=f4e251]:
+      - paragraph [ref=f4e252]: Sumeeth Ashok Melkera
+      - paragraph [ref=f4e253]: designed & built by me — websites, applications and designs
+      - navigation "Footer" [ref=f4e254]:
+        - link "Home" [ref=f4e255] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=f4e256] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=f4e257] [cursor=pointer]:
+          - /url: "#skills"
+        - link "My Works" [ref=f4e258] [cursor=pointer]:
+          - /url: "#works"
+        - link "Email" [ref=f4e259] [cursor=pointer]:
+          - /url: mailto:sumeeth.work18@gmail.com
+        - link "WhatsApp" [ref=f4e260] [cursor=pointer]:
+          - /url: https://wa.me/919022533004

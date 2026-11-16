@@ -1,0 +1,250 @@
+- generic [active] [ref=f8e1]:
+  - link "Skip to content" [ref=f8e2] [cursor=pointer]:
+    - /url: "#about"
+  - text: ▌
+  - banner:
+    - generic:
+      - link "My Works" [ref=f8e3] [cursor=pointer]:
+        - /url: "#works"
+      - navigation "Primary" [ref=f8e4]:
+        - link "Home" [ref=f8e5] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=f8e6] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=f8e7] [cursor=pointer]:
+          - /url: "#skills"
+        - link "My Works" [ref=f8e8] [cursor=pointer]:
+          - /url: "#works"
+        - link "Contact" [ref=f8e9] [cursor=pointer]:
+          - /url: "#contact"
+      - link "Get Started" [ref=f8e10] [cursor=pointer]:
+        - /url: "#contact"
+  - main [ref=f8e11]:
+    - region "Sumeeth Melkera" [ref=f8e12]:
+      - paragraph [ref=f8e13]: "Creative areas: Website, Application, Designs, Digital Solution."
+      - generic [ref=f8e14]:
+        - generic [ref=f8e15]:
+          - generic [ref=f8e16]:
+            - 'img "Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him" [ref=f8e17]'
+            - text: </>
+          - heading "Sumeeth Melkera" [level=1] [ref=f8e18]
+          - paragraph [ref=f8e19]: Creative Developer
+          - link "Get in Touch → let's talk" [ref=f8e20] [cursor=pointer]:
+            - /url: "#contact"
+            - generic [ref=f8e21]: Get in Touch →
+            - emphasis [ref=f8e22]: let's talk
+        - complementary [aria-hidden] [ref=f8e23]:
+          - paragraph [ref=f8e24]:
+            - text: I help Businesses make their online Presence Stronger by
+            - generic [ref=f8e26]: Digital Solution
+            - generic [ref=f8e27]: websites, applications, designs and digital solutions.
+          - generic [ref=f8e28]:
+            - generic [ref=f8e29]: field notes — kept one problem at a time
+            - button [ref=f8e31] [cursor=pointer]:
+              - generic [ref=f8e32]:
+                - generic [ref=f8e33]: field notes
+                - generic [ref=f8e34]: For every problem, a fitting answer
+                - generic [ref=f8e35]: 01 Websites02 Applications03 Designs04 Digital Solutions
+                - generic [ref=f8e39]: turn the page ↺
+              - generic [ref=f8e40]:
+                - generic [ref=f8e41]: what I make
+                - generic [ref=f8e42]: the tool comes after the problem — never before
+                - generic [ref=f8e43]: S.
+            - button [ref=f8e44] [cursor=pointer]:
+              - generic [ref=f8e45]:
+                - generic [ref=f8e46]: "01"
+                - generic [ref=f8e47]: Websites
+                - generic [ref=f8e48]: Business presence, built to be seen — and found.
+              - generic [ref=f8e49]:
+                - generic [ref=f8e50]: kept
+                - generic [ref=f8e51]: websites that reach customers
+                - generic [ref=f8e52]: S.
+            - button [ref=f8e53] [cursor=pointer]:
+              - generic [ref=f8e54]:
+                - generic [ref=f8e55]: "02"
+                - generic [ref=f8e56]: Applications
+                - generic [ref=f8e57]: Tools people actually use — tracking, logging, improving.
+              - generic [ref=f8e58]:
+                - generic [ref=f8e59]: kept
+                - generic [ref=f8e60]: software that works in hand
+                - generic [ref=f8e61]: S.
+            - button [ref=f8e62] [cursor=pointer]:
+              - generic [ref=f8e63]:
+                - generic [ref=f8e64]: "03"
+                - generic [ref=f8e65]: Designs
+                - generic [ref=f8e66]: Thumbnails · posters · logos · promotional banners.
+              - generic [ref=f8e67]:
+                - generic [ref=f8e68]: kept
+                - generic [ref=f8e69]: visuals with the brand's voice
+                - generic [ref=f8e70]: S.
+            - button [ref=f8e71] [cursor=pointer]:
+              - generic [ref=f8e72]:
+                - generic [ref=f8e73]: "04"
+                - generic [ref=f8e74]: Digital Solutions
+                - generic [ref=f8e75]: One of these — or a mix of them, as the problem asks.
+                - generic [ref=f8e76]: from my works ↓
+              - generic [ref=f8e77]:
+                - generic [ref=f8e78]: kept
+                - generic [ref=f8e79]: the diary always ends here
+                - generic [ref=f8e80]: S.
+    - region [ref=f8e81]:
+      - generic [ref=f8e82]:
+        - 'img "Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie" [ref=f8e84]'
+        - paragraph [ref=f8e85]: Heyy...!! I am Sumeeth
+        - generic [ref=f8e86]:
+          - generic [ref=f8e87]:
+            - paragraph [ref=f8e88]: I don't start with a tool. I start with the problem.
+            - paragraph [ref=f8e89]: The one who keeps the diary above — web designer, application developer and graphic designer, depending on what the problem asks for.
+          - generic [ref=f8e90]:
+            - paragraph [ref=f8e91]: "Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way."
+            - paragraph [ref=f8e92]: Only then do I decide what to make. Sometimes the answer is a website. Sometimes it is an application. Sometimes it is a visual design, such as a thumbnail, a poster or a logo. Often it is a combination, and the pieces have to look like they belong together.
+            - list [ref=f8e93]:
+              - listitem [ref=f8e94]:
+                - generic [ref=f8e95]: Understand
+                - generic [ref=f8e96]: What is the problem, who has it, and what does solving it look like?
+              - listitem [ref=f8e97]:
+                - generic [ref=f8e98]: Choose
+                - generic [ref=f8e99]: Pick the digital solution that fits, instead of the one I happen to prefer.
+              - listitem [ref=f8e100]:
+                - generic [ref=f8e101]: Build
+                - generic [ref=f8e102]: Design and develop it, check it on real screens, and put it online.
+    - region "Technical Skills" [ref=f8e103]:
+      - generic [ref=f8e104]:
+        - generic [ref=f8e105]:
+          - heading "Technical Skills" [level=2] [ref=f8e106]
+          - paragraph [ref=f8e107]: Only what my portfolio and its projects actually show — no invented bars, no invented percentages.
+        - generic [ref=f8e108]:
+          - heading "Languages" [level=3] [ref=f8e109]
+          - list [ref=f8e110]:
+            - listitem [ref=f8e111]:
+              - generic [ref=f8e115]: HTML
+              - generic [ref=f8e116]: structure
+            - listitem [ref=f8e117]:
+              - generic [ref=f8e121]: CSS
+              - generic [ref=f8e122]: style & layout
+            - listitem [ref=f8e123]:
+              - generic [ref=f8e127]: JavaScript
+              - generic [ref=f8e128]: interaction
+        - generic [ref=f8e129]:
+          - heading "Frameworks & Libraries" [level=3] [ref=f8e130]
+          - list [ref=f8e131]:
+            - listitem [ref=f8e132]:
+              - generic [ref=f8e138]: React.js
+              - generic [ref=f8e139]: NutriFit app
+            - listitem [ref=f8e140]:
+              - generic [ref=f8e143]: Tailwind CSS
+              - generic [ref=f8e144]: NutriFit app
+        - generic [ref=f8e145]:
+          - heading "Design & Creative" [level=3] [ref=f8e146]
+          - list [ref=f8e147]:
+            - listitem [ref=f8e148]:
+              - generic [ref=f8e153]: Graphics
+              - generic [ref=f8e154]: thumbnails · posters
+            - listitem [ref=f8e155]:
+              - generic [ref=f8e159]: Logos & Branding
+              - generic [ref=f8e160]: NutriFit · Ashok
+            - listitem [ref=f8e161]:
+              - generic [ref=f8e165]: Banners
+              - generic [ref=f8e166]: promotional design
+    - region "My Works" [ref=f8e167]:
+      - generic [ref=f8e168]:
+        - heading "My Works" [level=2] [ref=f8e169]
+        - paragraph [ref=f8e170]: Three problems, three answers. Each preview below is the live project.
+        - article [ref=f8e171]:
+          - generic [ref=f8e173]:
+            - iframe [aria-hidden] [ref=f8e174]
+            - link "Open the Ashok Trading website in a new tab" [ref=f8e175] [cursor=pointer]:
+              - /url: https://ashok-trading.pages.dev
+          - generic [ref=f8e176]:
+            - paragraph [ref=f8e177]: Website
+            - heading "Ashok Trading" [level=3] [ref=f8e178]
+            - generic [ref=f8e179]:
+              - term [ref=f8e180]: Problem
+              - definition [ref=f8e181]: A Mumbai wholesale supplier of tissue and disposable products sells across several brands, and customers need to find the right item and reach the shop directly.
+              - term [ref=f8e182]: Approach
+              - definition [ref=f8e183]: The range is organised by company (Rossari, Kressa, ACE Paper & Tissue and others), then narrowed by product type. Call, message and map actions sit in a dedicated bulk-order block.
+              - term [ref=f8e184]: Features
+              - definition [ref=f8e185]: Company-grouped product catalogue with type filters, an About page with dealership details, contact information and a Google Maps link.
+              - term [ref=f8e186]: Outcome
+              - definition [ref=f8e187]: A live business website, designed and developed by me.
+            - link "View Website" [ref=f8e188] [cursor=pointer]:
+              - /url: https://ashok-trading.pages.dev
+        - article [ref=f8e189]:
+          - generic [ref=f8e191]:
+            - iframe [aria-hidden] [ref=f8e192]
+            - link "Open the Feast & Fable website in a new tab" [ref=f8e193] [cursor=pointer]:
+              - /url: https://feast-and-fable.pages.dev
+          - generic [ref=f8e194]:
+            - paragraph [ref=f8e195]: Website
+            - heading "Feast & Fable" [level=3] [ref=f8e196]
+            - generic [ref=f8e197]:
+              - term [ref=f8e198]: Problem
+              - definition [ref=f8e199]: A restaurant needs a website that presents it online.
+              - term [ref=f8e200]: Approach
+              - definition [ref=f8e201]: Designed and developed by me as a standalone restaurant website.
+              - term [ref=f8e202]: Features
+              - definition [ref=f8e203]: "Best judged live: scroll the preview or open the full site."
+              - term [ref=f8e204]: Outcome
+              - definition [ref=f8e205]: A live restaurant website, designed and developed by me.
+            - link "View Website" [ref=f8e206] [cursor=pointer]:
+              - /url: https://feast-and-fable.pages.dev
+        - article [ref=f8e207]:
+          - generic [ref=f8e209]:
+            - iframe [aria-hidden] [ref=f8e210]
+            - link "Open the NutriFit Application for a GYM in a new tab" [ref=f8e211] [cursor=pointer]:
+              - /url: https://nutri-fit-v1.lovable.app
+          - generic [ref=f8e212]:
+            - paragraph [ref=f8e213]: Application
+            - heading "NutriFit Application for a GYM" [level=3] [ref=f8e214]
+            - generic [ref=f8e215]:
+              - term [ref=f8e216]: Problem
+              - definition [ref=f8e217]: Gym-goers need one place to track what they eat, log their workouts and see whether they are improving.
+              - term [ref=f8e218]: Approach
+              - definition [ref=f8e219]: A mobile-first application built with React and styled with Tailwind CSS on the Lovable platform, paired with a NutriFit logo I designed (shown in the Design Showcase below).
+              - term [ref=f8e220]: Features
+              - definition [ref=f8e221]: Nutrition tracking, workout logging and progress insights, as described on the app itself.
+              - term [ref=f8e222]: Outcome
+              - definition [ref=f8e223]: A working application you can open and try. It is shown here as a project, not as a production rollout.
+            - link "Open the App" [ref=f8e224] [cursor=pointer]:
+              - /url: https://nutri-fit-v1.lovable.app
+    - region "Design Showcase" [ref=f8e225]:
+      - generic [ref=f8e226]:
+        - heading "Design Showcase" [level=2] [ref=f8e227]
+        - paragraph [ref=f8e228]: Eight originals — thumbnails, posters, logos and a banner, one at a time.
+      - generic [aria-hidden] [ref=f8e231]:
+        - generic [ref=f8e232]: 1 / 8
+        - generic [ref=f8e233]: Top 3 secrets of AI tools · Thumbnail
+      - link "Start Making Yours" [ref=f8e236] [cursor=pointer]:
+        - /url: "#contact"
+    - region "Contact" [ref=f8e237]:
+      - generic [ref=f8e238]:
+        - generic [ref=f8e239]:
+          - heading "Contact" [level=2] [ref=f8e240]
+          - paragraph [ref=f8e241]: Have a problem worth solving?
+          - paragraph [ref=f8e242]: Tell me what is in the way. We will work out whether it needs a website, an application, a design, or a mix of them.
+        - generic [ref=f8e243]:
+          - link "Email Me sumeeth.work18@gmail.com" [ref=f8e244] [cursor=pointer]:
+            - /url: mailto:sumeeth.work18@gmail.com
+            - generic [ref=f8e245]: Email Me
+            - generic [ref=f8e246]: sumeeth.work18@gmail.com
+          - link "WhatsApp / Text Me send a direct message" [ref=f8e247] [cursor=pointer]:
+            - /url: https://wa.me/919022533004
+            - generic [ref=f8e248]: WhatsApp / Text Me
+            - generic [ref=f8e249]: send a direct message
+  - contentinfo [ref=f8e250]:
+    - generic [ref=f8e251]:
+      - paragraph [ref=f8e252]: Sumeeth Ashok Melkera
+      - paragraph [ref=f8e253]: designed & built by me — websites, applications and designs
+      - navigation "Footer" [ref=f8e254]:
+        - link "Home" [ref=f8e255] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=f8e256] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=f8e257] [cursor=pointer]:
+          - /url: "#skills"
+        - link "My Works" [ref=f8e258] [cursor=pointer]:
+          - /url: "#works"
+        - link "Email" [ref=f8e259] [cursor=pointer]:
+          - /url: mailto:sumeeth.work18@gmail.com
+        - link "WhatsApp" [ref=f8e260] [cursor=pointer]:
+          - /url: https://wa.me/919022533004
