@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Sumeeth Melkera — Creative Developer | Portfolio</title>
-  <meta name="description" content="Sumeeth Melkera is a creative developer helping businesses strengthen their online presence through websites, applications, designs and digital solutions.">
+  <title>SONIX — Sumeeth Melkera | Creative Developer</title>
+  <meta name="description" content="SONIX is the portfolio of Sumeeth Melkera, a creative developer helping businesses strengthen their online presence through websites, applications, designs and digital solutions.">
   <meta name="author" content="Sumeeth Ashok Melkera">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="-07A1yLt83-8bggKHce8vHZ0spFykZGHMIyRP-woCw4" />
@@ -15,22 +15,22 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sumeeths-portfolio.pages.dev/">
-  <meta property="og:site_name" content="Sumeeth's Portfolio">
-  <meta property="og:title" content="Sumeeth Melkera — Creative Developer">
+  <meta property="og:site_name" content="SONIX">
+  <meta property="og:title" content="SONIX — Sumeeth Melkera, Creative Developer">
   <meta property="og:description" content="Websites, applications, designs and digital solutions — chosen to fit the problem.">
-  <meta property="og:image" content="https://sumeeths-portfolio.pages.dev/assets/avatar/sumeeth-avatar.jpg">
+  <meta property="og:image" content="https://sumeeths-portfolio.pages.dev/assets/avatar/sonix-avatar.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
-  <meta property="og:image:alt" content="Sumeeth Ashok Melkera avatar">
+  <meta property="og:image:alt" content="SONIX portrait of Sumeeth Melkera">
   <meta property="og:locale" content="en">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Sumeeth Melkera — Creative Developer">
+  <meta name="twitter:title" content="SONIX — Sumeeth Melkera, Creative Developer">
   <meta name="twitter:description" content="Websites, applications, designs and digital solutions — chosen to fit the problem.">
-  <meta name="twitter:image" content="https://sumeeths-portfolio.pages.dev/assets/avatar/sumeeth-avatar.jpg">
-  <meta name="twitter:image:alt" content="Sumeeth Ashok Melkera avatar">
+  <meta name="twitter:image" content="https://sumeeths-portfolio.pages.dev/assets/avatar/sonix-avatar.jpg">
+  <meta name="twitter:image:alt" content="SONIX portrait of Sumeeth Melkera">
 
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -40,31 +40,29 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="preload" href="assets/avatar/sumeeth-avatar.jpg" as="image">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@300;400;500&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/avatar/sonix-avatar.jpg" as="image">
   <link rel="stylesheet" href="css/style.css">
 
   <script>
-  /* Boot decision: the cinematic intro runs once per session, never under reduced motion,
-     and is skipped on deep links. If main.js never runs, the failsafe reveals the hero. */
+  /* Intro decision: the cinematic intro runs once per session, never under reduced
+     motion, and is skipped on deep links. If main.js never runs, the failsafe
+     reveals the hero with all copy intact. */
   (function () {
     var d = document.documentElement;
     d.classList.add('js');
     var want = false;
     try {
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var seen = sessionStorage.getItem('sumeeth-intro-v4') === '1';
+      var seen = sessionStorage.getItem('sonix-intro-v1') === '1';
       var deep = !!location.hash;
       want = !reduced && !seen && !deep;
-      if (want) sessionStorage.setItem('sumeeth-intro-v4', '1');
-    } catch (e) { want = window.name !== 'sumeeth-intro-v4'; if (want) window.name = 'sumeeth-intro-v4'; }
-    window.__SUMEETH_INTRO = want;
+      if (want) sessionStorage.setItem('sonix-intro-v1', '1');
+    } catch (e) { want = window.name !== 'sonix-intro-v1'; if (want) window.name = 'sonix-intro-v1'; }
+    window.__SONIX_INTRO = want;
     if (want) d.classList.add('booting');
-    /* failsafe: if main.js never runs at all, force-reveal everything and restore
-       any text the typing engine had already cleared. When main.js IS running it
-       takes ownership (see __SUMEETH_INTRO_RUNNING) and runs its own failsafes. */
     setTimeout(function () {
-      if (window.__SUMEETH_INTRO_RUNNING) return;
+      if (window.__SONIX_INTRO_RUNNING) return;
       d.classList.remove('booting');
       d.classList.add('rv-force');
       try {
@@ -74,7 +72,7 @@
           if (s && o && !o.textContent) o.textContent = s.textContent;
         }
       } catch (e) {}
-    }, 13500);
+    }, 9000);
   })();
   </script>
 
@@ -84,9 +82,9 @@
       {
         "@type": "WebSite",
         "@id": "#website",
-        "name": "Sumeeth's Portfolio",
-        "alternateName": "Sumeeth Melkera — Creative Developer",
-        "description": "Sumeeth Melkera helps businesses strengthen their online presence through websites, applications, designs and digital solutions.",
+        "name": "SONIX",
+        "alternateName": "SONIX — Sumeeth Melkera, Creative Developer",
+        "description": "SONIX is the portfolio of Sumeeth Melkera, who helps businesses strengthen their online presence through websites, applications, designs and digital solutions.",
         "inLanguage": "en",
         "creator": { "@id": "#person" }
       },
@@ -96,7 +94,7 @@
         "name": "Sumeeth Ashok Melkera",
         "email": "mailto:sumeeth.work18@gmail.com",
         "jobTitle": "Creative Developer — Web Designer, Application Developer and Graphic Designer",
-        "image": "https://sumeeths-portfolio.pages.dev/assets/avatar/sumeeth-avatar.jpg",
+        "image": "https://sumeeths-portfolio.pages.dev/assets/avatar/sonix-avatar.jpg",
         "knowsAbout": ["Web design", "Web development", "Application development", "Graphic design", "React", "Tailwind CSS"]
       }
     ]
@@ -107,17 +105,25 @@
 
   <a class="skip" href="#about">Skip to content</a>
 
-  <!-- ===== Cinematic boot veil (typed code → "/" pendulum → title → idea line → particle avatar) ===== -->
+  <!-- ===== Cinematic intro: </> → particle portrait → "Let's bring your IDEA live!!" → SONIX ===== -->
   <div class="veil" id="veil" hidden>
-    <pre class="veil__code" id="veilCode" aria-hidden="true"></pre>
-    <div class="veil__pend" aria-hidden="true"><span class="veil__pend-label">loading</span><span class="veil__pend-slash"></span></div>
-    <p class="veil__line veil__line--site" aria-hidden="true"><span id="veilSite"></span></p>
-    <p class="veil__line veil__line--idea" aria-hidden="true"><span id="veilIdea"></span></p>
-    <p class="veil__vh">Sumeeth Melkera, creative developer. Portfolio loading.</p>
-    <button class="veil__skip" id="veilSkip" type="button">skip&nbsp;→</button>
+    <div class="veil__stage">
+      <div class="veil__art">
+        <div class="veil__portrait" aria-hidden="true">
+          <canvas id="veilCanvas"></canvas>
+          <span class="veil__ring"></span>
+        </div>
+        <p class="veil__mark" id="veilMark" aria-hidden="true"><span>&lt;</span><span>/</span><span>&gt;</span></p>
+      </div>
+      <p class="veil__idea" id="veilIdea" aria-hidden="true"><span class="w" style="--i:0">Let&rsquo;s</span> <span class="w" style="--i:1">bring</span> <span class="w" style="--i:2">your</span> <span class="w w--idea" style="--i:3">IDEA</span> <span class="w" style="--i:4">live!!</span></p>
+      <p class="veil__sign" id="veilSign" aria-hidden="true">SONIX<i>.</i></p>
+      <span class="veil__bar" aria-hidden="true"><i></i></span>
+    </div>
+    <p class="veil__vh">SONIX. Bringing your idea live. Loading Sumeeth Melkera&rsquo;s portfolio.</p>
+    <button class="veil__skip" id="veilSkip" type="button">Skip intro <span aria-hidden="true">→</span></button>
   </div>
 
-  <!-- ===== Centered glassmorphism navigation (all viewports, no hamburger) ===== -->
+  <!-- ===== Centered glass navigation (all viewports, no hamburger) ===== -->
   <header class="nav">
     <div class="wrap nav__inner">
       <a class="nav__cta nav__cta--left" href="#works" data-spy="works" aria-label="My Works">My Works</a>
@@ -134,23 +140,108 @@
 
   <main>
 
-    <!-- ===== HERO: giant PORTFOLIO · particle avatar · staged identity (per Home Page sketch) ===== -->
+    <!-- ===== HERO: oversized PORTFOLIO · SONIX portrait · diary beside it ===== -->
     <section class="hero" id="home" aria-labelledby="hero-name">
       <p class="vh">Creative areas: Website, Application, Designs, Digital Solution.</p>
+
       <div class="hero__folio" aria-hidden="true"><span class="hero__folio-word" id="folioWord">PORTFOLIO</span></div>
+      <div class="hero__spot" aria-hidden="true"></div>
       <div class="hero__grid" aria-hidden="true"></div>
       <canvas class="hero__ambient" id="ambientCanvas" aria-hidden="true"></canvas>
+      <p class="hero__rail" aria-hidden="true">SONIX<i>.</i></p>
 
-      <!-- Stage 2: avatar — particle formation hands over to the real artwork -->
-      <div class="avatarwrap" data-avatar>
-        <canvas class="avatar__canvas" aria-hidden="true"></canvas>
-        <img class="avatar__img" src="assets/avatar/sumeeth-avatar.jpg" width="1024" height="1024"
-             fetchpriority="high" decoding="async" alt="Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie, glowing circle and code symbol behind him">
+      <div class="hero__stage">
+        <!-- portrait -->
+        <div class="avatarwrap" data-avatar>
+          <span class="avatar__ring" aria-hidden="true"></span>
+          <canvas class="avatar__canvas" aria-hidden="true"></canvas>
+          <img class="avatar__img" src="assets/avatar/sonix-avatar.jpg" width="1024" height="1024"
+               fetchpriority="high" decoding="async"
+               alt="SONIX portrait of Sumeeth: an anime character with crimson-tipped black hair and red eyes, in a black hoodie with crimson trim, inside a glowing red ring">
+          <span class="avatar__tag" aria-hidden="true">SONIX<i>— 01</i></span>
+        </div>
+
+        <!-- diary: horizontal page flips, ending at Digital Solutions -->
+        <aside class="diary" data-diary aria-labelledby="diary-h">
+          <h2 class="vh" id="diary-h">What I make</h2>
+          <div class="diary__book" data-diary-book>
+            <div class="diary__base" aria-hidden="true">
+              <span class="diary__base-mark">SONIX<i>.</i></span>
+              <span class="diary__base-note">field notes — one problem at a time</span>
+            </div>
+
+            <div class="diary__page" data-i="0">
+              <div class="face face--front">
+                <span class="diary__kicker">field notes · 01</span>
+                <h3 class="diary__title">Websites</h3>
+                <p class="diary__line">Business presence, built to be seen — and found.</p>
+                <span class="diary__turn">turn the page <i aria-hidden="true">↻</i></span>
+              </div>
+              <div class="face face--back" aria-hidden="true">
+                <span class="diary__back-num">01</span>
+                <span class="diary__back-mark">SONIX<i>.</i></span>
+              </div>
+            </div>
+
+            <div class="diary__page" data-i="1">
+              <div class="face face--front">
+                <span class="diary__kicker">field notes · 02</span>
+                <h3 class="diary__title">Applications</h3>
+                <p class="diary__line">Tools people actually use — tracking, logging, improving.</p>
+                <span class="diary__turn">turn the page <i aria-hidden="true">↻</i></span>
+              </div>
+              <div class="face face--back" aria-hidden="true">
+                <span class="diary__back-num">02</span>
+                <span class="diary__back-mark">SONIX<i>.</i></span>
+              </div>
+            </div>
+
+            <div class="diary__page" data-i="2">
+              <div class="face face--front">
+                <span class="diary__kicker">field notes · 03</span>
+                <h3 class="diary__title">Designs</h3>
+                <p class="diary__line">Thumbnails, posters, logos and promotional banners.</p>
+                <span class="diary__turn">turn the page <i aria-hidden="true">↻</i></span>
+              </div>
+              <div class="face face--back" aria-hidden="true">
+                <span class="diary__back-num">03</span>
+                <span class="diary__back-mark">SONIX<i>.</i></span>
+              </div>
+            </div>
+
+            <div class="diary__page diary__page--final" data-i="3">
+              <div class="face face--front">
+                <span class="diary__kicker">field notes · 04</span>
+                <h3 class="diary__title">Digital Solutions</h3>
+                <p class="diary__line">One of these — or a mix of them, as the problem asks.</p>
+                <a class="diary__stamp" href="#works">from my works <i aria-hidden="true">↓</i></a>
+              </div>
+              <div class="face face--back" aria-hidden="true">
+                <span class="diary__back-num">04</span>
+                <span class="diary__back-mark">SONIX<i>.</i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="diary__foot">
+            <p class="diary__count" aria-hidden="true"><span id="diaryNow">01</span><i>/</i>04</p>
+            <button class="diary__next" id="diaryNext" type="button">Turn page <span aria-hidden="true">↻</span></button>
+          </div>
+          <p class="vh" id="diaryLive" role="status" aria-live="polite"></p>
+
+          <p class="diary__list-title" aria-hidden="true">What I make</p>
+          <ul class="diary__list">
+            <li><b>01</b><span>Websites — business presence, built to be seen and found.</span></li>
+            <li><b>02</b><span>Applications — tools people actually use: tracking, logging, improving.</span></li>
+            <li><b>03</b><span>Designs — thumbnails, posters, logos and promotional banners.</span></li>
+            <li><b>04</b><span>Digital Solutions — one of these, or a mix, as the problem asks.</span></li>
+          </ul>
+        </aside>
       </div>
 
       <div class="wrap hero__bottom">
-        <!-- Stages 3–4: greeting, name, role -->
         <div class="identity">
+          <p class="identity__brand">SONIX<i>.</i></p>
           <p class="identity__hi" data-type>Hii..!! I am</p>
           <h1 class="identity__name" id="hero-name" data-type data-text="SUMEETH" data-aria="Sumeeth Melkera">Sumeeth Melkera</h1>
           <p class="identity__role">
@@ -160,7 +251,6 @@
           <a class="cta cta--single st" href="#contact"><span>Get in Touch</span><em>let's talk</em></a>
         </div>
 
-        <!-- Stage 5: tagline, bottom-right -->
         <p class="hero__tagline">
           <span class="tag-in" data-type>I help businesses make their online presence stronger by</span>
           <span class="ticker" data-ticker aria-hidden="true"><span class="ticker__word">Digital&nbsp;Solution</span></span>
@@ -168,84 +258,8 @@
         </p>
       </div>
 
-      <!-- Stage 6: bottom strip, only after Stage 5 completes -->
       <div class="wrap hero__stripwrap">
         <p class="hero__strip st" data-type-seg>Digital Solutions ← Designs ← Applications ← Websites</p>
-      </div>
-    </section>
-
-    <!-- ===== FIELD NOTES: the horizontal diary, flipping bottom to top ===== -->
-    <section class="notes" id="notes" aria-label="Field notes">
-      <div class="wrap notes__inner">
-        <aside class="diary" data-diary>
-          <div class="diary__book">
-            <div class="diary__base">
-              <span class="diary__base-line">field notes — kept one problem at a time</span>
-            </div>
-            <button class="diary__page" data-i="0" style="z-index:100" type="button" tabindex="-1">
-              <span class="face face--front">
-                <span class="diary__kicker">field notes</span>
-                <span class="diary__title">For every problem, a fitting answer</span>
-                <span class="diary__index">01&nbsp;Websites<br>02&nbsp;Applications<br>03&nbsp;Designs<br>04&nbsp;Digital&nbsp;Solutions</span>
-                <span class="diary__turn">turn the page&nbsp;↺</span>
-              </span>
-              <span class="face face--back">
-                <span class="diary__kicker">what I make</span>
-                <span class="diary__title diary__title--sm">the tool comes after the problem — never before</span>
-                <span class="diary__mark">S.</span>
-              </span>
-            </button>
-            <button class="diary__page" data-i="1" style="z-index:90" type="button" tabindex="-1">
-              <span class="face face--front">
-                <span class="diary__num">01</span>
-                <span class="diary__title">Websites</span>
-                <span class="diary__line">Business presence, built to be seen — and found.</span>
-              </span>
-              <span class="face face--back">
-                <span class="diary__kicker">kept</span>
-                <span class="diary__title diary__title--sm">websites that reach customers</span>
-                <span class="diary__mark">S.</span>
-              </span>
-            </button>
-            <button class="diary__page" data-i="2" style="z-index:80" type="button" tabindex="-1">
-              <span class="face face--front">
-                <span class="diary__num">02</span>
-                <span class="diary__title">Applications</span>
-                <span class="diary__line">Tools people actually use — tracking, logging, improving.</span>
-              </span>
-              <span class="face face--back">
-                <span class="diary__kicker">kept</span>
-                <span class="diary__title diary__title--sm">software that works in hand</span>
-                <span class="diary__mark">S.</span>
-              </span>
-            </button>
-            <button class="diary__page" data-i="3" style="z-index:70" type="button" tabindex="-1">
-              <span class="face face--front">
-                <span class="diary__num">03</span>
-                <span class="diary__title">Designs</span>
-                <span class="diary__line">Thumbnails · posters · logos · promotional banners.</span>
-              </span>
-              <span class="face face--back">
-                <span class="diary__kicker">kept</span>
-                <span class="diary__title diary__title--sm">visuals with the brand's voice</span>
-                <span class="diary__mark">S.</span>
-              </span>
-            </button>
-            <button class="diary__page diary__page--final" data-i="4" style="z-index:60" type="button" tabindex="-1">
-              <span class="face face--front">
-                <span class="diary__num">04</span>
-                <span class="diary__title">Digital Solutions</span>
-                <span class="diary__line">One of these — or a mix of them, as the problem asks.</span>
-                <span class="diary__stamp">from my works ↓</span>
-              </span>
-              <span class="face face--back">
-                <span class="diary__kicker">kept</span>
-                <span class="diary__title diary__title--sm">the diary always ends here</span>
-                <span class="diary__mark">S.</span>
-              </span>
-            </button>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -253,14 +267,14 @@
     <section class="sec about" id="about" aria-labelledby="about-h">
       <div class="wrap">
         <div class="about__avatar rv">
-          <img src="assets/avatar/sumeeth-avatar.jpg" width="480" height="480" loading="lazy" decoding="async"
-               alt="Illustrated portrait of Sumeeth: a young man in sunglasses and a dark hoodie">
+          <img src="assets/avatar/sonix-avatar.jpg" width="480" height="480" loading="lazy" decoding="async"
+               alt="SONIX portrait of Sumeeth: an anime character with crimson-tipped black hair and red eyes, in a black hoodie">
         </div>
         <p class="about__greeting rv"><span>Heyy...!!</span> I am Sumeeth</p>
         <div class="about__grid">
           <div class="about__head">
             <p class="about__quote rv">I don't start with a tool. I start with the problem.</p>
-            <p class="about__note rv">The one who keeps the diary above — web designer, application developer and graphic designer, depending on what the problem asks for.</p>
+            <p class="about__note rv">Web designer, application developer and graphic designer — depending on what the problem asks for.</p>
           </div>
           <div class="about__body">
             <p class="rv">Someone usually arrives with a need, not a specification: customers who can't find a product, a gym that wants members to track their progress, a business that has to be seen. Before I open an editor, I want to know what is actually in the way.</p>
@@ -275,7 +289,7 @@
       </div>
     </section>
 
-    <!-- ===== TECHNICAL SKILLS (icon-based, honestly evidenced) ===== -->
+    <!-- ===== TECHNICAL SKILLS (genuine technology marks, honestly evidenced) ===== -->
     <section class="sec skills" id="skills" aria-labelledby="skills-h">
       <div class="wrap">
         <div class="skills__head">
@@ -286,16 +300,16 @@
         <div class="skills__group rv">
           <h3 class="skills__group-title">Languages</h3>
           <ul class="tiles">
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M4 4h16L18.7 19 12 21l-6.7-2L4 4Z"/><path d="M9 8.5v6.2M9 8.5l5 .2v6h-3.4"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
               <b>HTML</b><span>structure</span>
             </li>
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M4 4h16L18.7 19 12 21l-6.7-2L4 4Z"/><path d="M8.4 8.2h7.2M9 11h5.4M9.8 13.7h4"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>
               <b>CSS</b><span>style &amp; layout</span>
             </li>
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M10 8.2v6c0 1.5-.8 2.3-2.1 2.3S6 15.7 6 14.8M13.6 8.4c.4-.6 1.2-1 2.1-.9 1.1.1 1.9.8 1.9 1.9 0 1.6-2.2 1.8-2.2 3.2 0 .9.7 1.5 1.7 1.5.7 0 1.3-.3 1.6-.8"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
               <b>JavaScript</b><span>interaction</span>
             </li>
           </ul>
@@ -304,12 +318,12 @@
         <div class="skills__group rv">
           <h3 class="skills__group-title">Frameworks &amp; Libraries</h3>
           <ul class="tiles">
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="12" cy="12" r="1.7"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>
               <b>React.js</b><span>NutriFit app</span>
             </li>
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M9.3 6.6C8 9 .8 9.9 2.4 13.2c.9 1.9 3.4 2 5.4 1.2 2.9-1.2 4.9-2.7 8.5-2.9 2.1-.1 4.2.4 4.7 1.9.8 2.3-2.4 3.5-4.7 3.4 2.2.8 5.5 1.5 6.8-1.1.7-1.5 0-3.2-1.8-4-1.5-.6-3.4-.5-5.4.1-2.5.8-4.6 2-7 2.3-1.5.2-2.9-.1-3.3-1.2-.5-1.5 1.3-2.4 3.7-3.4 2.3-1 4.4-1.7 6.3-1.6-1.2-1.3-4.5-1.8-6.3-.3Z"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/></svg>
               <b>Tailwind CSS</b><span>NutriFit app</span>
             </li>
           </ul>
@@ -318,16 +332,16 @@
         <div class="skills__group rv">
           <h3 class="skills__group-title">Design &amp; Creative</h3>
           <ul class="tiles">
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="10" r="1.5"/><path d="M3 17l5-3.5L13 17l4-2.5L21 17"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon tile__icon--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="10" r="1.5"/><path d="M3 17l5-3.5L13 17l4-2.5L21 17"/></svg>
               <b>Graphics</b><span>thumbnails · posters</span>
             </li>
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 3l3.5 2.5L19 7.5v5L15.5 15.5 12 18l-3.5-2.5L5 12.5v-5L8.5 5.5Z"/><path d="M12 8v4M10 10h4"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon tile__icon--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 3l3.5 2.5L19 7.5v5L15.5 15.5 12 18l-3.5-2.5L5 12.5v-5L8.5 5.5Z"/><path d="M12 8v4M10 10h4"/></svg>
               <b>Logos &amp; Branding</b><span>NutriFit · Ashok</span>
             </li>
-            <li class="tile" tabindex="0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 9h18M7 13h5M7 16h8"/></svg>
+            <li class="tile" tabindex="0" data-glow>
+              <svg class="tile__icon tile__icon--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 9h18M7 13h5M7 16h8"/></svg>
               <b>Banners</b><span>promotional design</span>
             </li>
           </ul>
@@ -479,8 +493,8 @@
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <p class="footer__mark" aria-hidden="true">Sumeeth<span>.</span></p>
-      <p class="footer__by">designed &amp; built by me — websites, applications and designs</p>
+      <p class="footer__mark" aria-hidden="true">SONIX<span>.</span></p>
+      <p class="footer__by">SONIX — the portfolio of Sumeeth Ashok Melkera · designed &amp; built by me</p>
       <nav class="footer__nav" aria-label="Footer">
         <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#works">My Works</a><a href="mailto:sumeeth.work18@gmail.com">Email</a><a href="https://wa.me/919022533004" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </nav>

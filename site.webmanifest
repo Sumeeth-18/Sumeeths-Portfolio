@@ -1,6 +1,6 @@
 {
-  "name": "Sumeeth's Portfolio",
-  "short_name": "Sumeeth's Portfolio",
+  "name": "SONIX — Sumeeth Melkera",
+  "short_name": "SONIX",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#171412",
+  "background_color": "#171412",
   "display": "browser"
 }

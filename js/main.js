@@ -1,11 +1,10 @@
-/* Sumeeth's Portfolio — interactions
-   1. Cinematic boot: typed mono → "/" pendulum → title → idea line → veil out
-   2. Six-stage hero sequence (per sketches): PORTFOLIO → particle avatar →
-      greeting → name+role → tagline → bottom strip (letter-by-letter)
-   3. Word ticker · 4. Diary page flips (bottom-to-top) · 5. Scroll reveals
-   6. Scroll-spy nav · 7. Live preview scaling · 8. Design showcase (pinned)
-   9. Hero pointer parallax · 10. Folio scroll parallax
-   11. Technical ambient background (drifting nodes + connection lines)
+/* SONIX — interactions
+   1. Cinematic intro: "</>" → particle portrait → "Let's bring your IDEA live!!" → SONIX
+   2. Hero sequence: PORTFOLIO → greeting → name + role → tagline → strip
+   3. Word ticker · 4. Diary beside the portrait (horizontal flips, stops on Digital Solutions)
+   5. Scroll reveals · 6. Scroll-spy nav · 7. Live preview scaling
+   8. Design showcase (pinned) · 9. Portrait pointer parallax · 10. Folio parallax
+   11. Technical ambient background · 12. Skill-tile pointer glow
    All vanilla, reduced-motion aware, no continuous heavy loops. */
 (function () {
   'use strict';
@@ -15,15 +14,13 @@
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
-  /* ================= intro timing registry ================= */
+  /* ================= timeline registry ================= */
   var booting = html.classList.contains('booting');
   var TIMELINE = [];
   function T(fn, ms) { var id = setTimeout(fn, ms); TIMELINE.push(id); return id; }
   function clearTimers() { TIMELINE.forEach(clearTimeout); TIMELINE.length = 0; }
 
   /* ================= typing engine ================= */
-  /* Letter-by-letter reveal. A hidden sizer span keeps the layout stable
-     while the typed copy overlays it exactly. */
   function typer(el) {
     if (!el) return null;
     var full = (el.getAttribute('data-text') || el.textContent).replace(/\s+/g, ' ').trim();
@@ -59,7 +56,6 @@
     };
     return o;
   }
-  /* word-segment typer: "←" separators are typed into crimson spans */
   function segTyper(el) {
     if (!el) return null;
     var full = (el.textContent || '').replace(/\s+/g, ' ').trim();
@@ -108,84 +104,99 @@
     return obj;
   }
 
-  /* ================= 1. PARTICLE AVATAR FORMATION ================= */
-  var wrap = $('[data-avatar]'), canvas = $('.avatar__canvas'), img = $('.avatar__img', wrap) || $('.avatar__img');
-  var particleState = { running: false, raf: 0 };
-  function sampleAvatar() {
-    if (!img || !img.naturalWidth || !canvas || !canvas.getContext) return null;
-    var G = 128, off = document.createElement('canvas');
+  /* ================= particle portrait engine ================= */
+  var runs = [];
+  function samplePixels(imgEl, grid) {
+    if (!imgEl || !imgEl.naturalWidth) return null;
+    var G = grid || 130, off = document.createElement('canvas');
     off.width = G; off.height = G;
     var octx = off.getContext('2d', { willReadFrequently: true });
-    octx.drawImage(img, 0, 0, G, G);
+    if (!octx) return null;
+    octx.drawImage(imgEl, 0, 0, G, G);
     var data;
     try { data = octx.getImageData(0, 0, G, G).data; } catch (e) { return null; }
-    var pts = [], i, x, y, r, g, b, lum;
+    var pts = [], x, y, i, r, g, b, lum, br, bg, bb;
     for (y = 0; y < G; y++) for (x = 0; x < G; x++) {
       i = (y * G + x) * 4;
       r = data[i]; g = data[i + 1]; b = data[i + 2];
       lum = (r + g + b) / 3;
-      if (lum > 34) pts.push({ x: x / G, y: y / G, c: 'rgb(' + r + ',' + g + ',' + b + ')', l: lum });
+      if (lum > 16) {
+        /* the artwork sits on black, so lift the sampled tones for the particle pass */
+        br = Math.min(255, Math.round(r * 1.65 + 32));
+        bg = Math.min(255, Math.round(g * 1.5 + 26));
+        bb = Math.min(255, Math.round(b * 1.5 + 26));
+        pts.push({ x: x / G, y: y / G, c: 'rgb(' + br + ',' + bg + ',' + bb + ')', l: lum });
+      }
     }
-    var MAX = 3600;
-    if (pts.length > MAX) { /* thin out, keep brightest bias */
-      pts.sort(function (a, b2) { return b2.l - a.l; });
-      pts = pts.slice(0, MAX);
-    }
+    pts.sort(function (a, b2) { return b2.l - a.l; });
     return pts;
   }
-  function runParticles(done) {
-    var pts = sampleAvatar();
-    if (!pts || !pts.length) { done(); return; }
-    var rect = wrap.getBoundingClientRect();
+  function runParticles(canvas, imgEl, opts, done) {
+    opts = opts || {};
+    if (!canvas || !canvas.getContext) { if (done) done(); return null; }
+    var pts = samplePixels(imgEl, opts.grid);
+    if (!pts || !pts.length) { if (done) done(); return null; }
+    var rect = (opts.sizeEl || canvas).getBoundingClientRect();
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
+    canvas.width = Math.max(1, Math.round((rect.width || 280) * dpr));
+    canvas.height = Math.max(1, Math.round((rect.height || 280) * dpr));
     var ctx = canvas.getContext('2d');
-    var cw = canvas.width, chh = canvas.height, cx = cw / 2, cy = chh / 2;
+    if (!ctx) { if (done) done(); return null; }
+    var cw = canvas.width, ch = canvas.height, cx = cw / 2, cy = ch / 2;
+    var max = opts.max || 3400;
+    if (pts.length > max) pts = pts.slice(0, max);
     var parts = pts.map(function (p) {
-      var ang = Math.random() * Math.PI * 2, rad = (0.4 + Math.random() * 0.9) * cw * 0.75;
-      var tx = p.x * cw, ty = p.y * chh;
+      var ang = Math.random() * Math.PI * 2, rad = (0.45 + Math.random() * 0.9) * cw * 0.72;
       return {
         sx: cx + Math.cos(ang) * rad, sy: cy + Math.sin(ang) * rad,
-        tx: tx, ty: ty, c: p.c,
-        d: Math.random() * 0.25 + ((ty / chh) * 0.45),
-        s: (dpr > 1.4 ? 2.1 : 1.6)
+        tx: p.x * cw, ty: p.y * ch, c: p.c,
+        d: Math.random() * 0.22 + (p.y * 0.4),
+        s: dpr > 1.4 ? 2.9 : 2.1
       };
     });
-    var T0 = performance.now(), D = 1250;
-    particleState.running = true;
+    var t0 = performance.now(), dur = opts.duration || 1400, alive = true, raf = 0;
     function ease(t) { return 1 - Math.pow(1 - t, 3); }
     function frame(now) {
-      if (!particleState.running) return;
-      var el = now - T0;
-      ctx.clearRect(0, 0, cw, chh);
+      if (!alive) return;
+      var el = now - t0;
+      ctx.clearRect(0, 0, cw, ch);
       var all = true;
       for (var k = 0; k < parts.length; k++) {
         var p = parts[k];
-        var t = clamp((el / 1000 - p.d) * (1000 / D), 0, 1);
+        var t = clamp((el / 1000 - p.d) * (1000 / dur), 0, 1);
         if (t < 1) all = false;
         var e = ease(t);
         var x = p.sx + (p.tx - p.sx) * e, y = p.sy + (p.ty - p.sy) * e;
-        var a = e * (1 - Math.max(0, t - 0.94) / 0.06);
+        var a = e * (opts.fade === false ? 1 : (1 - Math.max(0, t - 0.94) / 0.06)) * 0.95;
         ctx.globalAlpha = a;
         ctx.fillStyle = p.c;
         ctx.fillRect(x - p.s / 2, y - p.s / 2, p.s, p.s);
       }
-      if (el < (D / 1000 + 0.55) * 1000 && !all) particleState.raf = requestAnimationFrame(frame);
-      else { particleState.running = false; ctx.clearRect(0, 0, cw, chh); done(); }
+      if (!all && el < dur + 2400) { raf = requestAnimationFrame(frame); return; }
+      alive = false;
+      if (!opts.hold) ctx.clearRect(0, 0, cw, ch);
+      else ctx.globalAlpha = 1;
+      if (done) done();
     }
-    particleState.raf = requestAnimationFrame(frame);
+    raf = requestAnimationFrame(frame);
+    var stop = function () {
+      alive = false;
+      if (raf) cancelAnimationFrame(raf);
+      try { ctx.clearRect(0, 0, cw, ch); } catch (e) {}
+    };
+    runs.push(stop);
+    return stop;
   }
   function stopParticles() {
-    particleState.running = false;
-    if (particleState.raf) cancelAnimationFrame(particleState.raf);
-    particleState.raf = 0;
+    runs.forEach(function (stop) { try { stop(); } catch (e) {} });
+    runs.length = 0;
   }
 
-  /* ================= 2. BOOT + SIX-STAGE HERO SEQUENCE ================= */
-  var tickerEl = $('[data-ticker]'), tickerWord = $('.ticker__word');
+  /* ================= refs ================= */
+  var wrap = $('[data-avatar]');
+  var avatarImg = wrap ? $('.avatar__img', wrap) : $('.avatar__img');
   var navEl = $('.nav'), heroTagline = $('.hero__tagline');
-  var introDone = false;
+  var tickerWord = $('.ticker__word');
 
   var tyGreet = typer($('.identity__hi'));
   var tyName = typer($('.identity__name'));
@@ -194,6 +205,8 @@
   var tyTag = typer($('.tag-in'));
   var tyStrip = segTyper($('.hero__strip'));
   var typers = [tyGreet, tyName, tyRoleC, tyRoleD, tyTag].filter(Boolean);
+
+  var introSettled = false, heroVisible = true, diaryStarted = false;
 
   function revealAll() {
     var f = $('.hero__folio'); if (f) f.classList.add('in');
@@ -204,181 +217,128 @@
     if (heroTagline) heroTagline.classList.add('is-done');
   }
 
-  function finishBoot(instant) {
-    clearTimers();
-    stopParticles();
-    booting = false;
-    if (wrap) wrap.classList.add('is-solid');
-    html.classList.remove('booting', 's-slash', 's-site', 's-idea', 's-out');
-    revealAll();
-    setTick(true);
-    startDiaryAutos(true);
-    if (!tickerSequencing) startTickCycle();
-    introDone = true;
-    html.classList.add('intro-done');
-  }
-
-  /* Stage 3–6, strictly in order; stage 6 only after stage 5 completes */
+  /* ================= hero sequence ================= */
   function stage3() {
     if (!tyGreet) { stage4(); return; }
-    tyGreet.type(52, stage4);            /* "Hii..!! I am" */
+    tyGreet.type(42, stage4);
   }
   function stage4() {
     if (!tyName) { stage4done(); return; }
-    tyName.type(92, function () {        /* SUMEETH — Bodoni, metallic glow */
-      var next = tyRoleD ? function () { tyRoleD.type(58, stage4done); } : stage4done;
-      if (tyRoleC) tyRoleC.type(66, next); else next(); /* Creative + Developer */
+    tyName.type(74, function () {
+      if (tyRoleC) tyRoleC.type(52, function () {
+        if (tyRoleD) tyRoleD.type(38, stage4done); else stage4done();
+      }); else stage4done();
     });
   }
   function stage4done() {
     if (navEl) navEl.classList.add('in');
     var cta = $('.cta--single'); if (cta) cta.classList.add('in');
-    T(stage5, 260);
+    T(stage5, 240);
   }
   function stage5() {
     if (!tyTag) { stage6(); return; }
-    tyTag.type(17, function () {         /* tagline, bottom-right */
+    tyTag.type(15, function () {
       if (heroTagline) heroTagline.classList.add('is-done');
       startTickerSequence();
-      T(stage6, 320);
+      T(stage6, 300);
     });
   }
   function stage6() {
     var strip = $('.hero__strip');
     if (strip) strip.classList.add('in');
     if (!tyStrip) { settle(); return; }
-    tyStrip.type(19, function () { T(settle, 420); });  /* bottom strip, last */
+    tyStrip.type(16, function () { T(settle, 360); });
   }
   function settle() {
-    if (introDone) return;
-    introDone = true;
+    if (introSettled) return;
+    introSettled = true;
     html.classList.add('intro-done');
-    startDiaryAutos(false);
+    startDiary();
     if (!tickerSequencing) startTickCycle();
   }
 
-  function startAvatar() {
-    var started = false;
-    var begin = function () {
-      if (started || introDone) return;
-      started = true;
-      if (!wrap) { stage3(); return; }
-      runParticles(function () {
-        if (introDone) return;
-        wrap.classList.add('is-solid');   /* artwork takes over from particles */
-        T(stage3, 280);
-      });
-    };
-    if (img && (!img.complete || !img.naturalWidth)) img.addEventListener('load', begin, { once: true });
-    T(begin, img && (!img.complete || !img.naturalWidth) ? 2600 : 0);
+  function finishBoot() {
+    clearTimers();
+    stopParticles();
+    booting = false;
+    if (wrap) wrap.classList.add('is-solid');
+    html.classList.remove('booting', 's-mark', 's-form', 's-idea', 's-sign', 's-out');
+    revealAll();
+    setTick(true);
+    introSettled = true;
+    html.classList.add('intro-done');
+    startDiary();
+    if (!tickerSequencing) startTickCycle();
   }
 
-  function runHeroSequence() {
-    var folio = $('.hero__folio');
-    /* Stage 1 — giant PORTFOLIO reveal */
-    T(function () { if (folio) folio.classList.add('in'); }, 320);
-    /* Stage 2 — particle avatar formation */
-    T(startAvatar, 900);
-  }
-
+  /* ================= 1. cinematic intro ================= */
   function playIntro() {
-    /* pre-build every typer so un-typed copy is hidden from the first frame
-       (sizer holds the layout, nothing raw is ever visible behind the veil) */
     typers.forEach(function (t) { t.build(); });
     if (tyStrip) tyStrip.build();
-    var veilCode = $('#veilCode'), veilSite = $('#veilSite'), veilIdea = $('#veilIdea');
-    var LINES = [
-      '> boot      : sumeeth.dev — portfolio',
-      '> profile   : creative developer',
-      '> practice  : websites · applications · designs',
-      '> render    : </>'
-    ];
-    var full = LINES.join('\n');
-    var SLASH_AT = full.indexOf('/'); /* the "/" in "</>" is the trigger */
+
+    var veil = $('#veil'), veilCanvas = $('#veilCanvas');
     var stop = false;
 
     function skip() {
       if (stop) return;
       stop = true;
-      finishBoot(true);
+      finishBoot();
     }
-    function typeLine(el, text, speed, done) {
-      if (!el) { done(); return; }
-      var i = 0;
-      (function t() {
-        if (stop) return;
-        i++;
-        el.textContent = text.slice(0, i);
-        if (i < text.length) T(t, speed);
-        else done();
-      })();
-    }
-    function beginTyping() {
-      if (!veilCode) { onSlash(); return; }
-      var i = 0, out = '';
-      (function tick() {
-        if (stop || !booting) return;
-        if (i >= full.length) { onSlash(); return; }
-        var ch = full[i]; out += ch; veilCode.textContent = out;
-        if (i === SLASH_AT) { onSlash(); return; } /* slash typed → reveal */
-        i++;
-        T(tick, 10 + (ch === '\n' ? 90 : 0) + Math.random() * 8);
-      })();
-    }
-    function onSlash() {
+
+    T(function () { html.classList.add('s-mark'); }, 160);
+
+    /* the "</>" gives way to the portrait assembling from particles */
+    T(function () {
       if (stop) return;
-      html.classList.add('s-slash'); /* the "/" pendulum loading beat */
-      T(function () {
-        if (stop) return;
-        html.classList.add('s-site'); /* "</ Sumeeth's Portfolio />" */
-        typeLine(veilSite, '</ Sumeeth\u2019s Portfolio />', 22, function () {
-          T(function () {
-            if (stop) return;
-            html.classList.add('s-idea'); /* "Let's bring your IDEA live!!" */
-            typeLine(veilIdea, 'Let\u2019s bring your IDEA live!!', 22, function () {
-              T(veilOut, 560);
-            });
-          }, 340);
-        });
-      }, 850);
-    }
-    function veilOut() {
+      html.classList.add('s-form');
+      if (veilCanvas) runParticles(veilCanvas, avatarImg, { max: 7200, grid: 178, duration: 1700, hold: true, fade: false, sizeEl: veilCanvas.parentElement.parentElement }, null);
+    }, 1400);
+
+    T(function () { if (!stop) html.classList.add('s-idea'); }, 2150);
+    T(function () { if (!stop) html.classList.add('s-sign'); }, 3150);
+
+    /* compose the hero under the veil, then dissolve it */
+    T(function () {
       if (stop) return;
-      html.classList.add('s-out'); /* veil fades while Stage 1 begins */
-      T(function () {
-        html.classList.remove('booting', 's-slash', 's-site', 's-idea');
-        booting = false;
-        runHeroSequence();
-      }, 850);
-    }
+      if (wrap) wrap.classList.add('is-solid');
+      var f = $('.hero__folio'); if (f) f.classList.add('in');
+      if (navEl) navEl.classList.add('in');
+    }, 4600);
+
+    T(function () { if (!stop) html.classList.add('s-out'); }, 5150);
+
+    T(function () {
+      if (stop) return;
+      stop = true;
+      html.classList.remove('booting', 's-mark', 's-form', 's-idea', 's-sign');
+      booting = false;
+      if (wrap) wrap.classList.add('is-solid');
+      html.classList.add('intro-done');
+      if (veil) veil.setAttribute('hidden', '');
+      stage3();
+      T(startDiary, 500);
+    }, 6000);
 
     var skipBtn = $('#veilSkip');
-    if (skipBtn) {
-      skipBtn.addEventListener('click', skip);
-      skipBtn.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); skip(); }
-      });
+    if (skipBtn) skipBtn.addEventListener('click', skip);
+    function onKey(e) {
+      if (e.key === 'Escape' || e.key === 'Enter') {
+        skip();
+        document.removeEventListener('keydown', onKey);
+      }
     }
-    document.addEventListener('keydown', function esc(e) {
-      if (e.key === 'Escape' || e.key === 'Enter') { skip(); document.removeEventListener('keydown', esc); }
-    });
+    document.addEventListener('keydown', onKey);
 
-    T(beginTyping, 350);
-    /* failsafes: never leave the visitor on an empty screen.
-       The first covers a stalled veil; the second is a last-resort
-       completion if the whole sequence somehow never settles. */
-    T(function () { if (html.classList.contains('booting')) skip(); }, 13500);
-    T(function () { if (!introDone) skip(); }, 26000);
+    T(function () { if (html.classList.contains('booting')) skip(); }, 10000);
   }
 
-  var introWasWanted = !!window.__SUMEETH_INTRO && booting && !reduced;
-  window.__SUMEETH_INTRO_RUNNING = true; /* inline failsafe stands down */
+  var introWanted = !!window.__SONIX_INTRO && booting && !reduced;
+  window.__SONIX_INTRO_RUNNING = true;
   try {
-    if (introWasWanted) playIntro();
-    else finishBoot(true);
-  } catch (e) { finishBoot(true); }
+    if (introWanted) playIntro(); else finishBoot();
+  } catch (e) { finishBoot(); }
 
-  /* ================= 3. WORD TICKER ================= */
+  /* ================= 3. word ticker ================= */
   var WORDS = ['Website', 'Application', 'Designs', 'Digital Solution'];
   var wIdx = WORDS.indexOf(tickerWord ? tickerWord.textContent.replace('\u00a0', ' ') : '');
   if (wIdx < 0) wIdx = WORDS.length - 1;
@@ -392,7 +352,7 @@
       tickerWord.classList.remove('out');
     }, 310);
   }
-  function startTickerSequence() { /* intro: the four words, one per second */
+  function startTickerSequence() {
     tickerSequencing = true;
     swapWord(WORDS[0]); wIdx = 0;
     var i = 1;
@@ -401,7 +361,7 @@
       swapWord(WORDS[i]); wIdx = i; i++;
     }, 1000);
   }
-  function startTickCycle() { /* afterwards: keep cycling, one at a time */
+  function startTickCycle() {
     clearInterval(tickTimer);
     if (reduced || !tickerWord) return;
     tickTimer = setInterval(function () {
@@ -411,60 +371,86 @@
     }, tickFast ? 1000 : 2400);
   }
 
-  /* ================= 4. DIARY PAGE FLIPS (bottom-to-top) ================= */
-  var book = $('.diary__book'), pages = $$('.diary__page');
-  var NB = pages.length, flips = 0, diaryTimer = 0;
-  var heroVisible = true, notesVisible = false;
-  function zf(page, k) { page.style.zIndex = k; }
+  /* ================= 4. the diary beside the portrait ================= */
+  var book = $('[data-diary-book]'), pages = $$('.diary__page');
+  var nextBtn = $('#diaryNext'), nowEl = $('#diaryNow'), liveEl = $('#diaryLive');
+  var NB = pages.length, flips = 0, diaryTimer = 0, diaryVisible = false;
+  var NAMES = ['Websites', 'Applications', 'Designs', 'Digital Solutions'];
+
   function applyZ() {
     pages.forEach(function (p, i) {
-      if (i < flips) zf(p, 10 + i);
-      else zf(p, 100 - i);
+      p.style.zIndex = i < flips ? String(10 + i) : String(100 - i);
     });
+  }
+  function updateDiaryUI() {
+    var idx = clamp(flips, 0, NB - 1);
+    if (nowEl) nowEl.textContent = String(idx + 1).padStart(2, '0');
+    if (nextBtn) {
+      var last = flips >= NB - 1;
+      nextBtn.disabled = last;
+      nextBtn.innerHTML = last ? 'End of notes <span aria-hidden="true">\u00b7</span>' : 'Turn page <span aria-hidden="true">\u21bb</span>';
+    }
+    if (liveEl) liveEl.textContent = NAMES[idx] + ' — page ' + (idx + 1) + ' of ' + NB;
   }
   function flipNext(instant) {
     if (flips >= NB - 1) return false;
     var p = pages[flips];
     flips++;
     if (instant) p.classList.add('instant');
-    zf(p, 200);
+    p.style.zIndex = '200';
     requestAnimationFrame(function () { p.classList.add('flipped'); });
-    setTimeout(function () { p.classList.remove('instant'); applyZ(); }, instant ? 30 : 950);
+    setTimeout(function () {
+      p.classList.remove('instant');
+      applyZ();
+      updateDiaryUI();
+    }, instant ? 30 : 1050);
+    updateDiaryUI();
     return true;
   }
-  function startDiaryAutos(instant) {
-    if (!book || diaryTimer) return;
-    if (reduced || instant) { /* jump straight to the settled state */
-      while (flipNext(true)) {}
-      return;
-    }
+  function stopDiaryAuto() {
+    if (diaryTimer) { clearInterval(diaryTimer); diaryTimer = 0; }
+  }
+  function startDiary() {
+    if (diaryStarted || reduced || !book || !pages.length) return;
+    diaryStarted = true;
+    applyZ();
+    updateDiaryUI();
     var n = 0;
     diaryTimer = setInterval(function () {
-      if (document.hidden || !notesVisible) return;
-      if (!flipNext(false) || ++n > NB) { clearInterval(diaryTimer); diaryTimer = 0; }
-    }, 1900);
+      if (document.hidden || !diaryVisible) return;
+      if (!flipNext(false)) { stopDiaryAuto(); return; }
+      n++;
+      if (n >= NB - 1) stopDiaryAuto();
+    }, 2100);
   }
-  pages.forEach(function (p) {
-    p.addEventListener('click', function () {
-      if (reduced) return;
+  if (book && pages.length) {
+    applyZ();
+    updateDiaryUI();
+    if (nextBtn) nextBtn.addEventListener('click', function () {
+      stopDiaryAuto();
       flipNext(false);
     });
-  });
+    book.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      stopDiaryAuto();
+      flipNext(false);
+    });
+  }
 
-  /* visibility gates: hero drives ticker + ambient; notes drives the diary */
+  /* visibility gates: hero drives ticker + ambient; diary drives its own flips */
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
       es.forEach(function (e) { heroVisible = e.isIntersecting; });
     }, { threshold: 0.12 }).observe($('#home') || body);
-    var notesEl = $('#notes');
-    if (notesEl) {
+    var diaryEl = $('.diary');
+    if (diaryEl) {
       new IntersectionObserver(function (es) {
-        es.forEach(function (e) { notesVisible = e.isIntersecting; });
-      }, { threshold: 0.1 }).observe(notesEl);
-    } else notesVisible = true;
-  } else notesVisible = true;
+        es.forEach(function (e) { diaryVisible = e.isIntersecting; });
+      }, { threshold: 0.2 }).observe(diaryEl);
+    } else diaryVisible = true;
+  } else diaryVisible = true;
 
-  /* ================= 5. SCROLL REVEALS ================= */
+  /* ================= 5. scroll reveals ================= */
   var rest = $$('.rv').filter(function (el) { return !el.closest('#home'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
@@ -473,7 +459,7 @@
     rest.forEach(function (el) { io.observe(el); });
   } else rest.forEach(function (el) { el.classList.add('is-in'); });
 
-  /* ================= 6. SCROLL-SPY NAV ================= */
+  /* ================= 6. scroll-spy nav ================= */
   var spyLinks = $$('[data-spy]');
   if (spyLinks.length && 'IntersectionObserver' in window) {
     var map = { works: 'works', designs: 'works' };
@@ -495,7 +481,7 @@
     });
   }
 
-  /* ================= 7. LIVE PREVIEW SCALING ================= */
+  /* ================= 7. live preview scaling ================= */
   var previews = $$('.preview');
   function fit(p) {
     var f = $('iframe', p), w = parseFloat(p.getAttribute('data-w')) || 1440;
@@ -513,11 +499,11 @@
     window.addEventListener('resize', function () { previews.forEach(fit); });
   }
 
-  /* ================= 8. DESIGN SHOWCASE (scroll-pinned, motion allowed) ================= */
+  /* ================= 8. design showcase (scroll-pinned, motion allowed) ================= */
   var ex = $('[data-exhibit]'), pieces = $$('.piece'), stage = $('.exhibit__stage');
   var N = pieces.length, per = 0, stageH = 0, pinned = false, lastPos = null, prepared = -1;
   var idxEl = $('.hud__idx'), titleEl = $('.hud__title'), lastIdx = -1;
-  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function easeOut(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function size() {
     if (!pinned || !stage) return;
     stageH = stage.getBoundingClientRect().height;
@@ -537,9 +523,12 @@
     if (pos === lastPos) return;
     lastPos = pos;
     var total = per * (N - 1);
-    var cur = clamp(Math.floor(pos / per + 0.3), 0, N - 1);
+    /* while the section heading is still on screen the stage has not reached the
+       top yet — show the first piece instead of an empty pinned stage */
+    var visiblePos = Math.max(0, pos);
+    var cur = clamp(Math.floor(visiblePos / per + 0.3), 0, N - 1);
     pieces.forEach(function (p, i) {
-      var u = pos / per - i;
+      var u = visiblePos / per - i;
       if (u <= -0.35 || (i !== N - 1 && u >= 1)) {
         if (p.style.visibility !== 'hidden') p.style.visibility = 'hidden';
         return;
@@ -547,7 +536,7 @@
       var art = p.firstElementChild, img2 = art.firstElementChild;
       if (p.style.visibility !== 'visible') p.style.visibility = 'visible';
       if (p.style.zIndex !== String(i + 1)) p.style.zIndex = String(i + 1);
-      var eA = ease(clamp((u + 0.3) / 0.3, 0, 1)), xA = ease(i === N - 1 ? 0 : clamp((u - 0.7) / 0.3, 0, 1));
+      var eA = easeOut(clamp((u + 0.3) / 0.3, 0, 1)), xA = easeOut(i === N - 1 ? 0 : clamp((u - 0.7) / 0.3, 0, 1));
       art.style.clipPath = 'inset(' + ((1 - eA) * 100).toFixed(2) + '% 0 ' + (xA * 100).toFixed(2) + '% 0 round 8px)';
       art.style.opacity = String(1 - xA * .85);
       art.style.transform = 'translateY(' + ((1 - eA) * 34 - xA * 4).toFixed(2) + 'px) scale(' + (0.94 + 0.06 * eA - xA * .06).toFixed(4) + ')';
@@ -575,7 +564,6 @@
   enableExhibit();
   window.addEventListener('load', function () { size(); updateExhibit(); });
 
-  /* single rAF-throttled listener for exhibit scroll updates */
   var ticking = false;
   function onScroll() {
     if (ticking) return; ticking = true;
@@ -584,7 +572,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', function () { size(); updateExhibit(); });
 
-  /* ================= 9. HERO POINTER PARALLAX (fine pointers only) ================= */
+  /* ================= 9. portrait pointer parallax ================= */
   if (wrap && !reduced && window.matchMedia('(pointer:fine)').matches) {
     var heroEl = $('#home'), raf = 0;
     heroEl.addEventListener('pointermove', function (e) {
@@ -602,7 +590,7 @@
     });
   }
 
-  /* ================= 10. FOLIO SCROLL PARALLAX ================= */
+  /* ================= 10. folio scroll parallax ================= */
   var folioWord = $('#folioWord');
   if (folioWord && !reduced) {
     var fTicking = false;
@@ -617,8 +605,7 @@
     }, { passive: true });
   }
 
-  /* ================= 11. TECHNICAL AMBIENT BACKGROUND ================= */
-  /* Drifting nodes with subtle connection lines — low-CPU, reduced-motion aware. */
+  /* ================= 11. technical ambient background ================= */
   var ambient = $('#ambientCanvas');
   if (ambient && !reduced && ambient.getContext) {
     var actx = ambient.getContext('2d');
@@ -631,7 +618,7 @@
       aH = Math.round(rect.height * dpr);
       ambient.width = aW;
       ambient.height = aH;
-      var target = window.innerWidth < 760 ? 22 : 36;
+      var target = window.innerWidth < 760 ? 20 : 34;
       if (anodes.length !== target) {
         anodes = [];
         for (var i = 0; i < target; i++) {
@@ -639,7 +626,7 @@
             x: Math.random() * aW, y: Math.random() * aH,
             vx: (Math.random() - .5) * .12 * dpr, vy: (Math.random() - .5) * .12 * dpr,
             r: (1 + Math.random() * 1.6) * dpr,
-            a: .12 + Math.random() * .28
+            a: .12 + Math.random() * .26
           });
         }
       }
@@ -657,13 +644,12 @@
         if (n.x < -10) n.x = aW + 10; else if (n.x > aW + 10) n.x = -10;
         if (n.y < -10) n.y = aH + 10; else if (n.y > aH + 10) n.y = -10;
       }
-      /* connection lines (crimson, faint) */
       for (var a = 0; a < anodes.length; a++) {
         for (var b = a + 1; b < anodes.length; b++) {
           var dx = anodes[a].x - anodes[b].x, dy = anodes[a].y - anodes[b].y;
           var d2 = dx * dx + dy * dy;
           if (d2 < LINK * LINK) {
-            var al = (1 - Math.sqrt(d2) / LINK) * .2;
+            var al = (1 - Math.sqrt(d2) / LINK) * .18;
             actx.strokeStyle = 'rgba(143,36,56,' + al.toFixed(3) + ')';
             actx.lineWidth = 1;
             actx.beginPath();
@@ -673,7 +659,6 @@
           }
         }
       }
-      /* nodes (warm beige dots) */
       for (var k = 0; k < anodes.length; k++) {
         var nd = anodes[k];
         actx.globalAlpha = nd.a;
@@ -697,11 +682,21 @@
     }
     ambientResize();
     window.addEventListener('resize', function () { ambientResize(); }, { passive: true });
-    /* run only while the hero is on screen */
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         es.forEach(function (e) { e.isIntersecting ? ambientStart() : ambientStop(); });
       }, { threshold: 0 }).observe(ambient.parentElement || ambient);
     } else ambientStart();
+  }
+
+  /* ================= 12. skill-tile pointer glow ================= */
+  if (window.matchMedia('(pointer:fine)').matches && !reduced) {
+    $$('[data-glow]').forEach(function (tile) {
+      tile.addEventListener('pointermove', function (e) {
+        var r = tile.getBoundingClientRect();
+        tile.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 100).toFixed(1) + '%');
+        tile.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 100).toFixed(1) + '%');
+      });
+    });
   }
 })();
